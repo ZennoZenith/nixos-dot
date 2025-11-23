@@ -12,9 +12,10 @@ dirs add ~/nixos-dot
 ## formatting nix files
 alejandra . e+o>| save -a /dev/null
 jj diff **/*.nix | diffnav 
+# git diff -U0 *.nix 
 
 try {
-    let gen = (nixos-rebuild list-generations | detect columns  | where Current == "True" | get Generation.0 | into int)
+    let gen = (nixos-rebuild list-generations | detect columns | where Current == "True" | get Generation.0 | into int)
     let gen = ($gen + 1 | fill -a right -c '0' -w 3)
 
     jj commit -m $"Generation ($gen)"

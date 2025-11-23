@@ -168,4 +168,5 @@ with pkgs; [
   uwsm
   syncthing
   pueue
+  dbeaver-bin
 ]
