@@ -4,7 +4,7 @@
 
     serviceConfig = {
       Type = "notify";
-      ExecStart = "${pkgs.pueue}/bin/pueue -vv";
+      ExecStart = "${pkgs.pueue}/bin/pueued -vv";
 
       Restart = "no";
     };

@@ -22,7 +22,7 @@ try {
 
     print "NixOS Rebuilding..."
     sudo nixos-rebuild switch --flake $flake_path o+e>| save -f $log_file
-    if ($env.LAST_EXIT_CODE = 0) {
+    if ($env.LAST_EXIT_CODE != 0) {
         error make { msg: "nixos-rebuild switch failed" }
     }
 } catch {
@@ -30,15 +30,15 @@ try {
       jj edit -r $env.commit_revset
     }
 
-    if ($log_file | path exists) {
-        open $log_file 
-        | lines 
-        | where $it =~ "error" 
-        | each { |line| print -e $"($line)" }
-        error make { msg: "nixos-rebuild switch failed. See errors above." }
-    } else {
-        error make { msg: "nixos-rebuild switch failed, but log file not found." }
-    }
+    # if ($log_file | path exists) {
+    #     open $log_file 
+    #     | lines 
+    #     | where $it =~ "error" 
+    #     | each { |line| print -e $"($line)" }
+    #     error make { msg: "nixos-rebuild switch failed. See errors above." }
+    # } else {
+    #     error make { msg: "nixos-rebuild switch failed, but log file not found." }
+    # }
 }
 
 dirs drop 
