@@ -170,4 +170,6 @@ with pkgs; [
   pueue
   dbeaver-bin
   mariadb
+  libreoffice-fresh
+  evince
 ]
