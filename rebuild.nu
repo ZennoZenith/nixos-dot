@@ -11,7 +11,7 @@ dirs add ~/nixos-dot
 
 ## formatting nix files
 alejandra . e+o>| save -a /dev/null
-echo "NixOS Rebuilding..."
+jj diff **/*.nix | diffnav 
 
 $env.commit_revset = ""
 try {
@@ -20,7 +20,11 @@ try {
     let jj_output = (jj commit -m $"Generation ($gen)")
     $env.commit_revset = ($jj_output | grep "Parent commit" | split chars | slice 26..33 | str join)
 
-    sudo nixos-rebuild switch --flake $flake_path | save -f $log_file
+    print "NixOS Rebuilding..."
+    sudo nixos-rebuild switch --flake $flake_path o+e>| save -f $log_file
+    if ($env.LAST_EXIT_CODE = 0) {
+        error make { msg: "nixos-rebuild switch failed" }
+    }
 } catch {
     if ( $env.commit_revset != "" ) {
       jj edit -r $env.commit_revset

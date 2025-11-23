@@ -1,7 +1,6 @@
 {pkgs}:
 with pkgs; [
   # https://github.com/JaKooLit/NixOS-Hyprland
-  # syncthing
   # lld
   # aim
   # jome
@@ -165,4 +164,6 @@ with pkgs; [
   serpl
   slumber
   uwsm
+  syncthing
+  pueue
 ]
