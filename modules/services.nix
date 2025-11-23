@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./services/default.nix
     ./services/mpd.nix
@@ -46,5 +46,10 @@
       };
     };
     fail2ban.enable = true;
+
+    mysql = {
+      enable = true;
+      package = pkgs.mariadb;
+    };
   };
 }

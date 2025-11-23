@@ -169,4 +169,5 @@ with pkgs; [
   syncthing
   pueue
   dbeaver-bin
+  mariadb
 ]
