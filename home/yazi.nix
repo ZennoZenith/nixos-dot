@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   targetDir = ".config/yazi/flavors";
   sourceDir = ../configs/yazi/flavors;
 
@@ -8,12 +11,13 @@ let
     "gruvbox-dark.yazi" = sourceDir + "/gruvbox-dark.yazi";
     "nord.yazi" = sourceDir + "/nord.yazi";
   };
-in
-{
-  home.file = lib.mapAttrs (fileName: sourcePath: {
-    target = "${targetDir}/${fileName}";
-    source = sourcePath;
-  }) yaziFlavors;
+in {
+  home.file =
+    lib.mapAttrs (fileName: sourcePath: {
+      target = "${targetDir}/${fileName}";
+      source = sourcePath;
+    })
+    yaziFlavors;
 
   programs.yazi = {
     enable = true;
@@ -30,7 +34,7 @@ in
     keymap = {
       input.prepend_keymap = [
         {
-          on = [ "<Esc>" ];
+          on = ["<Esc>"];
           run = "close";
           desc = "Cancel input";
         }
@@ -65,5 +69,4 @@ in
       };
     };
   };
-
 }

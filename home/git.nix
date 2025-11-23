@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   programs.git = {
     enable = true;
 
@@ -189,7 +187,6 @@
         process = "git-lfs filter-process";
         required = true;
       };
-
     };
 
     # # --- Includes ---

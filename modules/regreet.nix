@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   hyprland-conf = pkgs.writeText "hyprland-gtkgreet-config" ''
     exec-once = regreet; hyprctl dispatch exit
     misc {
@@ -8,8 +11,7 @@ let
         disable_hyprland_guiutils_check = true
     }
   '';
-in
-{
+in {
   programs.regreet = {
     enable = true;
     settings = {
@@ -36,5 +38,4 @@ in
       };
     };
   };
-
 }

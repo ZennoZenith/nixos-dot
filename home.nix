@@ -1,6 +1,8 @@
-{ pkgs, inputs, ... }:
-
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.zen-browser.homeModules.beta
     ./home/default.nix
@@ -72,9 +74,7 @@
       # };
     };
   };
-
 }
-
 # [Default Applications]
 # x-scheme-handler/http=zen.desktop
 # x-scheme-handler/https=zen.desktop
@@ -94,7 +94,6 @@
 # image/webp=imv.desktop
 # image/bmp=imv.desktop
 # image/tiff=imv.desktop
-
 # [Added Associations]
 # x-scheme-handler/http=zen.desktop;
 # x-scheme-handler/https=zen.desktop;
@@ -106,3 +105,4 @@
 # application/xhtml+xml=zen.desktop;
 # application/x-extension-xhtml=zen.desktop;
 # application/x-extension-xht=zen.desktop;
+

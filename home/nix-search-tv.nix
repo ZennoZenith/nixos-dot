@@ -1,8 +1,6 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   ns = pkgs.writeShellScriptBin "ns" (builtins.readFile ./ns-nixpkgs.sh);
-in
-{
+in {
   home.packages = [
     ns
   ];

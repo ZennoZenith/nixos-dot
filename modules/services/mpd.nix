@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   systemd.user.services.mpd = {
     description = "Music Player Daemon";
 
@@ -29,7 +27,7 @@
       LimitMEMLOCK = "64M";
     };
 
-    wantedBy = [ "default.target" ];
+    wantedBy = ["default.target"];
   };
 
   systemd.user.sockets.mpd = {
@@ -44,7 +42,6 @@
       PassCredentials = true;
     };
 
-    wantedBy = [ "sockets.target" ];
+    wantedBy = ["sockets.target"];
   };
-
 }

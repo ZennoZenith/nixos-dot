@@ -195,7 +195,7 @@ roots = ["postgrestools.jsonc"]
 
 [[language]]
 name = "nix"
-formatter = { command = "nixfmt" }
+formatter = { command = "alejandra" }
 auto-format = true
 
 

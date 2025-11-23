@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # Core settings
   home.username = "knack";
   home.homeDirectory = "/home/knack";

@@ -3,10 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-
-{
-
+}: {
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -22,7 +19,7 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia.prime = {
     sync.enable = true;
@@ -33,7 +30,6 @@
   };
 
   hardware.nvidia = {
-
     # Modesetting is required.
     modesetting.enable = true;
 
@@ -58,7 +54,5 @@
     nvidiaSettings = true;
 
     package = config.boot.kernelPackages.nvidiaPackages.latest;
-
   };
-
 }

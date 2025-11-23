@@ -1,179 +1,168 @@
-{ pkgs }:
-[
+{pkgs}:
+with pkgs; [
   # https://github.com/JaKooLit/NixOS-Hyprland
   # syncthing
   # lld
-  # pkgs.aim
-  # pkgs.jome
-  # pkgs.bibata-cursor-theme
-  # pkgs.crates-tui-git
+  # aim
+  # jome
+  # bibata-cursor-theme
+  # crates-tui-git
   # https://github.com/muandane/goji
-  # pkgs.hl ## added in flake.nix
-  # pkgs.omm
-  # pkgs.timr-tui
-  # pkgs.clock-tui
-  # pkgs.rust-stakeholder
+  # hl ## added in flake.nix
+  # omm
+  # timr-tui
+  # clock-tui
+  # rust-stakeholder
 
-  ### Unneeded
-  # pkgs.tui-journal
-  # pkgs.systemctl-tui
-  # pkgs.archlinux-xdg-menu
+  ## Window Manager & Environment
+  grimblast
+  hypridle
+  hyprlock
+  hyprpaper
+  hyprpicker
+  hyprpolkitagent
+  hyprsunset
+  nwg-look
+  rofi
+  swww
+  tofi
+  walker
+  waybar
+  wlogout
+  wofi
+  xdg-desktop-portal-hyprland
 
-  pkgs.waybar
-  pkgs.git
-  pkgs.hyprpaper
-  pkgs.stow
-  pkgs.yazi
-  pkgs.zoxide
-  pkgs.zellij
-  pkgs.nushell
+  ## Shell & Terminal Utilities
+  atuin
+  carapace
+  fish
+  fzf
+  keychain
+  nushell
+  starship
+  tealdeer
+  zoxide
 
-  ## Terminals
-  pkgs.ghostty
-  pkgs.kitty
-  pkgs.alacritty
+  ## Terminal Applications
+  alacritty
+  bat
+  csvlens
+  eza
+  fx
+  ghostty
+  glow
+  helix
+  kitty
+  lazysql
+  tailspin
+  tree
+  vivid
+  yazi
+  zellij
 
-  pkgs.clang
-  pkgs.mold
+  ## Development & Version Control
+  cargo
+  clang
+  delta
+  deno
+  gcc
+  gh
+  git
+  git-cliff
+  gitui
+  go
+  jujutsu
+  lazygit
+  meld
+  mold
+  rustup
+  sccache
+  tig
 
-  ##
-  pkgs.helix
+  ## Search, Filter, and System Tools
+  bandwhich
+  btop
+  dysk
+  fastfetch
+  fd
+  gping
+  igrep
+  repgrep
+  ripgrep
+  ripgrep-all
+  sd
+  skim
+  watchexec
 
-  pkgs.fastfetch
-  pkgs.p7zip
-  pkgs.pueue
+  ## Nix & Configuration Tools
+  nil
+  nixd
+  #nixfmt-rfc-style  ## replaced by "alejandra"
+  stow
 
-  pkgs.yazi
-  pkgs.tree
-  pkgs.age
-  pkgs.ouch
-  pkgs.tealdeer
-  pkgs.watchexec
-  pkgs.bacon
-  pkgs.starship
-  pkgs.nushell
-  pkgs.fzf
-  pkgs.zoxide
-  pkgs.ripgrep
-  pkgs.bat
-  pkgs.zellij
-  pkgs.lsd
-  pkgs.csvq
-  pkgs.mprocs
-  pkgs.dprint
-  pkgs.gh
-  pkgs.carapace
-  pkgs.fd
-  pkgs.sd
-  pkgs.lazygit
-  pkgs.atuin
-  pkgs.sccache
-  pkgs.csvlens
-  pkgs.delta
-  pkgs.just
-  pkgs.fish
-  pkgs.xdg-desktop-portal-hyprland
-  pkgs.rofi
-  pkgs.wofi
-  pkgs.tofi
-  pkgs.pavucontrol
-  pkgs.pamixer
-  pkgs.waybar
-  pkgs.hyprpolkitagent
-  pkgs.hypridle
-  pkgs.hyprlock
-  pkgs.hyprpaper
-  pkgs.walker
-  pkgs.grimblast
-  pkgs.wlogout
-  pkgs.wl-clipboard
-  pkgs.discord
-  pkgs.hyprpicker
-  pkgs.hyprsunset
-  pkgs.pipewire
-  pkgs.wireplumber
-  pkgs.pamixer
-  pkgs.pavucontrol
-  pkgs.brightnessctl
-  pkgs.nwg-look
-  pkgs.spacedrive
-  pkgs.skim
-  pkgs.topgrade
-  pkgs.monolith
-  pkgs.jaq
-  pkgs.oha
-  pkgs.difftastic
-  pkgs.koji
-  pkgs.qrtool
-  pkgs.pik
-  pkgs.pastel
-  pkgs.gping
-  pkgs.swww
-  pkgs.taplo
-  pkgs.biome
-  pkgs.superhtml
-  pkgs.deno
-  pkgs.uwsm
-  pkgs.keychain
-  pkgs.repgrep
-  pkgs.serie
-  pkgs.glow
-  pkgs.rucola
-  pkgs.bmm
-  pkgs.serpl
-  pkgs.andcli
-  pkgs.scooter
-  pkgs.basalt
-  pkgs.bitwarden-cli
-  pkgs.lazysql
-  pkgs.diffnav
-  pkgs.kanata
-  pkgs.tailspin
-  pkgs.vivid
-  pkgs.wikiman
-  pkgs.gtrash
-  pkgs.tig
-  pkgs.television
-  pkgs.mpd
-  pkgs.rmpc
-  pkgs.xh
-  pkgs.yaak
-  pkgs.dua
-  pkgs.ripgrep-all
-  pkgs.repgrep
-  pkgs.igrep
-  pkgs.slumber
-  pkgs.atac
-  pkgs.gpg-tui
-  pkgs.gitui
-  pkgs.bandwhich
-  pkgs.vivid
-  pkgs.eza
-  pkgs.meld
-  pkgs.qrtool
-  pkgs.git-cliff
-  pkgs.fx
-  pkgs.markdown-oxide
-  pkgs.fclones
-  pkgs.hurl
-  pkgs.mergiraf
-  pkgs.jujutsu
-  pkgs.btop
-  pkgs.dysk
+  ## Audio & Media
+  imv
+  mpd
+  mpv
+  pamixer
+  pavucontrol
+  pipewire
+  playerctl
+  rmpc
+  vlc
+  wireplumber
 
-  pkgs.nil
-  pkgs.nixd
-  pkgs.nixfmt-rfc-style
-  pkgs.cliphist
-  pkgs.kdePackages.dolphin
-  pkgs.imv
-  pkgs.mpv
-  pkgs.vlc
+  ## Files, Archives & Misc
+  age
+  cliphist
+  dua
+  fclones
+  gtrash
+  kdePackages.dolphin
+  ouch
+  p7zip
+  spacedrive
+  wl-clipboard
 
-  pkgs.gcc
-  pkgs.go
+  ## Utilities
+  biome
+  bitwarden-cli
+  brightnessctl
+  csvq
+  difftastic
+  discord
+  dprint
+  hurl
+  jaq
+  just
+  kanata
+  monolith
+  mprocs
+  oha
+  pastel
+  pueue
+  qrtool
+  superhtml
+  taplo
+  television
+  topgrade
+  wikiman
+  xh
+  yaak
 
-  pkgs.cargo
-  pkgs.rustup
-
+  # Lesser Known/Specific Utilities
+  andcli
+  atac
+  basalt
+  bmm
+  diffnav
+  koji
+  mergiraf
+  pik
+  rucola
+  scooter
+  serie
+  serpl
+  slumber
+  uwsm
 ]

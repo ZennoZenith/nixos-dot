@@ -26,49 +26,53 @@
 
     hl.url = "github:pamburus/hl";
 
+    alejandra = {
+      url = "github:kamadorueda/alejandra/4.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    {
-      nixpkgs,
-      home-manager,
-      disko,
-      minegrub-theme,
-      hl,
-      ...
-    }@inputs:
-    let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    disko,
+    minegrub-theme,
+    hl,
+    alejandra,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+  in {
+    nixosConfigurations.knacknix = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-    in
-    {
-      nixosConfigurations.knacknix = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
-          minegrub-theme.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.knack = import ./home.nix;
-              backupFileExtension = "HMbackup";
-              extraSpecialArgs = { inherit inputs; };
-            };
+      modules = [
+        {_module.args = {inherit inputs;};}
+        ./configuration.nix
+        minegrub-theme.nixosModules.default
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.knack = import ./home.nix;
+            backupFileExtension = "HMbackup";
+            extraSpecialArgs = {inherit inputs;};
+          };
+        }
+        disko.nixosModules.disko
+
+        {nixpkgs.config.allowUnfree = true;}
+
+        (
+          {...}: {
+            environment.systemPackages = [
+              hl.packages.${system}.bin
+              alejandra.defaultPackage.${system}
+            ];
           }
-          disko.nixosModules.disko
-
-          { nixpkgs.config.allowUnfree = true; }
-
-          (
-            { ... }:
-            {
-              environment.systemPackages = [
-                hl.packages.${system}.bin
-              ];
-            }
-          )
-        ];
-      };
+        )
+      ];
     };
+  };
 }
