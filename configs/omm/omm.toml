@@ -1,0 +1,7 @@
+db_path      = "~/shared/omm/omm.db"
+tl_color     = "#b8bb26"
+atl_color    = "#fabd2f"
+title        = "home"
+list_density = "spacious"
+show_context = true
+editor       = "hx"

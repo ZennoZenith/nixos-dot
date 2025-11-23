@@ -1,0 +1,21 @@
+file_types = ["markdown"]
+default_extension = "md"
+theme = "default_dark"
+vault_path = "~/syncthing/notes"
+stats_show = "Both"
+viewer = [
+    "glow",
+    "%p",
+]
+viewer_type = "Markdown"
+secondary_viewer = [
+    "brave",
+    "%p",
+]
+secondary_viewer_type = "Html"
+enable_html = true
+css = "default_dark"
+katex = true
+
+[math_replacements]
+'\field' = '\mathbb'

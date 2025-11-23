@@ -1,0 +1,10 @@
+--when.repositories = ["~/github/zenith"]
+
+[user]
+name = "Zenno Zenith"
+email = "95485961+ZennoZenith@users.noreply.github.com"
+
+[signing]
+behavior = "own"
+backend = "gpg"
+key = "7D9AF1B2C19131AD"

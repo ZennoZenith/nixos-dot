@@ -1,0 +1,26 @@
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Shift|Control"
+
+# [[keyboard.bindings]]
+# action = "None"
+# key = "Space"
+# mode = "~Search"
+# mods = "Shift|Control"
+
+
+# Disable alt + enter for fullscreen
+[[keyboard.bindings]]
+action = "None"
+key = "Enter"
+mods = "Alt"
+
+# Set alt + shift + enter for fullscrean
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "Enter"
+mods = "Alt|Shift"
+
+

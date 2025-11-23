@@ -1,0 +1,7 @@
+atac/*.log
+btop/btop.log
+fish/fish_variables
+nushell/history*
+zellij/plugins
+helix/runtime
+fish/fish_variables

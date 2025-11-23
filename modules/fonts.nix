@@ -1,0 +1,36 @@
+{ pkgs, ... }:
+{
+  fonts = {
+    packages = with pkgs; [
+      dejavu_fonts
+      fira-code
+      fira-code-symbols
+      font-awesome
+      geist-font
+      hackgen-nf-font
+      ibm-plex
+      inter
+      jetbrains-mono
+      maple-mono.NF
+      material-icons
+      meslo-lgs-nf
+      minecraftia
+      nerd-fonts.blex-mono
+      nerd-fonts.caskaydia-cove
+      nerd-fonts.caskaydia-mono
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.im-writing
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-color-emoji
+      noto-fonts-monochrome-emoji
+      powerline-fonts
+      roboto
+      roboto-mono
+      symbola
+      terminus_font
+      victor-mono
+    ];
+  };
+}

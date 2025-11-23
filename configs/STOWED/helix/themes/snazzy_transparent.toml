@@ -1,0 +1,4 @@
+inherits = "snazzy"
+"ui.background" = {}
+# "ui.background" = { fg = "foreground", bg = "background" }
+# "ui.background" = { fg = "foreground" }

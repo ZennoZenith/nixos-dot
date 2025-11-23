@@ -1,0 +1,78 @@
+# working_directory = ""
+
+[window]
+# opacity = 0.4
+opacity = 1
+
+padding.x = 1
+padding.y = 1
+dynamic_padding = true
+
+# decorations = "Full" # DEFAULT
+decorations = "None"
+decorations_theme_variant = "Dark" # "Light"
+
+blur = true
+startup_mode = "Maximized" # "Fullscreen"
+title = "Alacritty"
+dynamic_title = false      # DEFAULT TRUE
+#macos only # option_as_alt = "Both" 
+
+[font]
+size = 12.0
+
+[font.bold]
+# family = "CaskaydiaCove Nerd Font"
+family = "FiraCode Nerd Font"
+# family = "Mononoki Nerd Font"
+
+[font.bold_italic]
+# family = "CaskaydiaCove Nerd Font"
+family = "FiraCode Nerd Font"
+# family = "Mononoki Nerd Font"
+
+[font.italic]
+# family = "CaskaydiaCove Nerd Font"
+family = "FiraCode Nerd Font"
+# family = "Mononoki Nerd Font"
+
+[font.normal]
+# family = "CaskaydiaCove Nerd Font"
+family = "FiraCode Nerd Font"
+# family = "Mononoki Nerd Font"
+
+[mouse]
+hide_when_typing = true
+
+[colors.cursor]
+# cursor = '#ffffff'
+cursor = '#eb8d00'
+[colors.vi_mode_cursor]
+cursor = "#f5ef42"
+
+[cursor.style]
+shape = "Block"
+blinking = "On"
+
+[cursor.vi_mode_style]
+shape = "Block"
+
+
+[env]
+TERM = "xterm-256color"
+
+[general]
+import = [
+  ## Themes
+  # "~/.config/alacritty/themes/tokyo-night.toml",
+  "~/.config/alacritty/themes/catppuccin_mocha.toml",
+
+  ## Keybindings
+  "~/.config/alacritty/keybindings.toml",
+]
+
+[terminal]
+
+[terminal.shell]
+program = "/usr/bin/env"
+args = ["nu"]
