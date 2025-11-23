@@ -49,6 +49,11 @@
       config.common.default = "*";
     };
 
+    ## To list all .desktop-files, run
+    ##
+    ## ls /run/current-system/sw/share/applications # for global packages
+    ## ls /etc/profiles/per-user/$(id -n -u)/share/applications # for user packages
+    ## ls ~/.nix-profile/share/applications # for home-manager packages
     mimeApps = {
       enable = true;
 
@@ -86,7 +91,7 @@
         # "application/vnd.openxmlformats-officedocument.presentationml.presentation" = [
         #   "onlyoffice-desktopeditors.desktop"
         # ]; # .pptx
-        # "application/pdf" = ["onlyoffice-desktopeditors.desktop"]; # .pdf
+        "application/pdf" = ["evince.desktop"]; # .pdf
       };
     };
   };
