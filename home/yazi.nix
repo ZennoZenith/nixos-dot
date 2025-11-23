@@ -56,7 +56,7 @@ in {
         sort_by = "natural";
         show_hidden = true;
         sort_dir_first = true;
-        sort_reverse = true;
+        sort_reverse = false;
       };
     };
 

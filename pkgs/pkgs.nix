@@ -77,6 +77,7 @@ with pkgs; [
   rustup
   sccache
   tig
+  zed-editor
 
   ## Search, Filter, and System Tools
   bandwhich
