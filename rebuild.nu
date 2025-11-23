@@ -21,7 +21,7 @@ try {
     $env.commit_revset = ($jj_output | grep "Parent commit" | split chars | slice 26..33 | str join)
 
     print "NixOS Rebuilding..."
-    sudo nixos-rebuild switch --flake $flake_path o+e>| save -f $log_file
+    sudo nixos-rebuild switch --flake $flake_path o+e>| tee { save -f $log_file}
     if ($env.LAST_EXIT_CODE != 0) {
         error make { msg: "nixos-rebuild switch failed" }
     }
@@ -30,6 +30,7 @@ try {
       jj edit -r $env.commit_revset
     }
 
+    ## TODO:...
     # if ($log_file | path exists) {
     #     open $log_file 
     #     | lines 
