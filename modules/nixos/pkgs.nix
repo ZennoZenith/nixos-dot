@@ -31,6 +31,8 @@ with pkgs; [
   wofi
   xdg-desktop-portal-gtk
   xdg-desktop-portal-hyprland
+  hyprlandPlugins.hyprbars
+  hyprlandPlugins.hypr-dynamic-cursors
 
   ## Shell & Terminal Utilities
   atuin
@@ -189,4 +191,6 @@ with pkgs; [
   zathura ## pdf
   localsend
   file
+
+  egl-wayland
 ]

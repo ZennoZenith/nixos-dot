@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: {
@@ -8,6 +7,7 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
+      egl-wayland
       libva-vdpau-driver
       libvdpau
       libvdpau-va-gl

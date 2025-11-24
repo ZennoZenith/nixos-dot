@@ -4,6 +4,8 @@
   ...
 }: let
   hyprland-conf = pkgs.writeText "hyprland-gtkgreet-config" ''
+    env = LIBVA_DRIVER_NAME,nvidia
+    env = __GLX_VENDOR_LIBRARY_NAME,nvidia
     exec-once = regreet; hyprctl dispatch exit
     misc {
         disable_hyprland_logo = true

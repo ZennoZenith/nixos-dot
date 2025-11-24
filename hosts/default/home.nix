@@ -47,6 +47,8 @@
 
   programs.zen-browser.enable = true;
 
+  targets.genericLinux.gpu.nvidia.enable = true;
+
   services.kdeconnect.enable = true;
   services.swayosd.enable = true;
 

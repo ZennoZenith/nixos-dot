@@ -45,8 +45,9 @@
   in {
     nixosConfigurations.knacknix = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
       modules = [
-        {_module.args = {inherit inputs;};}
+        # {_module.args = {inherit inputs;};}
         ./hosts/default/configuration.nix
 
         minegrub-theme.nixosModules.default
