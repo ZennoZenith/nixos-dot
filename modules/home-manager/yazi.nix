@@ -4,7 +4,7 @@
   ...
 }: let
   targetDir = ".config/yazi/flavors";
-  sourceDir = ../configs/yazi/flavors;
+  sourceDir = ../../configs/yazi/flavors;
 
   yaziFlavors = {
     "catppuccin-mocha.yazi" = sourceDir + "/catppuccin-mocha.yazi";

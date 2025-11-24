@@ -47,20 +47,20 @@
       system = "x86_64-linux";
       modules = [
         {_module.args = {inherit inputs;};}
-        ./configuration.nix
+        ./hosts/default/configuration.nix
+
         minegrub-theme.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.knack = import ./home.nix;
+            users.knack = import ./hosts/default/home.nix;
             backupFileExtension = "HMbackup";
             extraSpecialArgs = {inherit inputs;};
           };
         }
         disko.nixosModules.disko
-
         {nixpkgs.config.allowUnfree = true;}
 
         (

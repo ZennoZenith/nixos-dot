@@ -1,8 +1,10 @@
 {pkgs, ...}: {
   imports = [
-    ./services/default.nix
-    ./services/mpd.nix
-    ./services/pueued.nix
+    ../../modules/services/syncthing.nix
+    ../../modules/services/tailscale.nix
+
+    ../../modules/services/user/mpd.nix
+    ../../modules/services/user/pueued.nix
   ];
 
   services = {
@@ -19,6 +21,7 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+
     pipewire.wireplumber.extraConfig.bluetoothEnhancements = {
       "monitor.bluez.properties" = {
         "bluez5.enable-sbc-xq" = true;

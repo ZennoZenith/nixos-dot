@@ -5,17 +5,42 @@
 }: {
   imports = [
     inputs.zen-browser.homeModules.beta
-    ./home/default.nix
-    ./home/bash.nix
-    ./home/git.nix
-    ./home/ghostty.nix
-    ./home/atuin.nix
-    ./home/bat.nix
-    ./home/ssh.nix
-    ./home/yazi.nix
-    ./home/go.nix
-    ./home/nix-search-tv.nix
+    ../../modules/home-manager/ghostty.nix
+    ../../modules/home-manager/bash.nix
+    ../../modules/home-manager/git.nix
+    ../../modules/home-manager/ghostty.nix
+    ../../modules/home-manager/atuin.nix
+    ../../modules/home-manager/bat.nix
+    ../../modules/home-manager/ssh.nix
+    ../../modules/home-manager/yazi.nix
+    ../../modules/home-manager/go.nix
+    ../../modules/home-manager/nix-search-tv.nix
   ];
+
+  home = {
+    username = "knack";
+    homeDirectory = "/home/knack";
+    stateVersion = "25.05";
+
+    packages = with pkgs; [
+      ghostty
+      atuin
+    ];
+
+    file = {
+      ".cargo/config.toml".source = ../../configs/.cargo/config.toml;
+      ".config/jj".source = ../../configs/jj;
+      ".config/fastfetch".source = ../../configs/fastfetch;
+      ".config/glow".source = ../../configs/glow;
+      ".config/mpd".source = ../../configs/mpd;
+      ".config/rmpc".source = ../../configs/rmpc;
+      ".config/omm".source = ../../configs/omm;
+      ".config/zellij".source = ../../configs/zellij;
+      ".config/waybar".source = ../../configs/waybar;
+      ".config/tofi".source = ../../configs/tofi;
+      ".config/starship".source = ../../configs/starship;
+    };
+  };
 
   programs.zen-browser.enable = true;
 

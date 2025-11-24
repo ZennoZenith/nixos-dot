@@ -5,17 +5,17 @@
   inputs,
   ...
 }: let
-  programs = import ./pkgs/pkgs.nix {inherit pkgs;};
+  programs = import ../../modules/nixos/pkgs.nix {inherit pkgs;};
 in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./disko-config.nix
-    ./modules/regreet.nix
-    ./modules/services.nix
-    ./modules/kanata.nix
-    ./modules/nvidia.nix
-    ./modules/fonts.nix
+    ./services.nix
+    ../../modules/disko/disko-config.nix
+    ../../modules/nixos/regreet.nix
+    ../../modules/nixos/kanata.nix
+    ../../modules/nixos/nvidia.nix
+    ../../modules/nixos/fonts.nix
   ];
 
   boot = {
