@@ -6,6 +6,7 @@
   imports = [
     inputs.zen-browser.homeModules.beta
     ../../modules/home-manager/ghostty.nix
+    ../../modules/home-manager/keychain.nix
     ../../modules/home-manager/bash.nix
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/ghostty.nix
@@ -25,6 +26,8 @@
     packages = with pkgs; [
       ghostty
       atuin
+      zathura
+      evince
     ];
 
     file = {
@@ -43,6 +46,9 @@
   };
 
   programs.zen-browser.enable = true;
+
+  services.kdeconnect.enable = true;
+  services.swayosd.enable = true;
 
   gtk = {
     enable = true;
@@ -68,10 +74,12 @@
     portal = {
       enable = true;
       extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
         xdg-desktop-portal
         xdg-desktop-portal-gtk
       ];
       config.common.default = "*";
+      xdgOpenUsePortal = true;
     };
 
     ## To list all .desktop-files, run
@@ -82,18 +90,26 @@
     mimeApps = {
       enable = true;
 
+      associations.added = {
+        "image/jpeg" = ["imv.desktop"];
+        "video/mp4" = ["mpv.desktop"];
+        "application/pdf" = ["evince.desktop" "zathura.desktop"]; # .pdf
+      };
+
       defaultApplications = {
-        "image/*" = ["imv.desktop"];
         "image/png" = ["imv.desktop"];
         "image/jpeg" = ["imv.desktop"];
         "image/gif" = ["imv.desktop"];
         "image/webp" = ["imv.desktop"];
         "image/bmp" = ["imv.desktop"];
         "image/tiff" = ["imv.desktop"];
+        "image/*" = ["imv.desktop" "gimp.desktop"];
 
         "inode/directory" = ["dolphin.desktop"]; # Directories
         "text/plain" = ["helix.desktop"]; # Plain text
         "text/*" = ["helix.desktop"]; # Any text files
+
+        "application/pdf" = ["evince.desktop"]; # .pdf
 
         "application/zip" = ["xarchiver.desktop"];
         "text/html" = ["zen.desktop"]; # Any text files
@@ -116,7 +132,6 @@
         # "application/vnd.openxmlformats-officedocument.presentationml.presentation" = [
         #   "onlyoffice-desktopeditors.desktop"
         # ]; # .pptx
-        "application/pdf" = ["evince.desktop"]; # .pdf
       };
     };
   };

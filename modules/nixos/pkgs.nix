@@ -29,6 +29,7 @@ with pkgs; [
   waybar
   wlogout
   wofi
+  xdg-desktop-portal-gtk
   xdg-desktop-portal-hyprland
 
   ## Shell & Terminal Utilities
@@ -45,6 +46,12 @@ with pkgs; [
   ## Terminal Applications
   alacritty
   bat
+  bat-extras.batdiff
+  bat-extras.batgrep
+  bat-extras.batman
+  bat-extras.batpipe
+  bat-extras.batwatch
+  bat-extras.prettybat
   csvlens
   eza
   fx
@@ -121,8 +128,13 @@ with pkgs; [
   gtrash
   kdePackages.dolphin
   kdePackages.qtsvg
+  kdePackages.kdeconnect-kde
+  kdePackages.kde-cli-tools
+  kdePackages.kservice
   kdePackages.kio-fuse #to mount remote filesystems via FUSE
   kdePackages.kio-extras #extra protocols support (sftp, fish and more)
+  kdePackages.qtkeychain
+
   ouch
   p7zip
   spacedrive
@@ -170,9 +182,11 @@ with pkgs; [
   slumber
   uwsm
   syncthing
-  pueue
   dbeaver-bin
   mariadb
   libreoffice-fresh
-  evince
+  evince # pdf
+  zathura ## pdf
+  localsend
+  file
 ]

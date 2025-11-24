@@ -39,8 +39,9 @@
     openssh = {
       enable = true;
       settings = {
-        # PasswordAuthentication = false;
-        # KbdInteractiveAuthentication = false;
+        # require public key authentication for better security
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
         PermitRootLogin = "no";
         AllowUsers = [
           "knack"

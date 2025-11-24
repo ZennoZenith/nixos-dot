@@ -3,6 +3,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: let
   programs = import ../../modules/nixos/pkgs.nix {inherit pkgs;};
@@ -55,11 +56,22 @@ in {
 
     # firewall.allowedUDPPorts = [ ... ];
     # firewall.enable = false;
-    firewall.allowedTCPPorts = [
-      22
-      80
-      443
-    ];
+    firewall = rec {
+      allowedTCPPorts = [
+        22
+        80
+        443
+      ];
+
+      ## For kde connect
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPortRanges = allowedTCPPortRanges;
+    };
   };
 
   time.timeZone = "Asia/Kolkata";
@@ -83,13 +95,16 @@ in {
       enable = true;
       enableSSHSupport = true;
     };
+    ## Note: You can't use ssh-agent and GnuPG agent with SSH support enabled at the same time!
+    # ssh = {
+    #   startAgent = true;
+    #   enableAskPassword = true;
+    # };
 
     hyprland = {
       enable = true;
       xwayland.enable = true;
     };
-
-    firefox.enable = true;
 
     nix-ld.enable = true;
     nix-ld.libraries = with pkgs; [
@@ -97,9 +112,19 @@ in {
       # programs here, NOT in environment.systemPackages
     ];
   };
-
   environment = {
-    variables.EDITOR = "hx";
+    variables = {
+      EDITOR = "hx";
+      SSH_ASKPASS_REQUIRE = "prefer";
+    };
+
+    ## [Fix for dolphin default file association](https://discuss.kde.org/t/dolphin-file-associations/38934/2)
+    etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+
+    sessionVariables.XDG_DATA_DIRS = [
+      "${config.system.path}/share"
+      "${pkgs.kdePackages.dolphin}/share"
+    ];
     systemPackages = with pkgs;
       [
         vim
