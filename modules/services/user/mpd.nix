@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   systemd.user.services.mpd = {
-    description = "Music Player Daemon";
+    enable = true;
 
+    description = "Music Player Daemon";
     serviceConfig = {
       Type = "notify";
       ExecStart = "${pkgs.mpd}/bin/mpd --systemd";
