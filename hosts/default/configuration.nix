@@ -93,13 +93,13 @@ in {
   programs = {
     gnupg.agent = {
       enable = true;
-      enableSSHSupport = true;
+      # enableSSHSupport = true;
     };
     ## Note: You can't use ssh-agent and GnuPG agent with SSH support enabled at the same time!
-    # ssh = {
-    #   startAgent = true;
-    #   enableAskPassword = true;
-    # };
+    ssh = {
+      startAgent = true;
+      enableAskPassword = true;
+    };
 
     hyprland = {
       enable = true;
