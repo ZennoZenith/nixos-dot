@@ -30,7 +30,7 @@ with pkgs; [
   wlogout
   wofi
   xdg-desktop-portal-gtk
-  xdg-desktop-portal-hyprland
+  # xdg-desktop-portal-hyprland
   # hyprlandPlugins.hypr-dynamic-cursors
 
   ## Shell & Terminal Utilities
