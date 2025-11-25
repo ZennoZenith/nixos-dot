@@ -17,6 +17,8 @@ in {
     ../../modules/nixos/kanata.nix
     ../../modules/nixos/nvidia.nix
     ../../modules/nixos/fonts.nix
+
+    inputs.hyprland.nixosModules.default
   ];
 
   boot = {
@@ -104,6 +106,15 @@ in {
     hyprland = {
       enable = true;
       xwayland.enable = true;
+
+      # # set the flake package
+      # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      # # make sure to also set the portal package, so that they are in sync
+      # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
+      plugins = [
+        inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
+      ];
     };
 
     nix-ld.enable = true;
@@ -131,6 +142,13 @@ in {
         wget
       ]
       ++ programs;
+  };
+
+  ## Using hyprland cachix cache for building
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
   nix.settings.experimental-features = [

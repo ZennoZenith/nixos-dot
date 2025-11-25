@@ -31,8 +31,7 @@ with pkgs; [
   wofi
   xdg-desktop-portal-gtk
   xdg-desktop-portal-hyprland
-  hyprlandPlugins.hyprbars
-  hyprlandPlugins.hypr-dynamic-cursors
+  # hyprlandPlugins.hypr-dynamic-cursors
 
   ## Shell & Terminal Utilities
   atuin

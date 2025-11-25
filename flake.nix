@@ -30,6 +30,13 @@
       url = "github:kamadorueda/alejandra/4.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    hypr-dynamic-cursors = {
+      url = "github:VirtCode/hypr-dynamic-cursors";
+      inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
+    };
   };
 
   outputs = {
@@ -44,8 +51,8 @@
     system = "x86_64-linux";
   in {
     nixosConfigurations.knacknix = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
       specialArgs = {inherit inputs;};
+      system = "x86_64-linux";
       modules = [
         # {_module.args = {inherit inputs;};}
         ./hosts/default/configuration.nix
