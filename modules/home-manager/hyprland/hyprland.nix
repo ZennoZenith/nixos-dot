@@ -5,6 +5,8 @@
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
+    systemd.enable = true;
+
     # set the flake package
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
@@ -18,6 +20,7 @@
       "$browser" = "zen";
       "$notes" = "obsidian";
       "$menu" = "tofi-drun -c ~/.config/tofi/configA --drun-launch=true";
+      "$clipboard_copy" = "cliphist list | tofi -c ~/.config/tofi/configV | cliphist decode | wl-copy --trim-newline && hyprctl dispatch sendshortcut \"CTRL SHIFT, V,\"";
 
       ################
       ### MONITORS ###

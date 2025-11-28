@@ -80,3 +80,7 @@ def show_banner [] {
 }
 
 show_banner
+
+$env.GPG_TTY = $"(tty)"
+$env.SSH_AUTH_SOCK = $"(gpgconf --list-dirs agent-ssh-socket)"
+gpgconf --launch gpg-agent

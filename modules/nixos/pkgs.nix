@@ -192,4 +192,9 @@ with pkgs; [
   file
 
   egl-wayland
+
+  pyright
+  ruff
+  pyrefly
+  seahorse ## Gui for OpenPGP
 ]

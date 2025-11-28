@@ -3,7 +3,7 @@
     enable = true;
 
     signing = {
-      key = "7D9AF1B2C19131AD";
+      key = "1CDCB4568D6A0051";
       signByDefault = true;
       # format and signer left unset → HM chooses defaults
     };
@@ -13,7 +13,7 @@
       user = {
         name = "Zenno Zenith";
         email = "95485961+ZennoZenith@users.noreply.github.com";
-        signingKey = "7D9AF1B2C19131AD";
+        signingKey = "1CDCB4568D6A0051";
       };
 
       # --- URL shortcuts ---

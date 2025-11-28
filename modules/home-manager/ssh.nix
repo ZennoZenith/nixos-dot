@@ -13,7 +13,7 @@
         addKeysToAgent = "yes";
         forwardAgent = true;
         identitiesOnly = true;
-        identityFile = "~/.ssh/knack-linode";
+        identityFile = "~/.ssh/linode";
         serverAliveInterval = 60;
         serverAliveCountMax = 10000;
       };
@@ -25,7 +25,19 @@
         addKeysToAgent = "yes";
         forwardAgent = true;
         identitiesOnly = true;
-        identityFile = "~/.ssh/knack_arch_zenith_arch";
+        identityFile = "~/.ssh/zenith";
+        serverAliveInterval = 60;
+        serverAliveCountMax = 10000;
+      };
+      knack = {
+        host = "knack";
+        hostname = "knack";
+        port = 22;
+        user = "knack";
+        addKeysToAgent = "yes";
+        forwardAgent = true;
+        identitiesOnly = true;
+        identityFile = "~/.ssh/knack";
         serverAliveInterval = 60;
         serverAliveCountMax = 10000;
       };
@@ -36,7 +48,7 @@
         addKeysToAgent = "yes";
         forwardAgent = true;
         identitiesOnly = true;
-        identityFile = "~/.ssh/knack_arch_github_zennozenith";
+        identityFile = "~/.ssh/github";
       };
       github-knowknack = {
         host = "github-knowknack";

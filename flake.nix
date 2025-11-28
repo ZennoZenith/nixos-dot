@@ -82,5 +82,37 @@
         )
       ];
     };
+    nixosConfigurations.zenith-nix = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      system = "x86_64-linux";
+      modules = [
+        # {_module.args = {inherit inputs;};}
+        ./hosts/zenith-nix/configuration.nix
+
+        minegrub-theme.nixosModules.default
+        home-manager.nixosModules.home-manager
+
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.zenith = import ./hosts/zenith-nix/home.nix;
+            backupFileExtension = "HMbackup";
+            extraSpecialArgs = {inherit inputs;};
+          };
+        }
+        disko.nixosModules.disko
+        {nixpkgs.config.allowUnfree = true;}
+
+        (
+          {...}: {
+            environment.systemPackages = [
+              hl.packages.${system}.bin
+              alejandra.defaultPackage.${system}
+            ];
+          }
+        )
+      ];
+    };
   };
 }

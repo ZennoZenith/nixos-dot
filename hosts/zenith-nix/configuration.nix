@@ -12,7 +12,7 @@ in {
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./services.nix
-    ../../modules/disko/disko-config.nix
+    ../../modules/disko/disko-config-zenithnix.nix
     ../../modules/nixos/regreet.nix
     ../../modules/nixos/kanata.nix
     ../../modules/nixos/nvidia.nix
@@ -21,9 +21,21 @@ in {
     # inputs.hyprland.nixosModules.default
   ];
 
+  fileSystems."/mnt/whole" = {
+    device = "/dev/disk/by-uuid/bc034754-5770-44e4-b606-2566262c567a";
+    fsType = "btrfs";
+    options = ["compress=zstd" "nofail" "noatime"];
+  };
+
+  fileSystems."/mnt/old-drive" = {
+    device = "/dev/disk/by-uuid/ec062600-5190-4e73-b431-0edcbdaffea1";
+    fsType = "btrfs";
+    options = ["compress=zstd" "nofail" "noatime"];
+  };
+
   boot = {
     loader = {
-      timeout = 20;
+      timeout = 5;
       efi.canTouchEfiVariables = true;
       # Use the GRUB 2 boot loader.
       grub = {
@@ -47,7 +59,7 @@ in {
   };
 
   networking = {
-    hostName = "knacknix"; # Define your hostname.
+    hostName = "zenithnix"; # Define your hostname.
     networkmanager.enable = true;
     extraHosts = ''
       100.116.135.61  linode
@@ -78,10 +90,12 @@ in {
   time.timeZone = "Asia/Kolkata";
   security.rtkit.enable = true;
 
-  users.users.knack = {
+  users.users.zenith = {
     isNormalUser = true;
     extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINxeHhhBmXYP1Be4m+snZlVHieXAHBaOUv3a83QpSbG4 (none)"
+
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIvR+icsS7ocB1mlZIXKLMh41RjHSTJKcVwV9bmJxlfI zenith-arch:knack-arch"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIENWlT75aCPretBcIhW2Wg7yggAkzKhmRbqJqcXmpyhf linode-ubuntu-1:knack-arch"
     ];
@@ -93,30 +107,25 @@ in {
 
   programs = {
     dconf.enable = true;
+    ## Gui for OpenPGP
+    seahorse.enable = true;
+    localsend.enable = true;
+    localsend.openFirewall = true;
 
-    gnupg.agent = {
-      enable = true;
-      # enableSSHSupport = true;
-    };
+    # gnupg.agent = {
+    #   enable = true;
+    #   # enableSSHSupport = true;
+    # };
     ## Note: You can't use ssh-agent and GnuPG agent with SSH support enabled at the same time!
     ssh = {
       startAgent = true;
       enableAskPassword = true;
     };
 
-    # hyprland = {
-    #   enable = true;
-    #   xwayland.enable = true;
-
-    #   # # set the flake package
-    #   # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    #   # # make sure to also set the portal package, so that they are in sync
-    #   # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-
-    #   plugins = [
-    #     inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
-    #   ];
-    # };
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    };
 
     nix-ld.enable = true;
     nix-ld.libraries = with pkgs; [
