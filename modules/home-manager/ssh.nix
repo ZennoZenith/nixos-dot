@@ -57,7 +57,7 @@
         addKeysToAgent = "yes";
         forwardAgent = true;
         identitiesOnly = true;
-        identityFile = "~/.ssh/knack-github-knowknack";
+        identityFile = "~/.ssh/github";
       };
       github-meeran = {
         host = "github-meeran";
@@ -75,7 +75,7 @@
         addKeysToAgent = "yes";
         forwardAgent = true;
         identitiesOnly = true;
-        identityFile = "~/.ssh/knack_arch_github_zennozenith";
+        identityFile = "~/.ssh/github";
       };
     };
   };

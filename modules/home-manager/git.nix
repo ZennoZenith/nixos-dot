@@ -3,7 +3,8 @@
     enable = true;
 
     signing = {
-      key = "1CDCB4568D6A0051";
+      # key = "1CDCB4568D6A0051";
+      key = "99DCA16E0E956F82";
       signByDefault = true;
       # format and signer left unset → HM chooses defaults
     };

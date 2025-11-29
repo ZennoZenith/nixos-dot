@@ -11,7 +11,8 @@ subprocess = true
 [signing]
 behavior = "own"
 backend = "gpg"
-key = "1CDCB4568D6A0051"
+# key = "1CDCB4568D6A0051"
+key = "99DCA16E0E956F82"
 
 [ui]
 default-command = ["log", "--limit", "6"]

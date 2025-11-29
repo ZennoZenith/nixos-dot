@@ -197,4 +197,5 @@ with pkgs; [
   ruff
   pyrefly
   seahorse ## Gui for OpenPGP
+  pinentry-qt
 ]

@@ -18,7 +18,12 @@
     ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/go.nix
     ../../modules/home-manager/nix-search-tv.nix
+    ../../modules/home-manager/gpg-agent.nix
   ];
+
+  ## | ../../modules/home-manager/gpg-agent.nix
+  ## V
+  custom.pgp.enable = true;
 
   home = {
     username = "knack";

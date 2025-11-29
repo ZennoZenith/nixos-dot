@@ -55,7 +55,7 @@
       system = "x86_64-linux";
       modules = [
         # {_module.args = {inherit inputs;};}
-        ./hosts/default/configuration.nix
+        ./hosts/knack-nix/configuration.nix
 
         minegrub-theme.nixosModules.default
         home-manager.nixosModules.home-manager
@@ -64,7 +64,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.knack = import ./hosts/default/home.nix;
+            users.knack = import ./hosts/knack-nix/home.nix;
             backupFileExtension = "HMbackup";
             extraSpecialArgs = {inherit inputs;};
           };

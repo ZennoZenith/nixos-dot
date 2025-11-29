@@ -30,7 +30,8 @@
       };
 
       gpg-agent.sshKeys = [
-        "A773ECC1671F32081FFD6893A18022553759159C"
+        # "A773ECC1671F32081FFD6893A18022553759159C"
+        "539A9075E00CF0209656AF25C985596966F7516C"
       ];
     };
     home.packages = [pkgs.gnupg];
@@ -44,8 +45,10 @@
           # Default/trusted key ID (helpful with throw-keyids)
           # Example, you will put your own keyid here
           # Use `gpg --list-keys`
-          default-key = "0x1CDCB4568D6A0051";
-          trusted-key = "0x1CDCB4568D6A0051";
+          # default-key = "0x1CDCB4568D6A0051";
+          # trusted-key = "0x1CDCB4568D6A0051";
+          default-key = "0x99DCA16E0E956F82";
+          trusted-key = "0x99DCA16E0E956F82";
           # https://github.com/drduh/config/blob/master/gpg.conf
           # https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html
           # https://www.gnupg.org/documentation/manuals/gnupg/GPG-Esoteric-Options.html
