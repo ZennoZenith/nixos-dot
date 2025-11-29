@@ -6,6 +6,10 @@
     ../../modules/services/user/mpd.nix
     ../../modules/services/user/pueued.nix
   ];
+  custom.syncthing = {
+    enable = true;
+    user = "zenith";
+  };
 
   services = {
     logind.settings.Login.HandleLidSwitchDocked = "poweroff"; ## one of "ignore", "poweroff", "reboot", "halt", "kexec", "suspend", "hibernate", "hybrid-sleep", "suspend-then-hibernate", "lock"

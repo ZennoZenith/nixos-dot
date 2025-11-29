@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   systemd.user.services.pueued = {
-    # enable = true;
+    enable = true;
 
     description = "Pueue Daemon - CLI process scheduler and manager";
 

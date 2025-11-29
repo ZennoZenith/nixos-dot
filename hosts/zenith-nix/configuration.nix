@@ -12,7 +12,7 @@ in {
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./services.nix
-    ../../modules/disko/disko-config-zenithnix.nix
+    ./disko.nix
     ../../modules/nixos/regreet.nix
     ../../modules/nixos/kanata.nix
     ../../modules/nixos/nvidia.nix

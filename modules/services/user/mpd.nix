@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   systemd.user.services.mpd = {
-    # enable = true;
+    enable = true;
 
     description = "Music Player Daemon";
     serviceConfig = {

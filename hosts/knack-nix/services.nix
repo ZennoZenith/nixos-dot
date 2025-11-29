@@ -7,6 +7,11 @@
     ../../modules/services/user/pueued.nix
   ];
 
+  custom.syncthing = {
+    enable = true;
+    user = "knack";
+  };
+
   services = {
     logind.settings.Login.HandleLidSwitchDocked = "hybrid-sleep"; ## one of "ignore", "poweroff", "reboot", "halt", "kexec", "suspend", "hibernate", "hybrid-sleep", "suspend-then-hibernate", "lock"
 
