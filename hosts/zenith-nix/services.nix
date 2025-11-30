@@ -6,6 +6,7 @@
     ../../modules/services/user/mpd.nix
     ../../modules/services/user/pueued.nix
   ];
+
   custom.syncthing = {
     enable = true;
     user = "zenith";

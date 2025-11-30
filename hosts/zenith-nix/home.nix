@@ -2,7 +2,9 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  variables = import ./variables.nix;
+in {
   imports = [
     inputs.zen-browser.homeModules.beta
     ../../modules/home-manager/hyprland/hyprland.nix
@@ -23,6 +25,20 @@
   ## | ../../modules/home-manager/gpg-agent.nix
   ## V
   custom.pgp.enable = true;
+
+  custom.jujutsu = {
+    enable = true;
+    name = variables.git.name;
+    email = variables.git.email;
+    gpgKey = variables.git.gpg.key;
+  };
+
+  custom.git = {
+    enable = true;
+    name = variables.git.name;
+    email = variables.git.email;
+    gpgKey = variables.git.gpg.key;
+  };
 
   home = {
     username = "zenith";

@@ -1,237 +1,270 @@
-{...}: {
-  programs.git = {
-    enable = true;
-
-    signing = {
-      # key = "1CDCB4568D6A0051";
-      key = "99DCA16E0E956F82";
-      signByDefault = true;
-      # format and signer left unset → HM chooses defaults
+{
+  lib,
+  config,
+  ...
+}: let
+  name = "git";
+in {
+  options.custom.${name} = {
+    enable = lib.mkEnableOption {
+      description = "Enable Syncthing";
+      default = false;
     };
 
-    settings = {
-      # --- User ---
-      user = {
-        name = "Zenno Zenith";
-        email = "95485961+ZennoZenith@users.noreply.github.com";
-        signingKey = "1CDCB4568D6A0051";
-      };
-
-      # --- URL shortcuts ---
-      url."git@github.com:".insteadOf = "gh:";
-      url."git@github-zennozenith:".insteadOf = "ghz:";
-      url."git@github-meeran:".insteadOf = "ghm:";
-      url."ssh://git@git.zennozenith.com:2202/zennozenith/".insteadOf = "zz:";
-
-      # --- Core ---
-      core = {
-        pager = "delta";
-        autolf = true;
-        autocrlf = "input";
-        compression = 9;
-        fsync = "none";
-        whitespace = "error";
-        excludesfile = "~/.gitignore";
-      };
-
-      # --- Init ---
-      init.defaultBranch = "main";
-
-      # --- Delta ---
-      delta = {
-        navigate = true;
-        side-by-side = true;
-        line-numbers = true;
-        true-color = "always";
-        dark = true;
-        hyperlinks = true;
-        features = "decorations";
-        whitespace-error-style = "22 reverse";
-      };
-
-      # --- Interactive ---
-      interactive = {
-        diffFilter = "delta --color-only";
-        singlekey = true;
-      };
-
-      # --- Pager config ---
-      pager = {
-        branch = false;
-        diff = "delta";
-        blame = "delta";
-      };
-
-      # --- Merge ---
-      merge = {
-        conflictStyle = "diff3";
-      };
-      merge."mergiraf" = {
-        name = "mergiraf";
-        driver = "mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L";
-      };
-
-      # --- Diff ---
-      diff = {
-        context = 3;
-        renames = "copies"; # first occurrence
-        interHunkContext = 10;
-        algorithm = "histogram";
-        colorMoved = "plain";
-        mnemonicPrefix = true;
-      };
-
-      # --- Log ---
-      log = {
-        abbrevCommit = true;
-        graphColors = "blue,yellow,cyan,magenta,green,red";
-      };
-
-      # --- Commit ---
-      commit = {
-        gpgSign = true;
-        verbose = true;
-      };
-
-      # --- Tag ---
-      tag = {
-        gpgSign = true;
-        sort = "version:refname";
-      };
-
-      # --- Push ---
-      push = {
-        autoSetupRemote = true;
-        default = "simple";
-        followTags = true;
-      };
-
-      # --- Pull ---
-      pull.rebase = true;
-
-      # --- Blame ---
-      blame = {
-        coloring = "highlightRecent";
-        date = "relative";
-      };
-
-      # --- Status ---
-      status = {
-        branch = true;
-        short = true;
-        showStash = true;
-        showUntrackedFiles = "all";
-      };
-
-      # --- Submodule ---
-      submodule.fetchJobs = 16;
-
-      # --- Rebase ---
-      rebase = {
-        autoSquash = true;
-        autoStash = true;
-        updateRefs = true;
-      };
-
-      # --- Fetch ---
-      fetch = {
-        prune = true;
-        pruneTags = true;
-        all = true;
-      };
-
-      # --- Rerere ---
-      rerere = {
-        enabled = true;
-        autoupdate = true;
-      };
-
-      # --- Help ---
-      help.autocorrect = "prompt";
-
-      # --- Colors ---
-      color.blame.highlightRecent = "black bold,1 year ago,white,1 month ago,default,7 days ago,blue";
-
-      color.branch = {
-        current = "magenta";
-        local = "default";
-        remote = "yellow";
-        upstream = "green";
-        plain = "blue";
-      };
-
-      color.diff = {
-        meta = "black bold";
-        frag = "magenta";
-        context = "white";
-        whitespace = "yellow reverse";
-      };
-
-      column.ui = "auto";
-
-      branch.sort = "-committerdate";
-
-      # --- Disable advices ---
-      advice = {
-        addEmptyPathspec = false;
-        pushNonFastForward = false;
-        statusHints = false;
-      };
-
-      # --- Aliases ---
-      alias.undo = "reset --sort HEAD^";
-
-      # --- LFS (explicit filter section) ---
-      filter.lfs = {
-        clean = "git-lfs clean -- %f";
-        smudge = "git-lfs smudge -- %f";
-        process = "git-lfs filter-process";
-        required = true;
-      };
+    name = lib.mkOption {
+      type = lib.types.nonEmptyStr;
+      default = "";
+      description = "Git username";
     };
 
-    # # --- Includes ---
-    # includes = [
-    #   { path = "~/user.gitconfig"; }
+    email = lib.mkOption {
+      type = lib.types.nonEmptyStr;
+      default = "";
+      description = "Git email";
+    };
 
-    #   { path = "~/.config/delta/delta.gitconfig"; }
+    gpgKey = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+      description = "Gnupg signing key";
+    };
+  };
 
-    #   {
-    #     condition = "gitdir:~/github/zenith/";
-    #     path = "~/zenith.gitconfig";
-    #   }
+  config = lib.mkIf config.custom.${name}.enable {
+    programs.git = {
+      enable = true;
 
-    #   {
-    #     condition = "gitdir:~/github/knack/";
-    #     path = "~/knack.gitconfig";
-    #   }
-    # ];
+      signing = {
+        key = config.custom.${name}.gpgKey;
+        signByDefault = true;
+        # format and signer left unset → HM chooses defaults
+      };
 
-    attributes = [
-      "* merge=mergiraf"
-      # "*.py merge=mergiraf"
-    ];
+      settings = {
+        # --- User ---
+        user = {
+          name = config.custom.${name}.name;
+          email = config.custom.${name}.email;
+          signingKey = config.custom.${name}.gpgKey;
+        };
 
-    ignores = [
-      "*.swp"
+        # --- URL shortcuts ---
+        url."git@github.com:".insteadOf = "gh:";
+        url."git@github-zennozenith:".insteadOf = "ghz:";
+        url."git@github-knowknack:".insteadOf = "ghk:";
+        url."git@github-meeran:".insteadOf = "ghm:";
+        url."ssh://git@git.zennozenith.com:2202/zennozenith/".insteadOf = "zz:";
 
-      # Python specific
-      ".mypy_cache/"
-      ".pytest_cache/"
-      "__pycache__/"
-      ".hypothesis/"
-      ".ruff_cache/"
-      ".ropeproject/"
+        # --- Core ---
+        core = {
+          pager = "delta";
+          autolf = true;
+          autocrlf = "input";
+          compression = 9;
+          fsync = "none";
+          whitespace = "error";
+          excludesfile = "~/.gitignore";
+        };
 
-      # Rust specific
-      "target/"
+        # --- Init ---
+        init.defaultBranch = "main";
 
-      # Zig specific
-      ".zig-cache/"
-      "zig-out/"
+        # --- Delta ---
+        delta = {
+          navigate = true;
+          side-by-side = true;
+          line-numbers = true;
+          true-color = "always";
+          dark = true;
+          hyperlinks = true;
+          features = "decorations";
+          whitespace-error-style = "22 reverse";
+        };
 
-      # Jujutsu
-      ".jj/"
-    ];
+        # --- Interactive ---
+        interactive = {
+          diffFilter = "delta --color-only";
+          singlekey = true;
+        };
+
+        # --- Pager config ---
+        pager = {
+          branch = false;
+          diff = "delta";
+          blame = "delta";
+        };
+
+        # --- Merge ---
+        merge = {
+          conflictStyle = "diff3";
+        };
+        merge."mergiraf" = {
+          name = "mergiraf";
+          driver = "mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L";
+        };
+
+        # --- Diff ---
+        diff = {
+          context = 3;
+          renames = "copies"; # first occurrence
+          interHunkContext = 10;
+          algorithm = "histogram";
+          colorMoved = "plain";
+          mnemonicPrefix = true;
+        };
+
+        # --- Log ---
+        log = {
+          abbrevCommit = true;
+          graphColors = "blue,yellow,cyan,magenta,green,red";
+        };
+
+        # --- Commit ---
+        commit = {
+          gpgSign = true;
+          verbose = true;
+        };
+
+        # --- Tag ---
+        tag = {
+          gpgSign = true;
+          sort = "version:refname";
+        };
+
+        # --- Push ---
+        push = {
+          autoSetupRemote = true;
+          default = "simple";
+          followTags = true;
+        };
+
+        # --- Pull ---
+        pull.rebase = true;
+
+        # --- Blame ---
+        blame = {
+          coloring = "highlightRecent";
+          date = "relative";
+        };
+
+        # --- Status ---
+        status = {
+          branch = true;
+          short = true;
+          showStash = true;
+          showUntrackedFiles = "all";
+        };
+
+        # --- Submodule ---
+        submodule.fetchJobs = 16;
+
+        # --- Rebase ---
+        rebase = {
+          autoSquash = true;
+          autoStash = true;
+          updateRefs = true;
+        };
+
+        # --- Fetch ---
+        fetch = {
+          prune = true;
+          pruneTags = true;
+          all = true;
+        };
+
+        # --- Rerere ---
+        rerere = {
+          enabled = true;
+          autoupdate = true;
+        };
+
+        # --- Help ---
+        help.autocorrect = "prompt";
+
+        # --- Colors ---
+        color.blame.highlightRecent = "black bold,1 year ago,white,1 month ago,default,7 days ago,blue";
+
+        color.branch = {
+          current = "magenta";
+          local = "default";
+          remote = "yellow";
+          upstream = "green";
+          plain = "blue";
+        };
+
+        color.diff = {
+          meta = "black bold";
+          frag = "magenta";
+          context = "white";
+          whitespace = "yellow reverse";
+        };
+
+        column.ui = "auto";
+
+        branch.sort = "-committerdate";
+
+        # --- Disable advices ---
+        advice = {
+          addEmptyPathspec = false;
+          pushNonFastForward = false;
+          statusHints = false;
+        };
+
+        # --- Aliases ---
+        alias.undo = "reset --sort HEAD^";
+
+        # --- LFS (explicit filter section) ---
+        filter.lfs = {
+          clean = "git-lfs clean -- %f";
+          smudge = "git-lfs smudge -- %f";
+          process = "git-lfs filter-process";
+          required = true;
+        };
+      };
+
+      # # --- Includes ---
+      # includes = [
+      #   { path = "~/user.gitconfig"; }
+
+      #   { path = "~/.config/delta/delta.gitconfig"; }
+
+      #   {
+      #     condition = "gitdir:~/github/zenith/";
+      #     path = "~/zenith.gitconfig";
+      #   }
+
+      #   {
+      #     condition = "gitdir:~/github/knack/";
+      #     path = "~/knack.gitconfig";
+      #   }
+      # ];
+
+      attributes = [
+        "* merge=mergiraf"
+        # "*.py merge=mergiraf"
+      ];
+
+      ignores = [
+        "*.swp"
+
+        # Python specific
+        ".mypy_cache/"
+        ".pytest_cache/"
+        "__pycache__/"
+        ".hypothesis/"
+        ".ruff_cache/"
+        ".ropeproject/"
+
+        # Rust specific
+        "target/"
+
+        # Zig specific
+        ".zig-cache/"
+        "zig-out/"
+
+        # Jujutsu
+        ".jj/"
+      ];
+    };
   };
 }

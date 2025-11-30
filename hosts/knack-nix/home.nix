@@ -7,7 +7,6 @@
 in {
   imports = [
     inputs.zen-browser.homeModules.beta
-
     ../../modules/home-manager/hyprland/hyprland.nix
     ../../modules/home-manager/ghostty.nix
     ../../modules/home-manager/keychain.nix
@@ -29,6 +28,13 @@ in {
   custom.pgp.enable = true;
 
   custom.jujutsu = {
+    enable = true;
+    name = variables.git.name;
+    email = variables.git.email;
+    gpgKey = variables.git.gpg.key;
+  };
+
+  custom.git = {
     enable = true;
     name = variables.git.name;
     email = variables.git.email;
