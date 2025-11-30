@@ -20,6 +20,7 @@ in {
     ../../modules/home-manager/go.nix
     ../../modules/home-manager/nix-search-tv.nix
     ../../modules/home-manager/gpg-agent.nix
+    ../../modules/home-manager/tofi.nix
   ];
 
   ## | ../../modules/home-manager/gpg-agent.nix
@@ -63,7 +64,6 @@ in {
       ".config/omm".source = ../../configs/omm;
       ".config/zellij".source = ../../configs/zellij;
       ".config/waybar".source = ../../configs/waybar;
-      ".config/tofi".source = ../../configs/tofi;
       ".config/starship".source = ../../configs/starship;
     };
   };

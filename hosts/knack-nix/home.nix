@@ -21,6 +21,7 @@ in {
     ../../modules/home-manager/nix-search-tv.nix
     ../../modules/home-manager/gpg-agent.nix
     ../../modules/home-manager/jujutsu.nix
+    ../../modules/home-manager/tofi.nix
   ];
 
   ## | ../../modules/home-manager/gpg-agent.nix
