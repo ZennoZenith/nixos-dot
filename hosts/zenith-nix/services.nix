@@ -2,6 +2,7 @@
   imports = [
     ../../modules/services/syncthing.nix
     ../../modules/services/tailscale.nix
+    ../../modules/docker.nix
 
     ../../modules/services/user/mpd.nix
     ../../modules/services/user/pueued.nix
@@ -52,6 +53,7 @@
         AllowUsers = [
           "knack"
           "zenith"
+          "hadish"
         ];
       };
     };

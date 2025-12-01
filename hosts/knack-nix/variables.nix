@@ -6,4 +6,10 @@
       key = "99DCA16E0E956F82";
     };
   };
+
+  home = {
+    username = "knack";
+    homeDirectory = "/home/knack";
+    stateVersion = "25.05";
+  };
 }

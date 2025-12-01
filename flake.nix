@@ -49,9 +49,15 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
+    knacknixVariables = import ./hosts/knack-nix/variables.nix;
+    zenithnixVariables = import ./hosts/zenith-nix/variables.nix;
   in {
     nixosConfigurations.knacknix = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = {
+        inherit inputs;
+        configurationName = "knacknix";
+        variables = knacknixVariables;
+      };
       system = "x86_64-linux";
       modules = [
         # {_module.args = {inherit inputs;};}
@@ -66,7 +72,11 @@
             useUserPackages = true;
             users.knack = import ./hosts/knack-nix/home.nix;
             backupFileExtension = "HMbackup";
-            extraSpecialArgs = {inherit inputs;};
+            extraSpecialArgs = {
+              inherit inputs;
+              configurationName = "knacknix";
+              variables = knacknixVariables;
+            };
           };
         }
         disko.nixosModules.disko
@@ -82,8 +92,12 @@
         )
       ];
     };
-    nixosConfigurations.zenith-nix = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+    nixosConfigurations.zenithnix = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs;
+        configurationName = "zenithnix";
+        variables = zenithnixVariables;
+      };
       system = "x86_64-linux";
       modules = [
         # {_module.args = {inherit inputs;};}
@@ -98,7 +112,11 @@
             useUserPackages = true;
             users.zenith = import ./hosts/zenith-nix/home.nix;
             backupFileExtension = "HMbackup";
-            extraSpecialArgs = {inherit inputs;};
+            extraSpecialArgs = {
+              inherit inputs;
+              configurationName = "zenithnix";
+              variables = zenithnixVariables;
+            };
           };
         }
         disko.nixosModules.disko

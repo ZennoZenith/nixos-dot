@@ -6,4 +6,10 @@
       key = "1CDCB4568D6A0051";
     };
   };
+
+  home = {
+    username = "zenith";
+    homeDirectory = "/home/zenith";
+    stateVersion = "25.05";
+  };
 }

@@ -71,7 +71,6 @@ with pkgs; [
   cargo
   clang
   delta
-  deno
   gcc
   gh
   git
@@ -198,4 +197,6 @@ with pkgs; [
   pyrefly
   seahorse ## Gui for OpenPGP
   pinentry-qt
+
+  nixd
 ]

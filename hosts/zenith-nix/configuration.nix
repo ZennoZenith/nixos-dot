@@ -105,6 +105,18 @@ in {
     ];
   };
 
+  users.users.hadish = {
+    isNormalUser = true;
+    extraGroups = []; # Enable ‘sudo’ for the user.
+    openssh.authorizedKeys.keys = [];
+
+    hashedPassword = "$y$j9T$ew/v8gDWhQgGKUrT.HZ/81$D9VjEg3r8kLPqeKgUwxpZt1ParFl28Z2Wup4G2rQSW2";
+
+    packages = with pkgs; [
+      nix-search-tv
+    ];
+  };
+
   programs = {
     dconf.enable = true;
     ## Gui for OpenPGP

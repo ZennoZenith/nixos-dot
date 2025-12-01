@@ -1,10 +1,9 @@
 {
   inputs,
   pkgs,
+  variables,
   ...
-}: let
-  variables = import ./variables.nix;
-in {
+}: {
   imports = [
     inputs.zen-browser.homeModules.beta
     ../../modules/home-manager/hyprland/hyprland.nix

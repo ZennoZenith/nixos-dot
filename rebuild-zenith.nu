@@ -2,7 +2,7 @@
  
 const log_file = "~/nixos-switch.log"
 const nixos_dot = "~/nixos-dot"
-const hostname = "zenith-nix"
+const hostname = "zenithnix"
 const flake_path = $"($nixos_dot | path expand)#($hostname)"
 
 use std/dirs
