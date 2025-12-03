@@ -4,11 +4,19 @@
     ../../modules/services/tailscale.nix
     ../../modules/docker.nix
 
+    ../../modules/services/jellyfin.nix
+    ../../modules/services/immich.nix
+
     ../../modules/services/user/mpd.nix
     ../../modules/services/user/pueued.nix
   ];
 
   custom.syncthing = {
+    enable = true;
+    user = "zenith";
+  };
+
+  custom.jellyfin = {
     enable = true;
     user = "zenith";
   };

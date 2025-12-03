@@ -241,7 +241,7 @@
     languages = {
       language-server = {
         nixd = {
-          command = "nixd";
+          command = "${pkgs.nixd}/bin/nixd";
           args = ["--semantic-tokens=true"];
           config.nixd = let
             myFlake = "(builtins.getFlake (toString ${variables.home.homeDirectory}/nixos-dot))";

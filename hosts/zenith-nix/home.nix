@@ -9,7 +9,6 @@
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
     qtile = "qtile";
-    fastfetch = "fastfetch";
     glow = "glow";
     mpd = "mpd";
     rmpc = "rmpc";
@@ -41,6 +40,7 @@ in {
     ../../modules/home-manager/jujutsu.nix
     ../../modules/home-manager/tofi.nix
     ../../modules/home-manager/helix.nix
+    ../../modules/home-manager/fastfetch.nix
   ];
 
   ## for nixd package

@@ -199,4 +199,6 @@ with pkgs; [
   pinentry-qt
 
   nixd
+  obsidian
+  systemctl-tui
 ]
