@@ -106,6 +106,12 @@
           hidden = false;
         };
 
+        soft-wrap = {
+          enable = true;
+          max-wrap = 10; # increase value to reduce forced mid-word wrapping
+          wrap-at-text-width = true;
+        };
+
         whitespace = {
           render = {
             space = "none";
@@ -126,12 +132,6 @@
             render = true;
             character = "╎"; # Some characters that work well: "▏", "┆", "┊", "╎"
             skip-levels = 1;
-          };
-
-          soft-wrap = {
-            enable = true;
-            max-wrap = 10; # increase value to reduce forced mid-word wrapping
-            wrap-at-text-width = true;
           };
 
           inline-diagnostics = {

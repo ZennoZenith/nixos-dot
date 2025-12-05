@@ -5,7 +5,8 @@
     ../../modules/docker.nix
 
     ../../modules/services/jellyfin.nix
-    ../../modules/services/immich.nix
+    # ../../modules/services/immich.nix
+    ../../modules/services/nginx.nix
 
     ../../modules/services/user/mpd.nix
     ../../modules/services/user/pueued.nix

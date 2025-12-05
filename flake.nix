@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
     home-manager = {

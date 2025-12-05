@@ -20,7 +20,7 @@ in {
 
   config = lib.mkIf config.custom.${service_name}.enable {
     services.jellyfin.enable = true;
-    services.jellyfin.openFirewall = true;
+    services.jellyfin.openFirewall = false;
     services.jellyfin.user = config.custom.${service_name}.user;
   };
 }

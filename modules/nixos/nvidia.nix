@@ -15,6 +15,9 @@
       vdpauinfo
       libva
       libva-utils
+      nvidia-container-toolkit
+      nvidia-docker
+      nvidia-modprobe
     ];
   };
 
@@ -28,6 +31,8 @@
     nvidiaBusId = "PCI:1:0:0";
     #amdgpuBusId = "PCI:54:0:0"; # If you have an AMD iGPU
   };
+
+  hardware.nvidia-container-toolkit.enable = true;
 
   hardware.nvidia = {
     # Modesetting is required.

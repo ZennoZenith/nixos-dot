@@ -1,1 +1,2 @@
 modules/nixos/nginx.nix
+hosts/zenith-nix/secrets

@@ -179,6 +179,6 @@ in {
       randomizedDelaySec = "59min";
     };
 
-    stateVersion = "25.05";
+    stateVersion = "25.11";
   };
 }

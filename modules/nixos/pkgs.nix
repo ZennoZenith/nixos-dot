@@ -201,4 +201,5 @@ with pkgs; [
   nixd
   obsidian
   systemctl-tui
+  lazydocker
 ]
