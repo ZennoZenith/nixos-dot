@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{...}: {
   home.file.".config/tofi/configA".text = ''
     width = 100%
     height = 100%

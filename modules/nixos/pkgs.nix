@@ -202,4 +202,10 @@ with pkgs; [
   obsidian
   systemctl-tui
   lazydocker
+
+  # wine-staging
+  wineWowPackages.staging
+  # winetricks
+  # wineWowPackages.waylandFull
+  bottles
 ]

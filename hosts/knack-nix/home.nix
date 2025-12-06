@@ -1,9 +1,26 @@
 {
   inputs,
   pkgs,
+  config,
   variables,
   ...
-}: {
+}: let
+  dotfiles = "${variables.home.homeDirectory}/nixos-dot/configs";
+  create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
+  configs = {
+    qtile = "qtile";
+    glow = "glow";
+    mpd = "mpd";
+    rmpc = "rmpc";
+    omm = "omm";
+    zellij = "zellij";
+    waybar = "waybar";
+    starship = "starship";
+    nushell = "nushell";
+    scripts = "scripts";
+    television = "television";
+  };
+in {
   imports = [
     inputs.zen-browser.homeModules.beta
     ../../modules/home-manager/hyprland/hyprland.nix
@@ -21,12 +38,15 @@
     ../../modules/home-manager/gpg-agent.nix
     ../../modules/home-manager/jujutsu.nix
     ../../modules/home-manager/tofi.nix
+    ../../modules/home-manager/helix.nix
+    ../../modules/home-manager/fastfetch.nix
+    ../../modules/home-manager/swayosd.nix
   ];
 
-  ## | ../../modules/home-manager/gpg-agent.nix
-  ## V
-  custom.pgp.enable = true;
+  ## for nixd package
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
+  custom.pgp.enable = true;
   custom.jujutsu = {
     enable = true;
     name = variables.git.name;
@@ -42,28 +62,20 @@
   };
 
   home = {
-    username = "knack";
-    homeDirectory = "/home/knack";
-    stateVersion = "25.11";
+    username = variables.home.username;
+    homeDirectory = variables.home.homeDirectory;
+    stateVersion = variables.home.stateVersion;
 
     packages = with pkgs; [
       ghostty
       atuin
       zathura
       evince
+      seahorse
     ];
 
     file = {
       ".cargo/config.toml".source = ../../configs/.cargo/config.toml;
-      ".config/fastfetch".source = ../../configs/fastfetch;
-      ".config/glow".source = ../../configs/glow;
-      ".config/mpd".source = ../../configs/mpd;
-      ".config/rmpc".source = ../../configs/rmpc;
-      ".config/omm".source = ../../configs/omm;
-      ".config/zellij".source = ../../configs/zellij;
-      ".config/waybar".source = ../../configs/waybar;
-      ".config/tofi".source = ../../configs/tofi;
-      ".config/starship".source = ../../configs/starship;
     };
   };
 
@@ -95,6 +107,20 @@
   };
 
   xdg = {
+    /**
+    ## configFile."fastfetch" = {
+    ##   source = create_symlink "${dotfiles}/fastfetch/";
+    ##   recursive = true;
+    ## };
+    */
+
+    configFile =
+      builtins.mapAttrs (name: subpath: {
+        source = create_symlink "${dotfiles}/${subpath}/";
+        recursive = true;
+      })
+      configs;
+
     portal = {
       enable = true;
       extraPortals = with pkgs; [
@@ -105,18 +131,23 @@
       xdgOpenUsePortal = true;
     };
 
+    /**
     ## To list all .desktop-files, run
     ##
     ## ls /run/current-system/sw/share/applications # for global packages
     ## ls /etc/profiles/per-user/$(id -n -u)/share/applications # for user packages
     ## ls ~/.nix-profile/share/applications # for home-manager packages
+    */
     mimeApps = {
       enable = true;
 
       associations.added = {
         "image/jpeg" = ["imv.desktop"];
         "video/mp4" = ["mpv.desktop"];
-        "application/pdf" = ["evince.desktop" "zathura.desktop"]; # .pdf
+        "application/pdf" = [
+          "evince.desktop"
+          "zathura.desktop"
+        ]; # .pdf
       };
 
       defaultApplications = {
@@ -126,7 +157,10 @@
         "image/webp" = ["imv.desktop"];
         "image/bmp" = ["imv.desktop"];
         "image/tiff" = ["imv.desktop"];
-        "image/*" = ["imv.desktop" "gimp.desktop"];
+        "image/*" = [
+          "imv.desktop"
+          "gimp.desktop"
+        ];
 
         "inode/directory" = ["dolphin.desktop"]; # Directories
         "text/plain" = ["helix.desktop"]; # Plain text

@@ -120,19 +120,23 @@ in {
 
   programs = {
     dconf.enable = true;
+
     ## Gui for OpenPGP
     seahorse.enable = true;
     localsend.enable = true;
     localsend.openFirewall = true;
 
-    # gnupg.agent = {
-    #   enable = true;
-    #   # enableSSHSupport = true;
-    # };
     ## Note: You can't use ssh-agent and GnuPG agent with SSH support enabled at the same time!
     ssh = {
       startAgent = true;
       enableAskPassword = true;
+    };
+
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
     };
 
     hyprland = {

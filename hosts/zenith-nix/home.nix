@@ -19,7 +19,6 @@
     nushell = "nushell";
     scripts = "scripts";
     television = "television";
-    # hypr
   };
 in {
   imports = [
@@ -41,6 +40,7 @@ in {
     ../../modules/home-manager/tofi.nix
     ../../modules/home-manager/helix.nix
     ../../modules/home-manager/fastfetch.nix
+    ../../modules/home-manager/swayosd.nix
   ];
 
   ## for nixd package

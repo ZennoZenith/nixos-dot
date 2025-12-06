@@ -95,29 +95,28 @@ in {
   programs = {
     dconf.enable = true;
 
-    gnupg.agent = {
-      enable = true;
-      # enableSSHSupport = true;
-    };
+    ## Gui for OpenPGP
+    seahorse.enable = true;
+    localsend.enable = true;
+    localsend.openFirewall = true;
+
     ## Note: You can't use ssh-agent and GnuPG agent with SSH support enabled at the same time!
     ssh = {
       startAgent = true;
       enableAskPassword = true;
     };
 
-    # hyprland = {
-    #   enable = true;
-    #   xwayland.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
 
-    #   # # set the flake package
-    #   # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    #   # # make sure to also set the portal package, so that they are in sync
-    #   # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-
-    #   plugins = [
-    #     inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
-    #   ];
-    # };
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    };
 
     nix-ld.enable = true;
     nix-ld.libraries = with pkgs; [
@@ -125,6 +124,7 @@ in {
       # programs here, NOT in environment.systemPackages
     ];
   };
+
   environment = {
     pathsToLink = ["/share/applications" "/share/xdg-desktop-portal"];
 
