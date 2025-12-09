@@ -47,15 +47,11 @@
     hl,
     alejandra,
     ...
-  } @ inputs: let
-    knacknixVariables = import ./hosts/knack-nix/variables.nix;
-    zenithnixVariables = import ./hosts/zenith-nix/variables.nix;
-  in {
+  } @ inputs: {
     nixosConfigurations.knacknix = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
-        configurationName = "knacknix";
-        variables = knacknixVariables;
+        variables = import ./hosts/knack-nix/variables.nix;
       };
       modules = [
         ./hosts/knack-nix/configuration.nix
@@ -73,8 +69,7 @@
             backupFileExtension = "HMbackup";
             extraSpecialArgs = {
               inherit inputs;
-              configurationName = "knacknix";
-              variables = knacknixVariables;
+              variables = import ./hosts/knack-nix/variables.nix;
             };
           };
         }
@@ -94,8 +89,7 @@
     nixosConfigurations.zenithnix = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
-        configurationName = "zenithnix";
-        variables = zenithnixVariables;
+        variables = import ./hosts/zenith-nix/variables.nix;
       };
       modules = [
         ./hosts/zenith-nix/configuration.nix
@@ -113,8 +107,7 @@
             backupFileExtension = "HMbackup";
             extraSpecialArgs = {
               inherit inputs;
-              configurationName = "zenithnix";
-              variables = zenithnixVariables;
+              variables = import ./hosts/zenith-nix/variables.nix;
             };
           };
         }

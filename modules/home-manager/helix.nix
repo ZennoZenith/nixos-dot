@@ -1,6 +1,5 @@
 {
   pkgs,
-  configurationName,
   variables,
   ...
 }: {
@@ -245,7 +244,7 @@
           args = ["--semantic-tokens=true"];
           config.nixd = let
             myFlake = "(builtins.getFlake (toString ${variables.home.homeDirectory}/nixos-dot))";
-            nixosOpts = "${myFlake}.nixosConfigurations.${configurationName}.options";
+            nixosOpts = "${myFlake}.nixosConfigurations.${variables.configurationName}.options";
           in {
             nixpkgs.expr = "import ${myFlake}.inputs.nixpkgs { }";
             formatting.command = ["alejandra"];

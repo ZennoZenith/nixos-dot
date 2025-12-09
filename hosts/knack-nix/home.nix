@@ -65,6 +65,7 @@ in {
     username = variables.home.username;
     homeDirectory = variables.home.homeDirectory;
     stateVersion = variables.home.stateVersion;
+    shell.enableNushellIntegration = true;
 
     packages = with pkgs; [
       ghostty

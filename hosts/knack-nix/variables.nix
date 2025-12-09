@@ -1,4 +1,6 @@
 {
+  configurationName = "knacknix";
+
   git = {
     name = "Know Knack";
     email = "201266042+knowknack@users.noreply.github.com";

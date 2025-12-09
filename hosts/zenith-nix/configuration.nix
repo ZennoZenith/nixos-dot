@@ -3,7 +3,6 @@
 {
   pkgs,
   lib,
-  inputs,
   config,
   ...
 }: {
@@ -13,14 +12,8 @@
     ./disko.nix
     ./services.nix
 
-    ../../config/packages.nix
-    ../../config/fonts.nix
-
-    # ../../config/regreet.nix
-    ../../config/kanata.nix
-    ../../config/nvidia.nix
+    ../common/configuration.nix
   ];
-  nixpkgs.config.allowUnfree = true;
 
   fileSystems."/mnt/whole" = {
     device = "/dev/disk/by-uuid/bc034754-5770-44e4-b606-2566262c567a";
@@ -34,65 +27,9 @@
     options = ["compress=zstd" "nofail" "noatime"];
   };
 
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-
-    loader = {
-      timeout = 5;
-      efi.canTouchEfiVariables = true;
-      # Use the GRUB 2 boot loader.
-      grub = {
-        enable = true;
-        efiSupport = true;
-        # efiInstallAsRemovable = true;
-
-        # Define on which hard drive you want to install Grub.
-        # no need to set devices, disko will add all device...
-        # device = "/dev/sda"; # or "nodev" for efi only
-        device = "nodev";
-
-        minegrub-theme = {
-          enable = true;
-          splash = "100% Flakes!";
-          background = "background_options/1.16 - [Nether Update].png";
-          boot-options-count = 7;
-        };
-      };
-    };
-  };
-
-  networking = {
-    hostName = "zenithnix"; # Define your hostname.
-    networkmanager.enable = true;
-    extraHosts = ''
-      100.116.135.61  linode
-      100.71.238.4    zenith
-      100.75.63.27    knack
-    '';
-
-    # firewall.allowedUDPPorts = [ ... ];
-    # firewall.enable = false;
-    firewall = rec {
-      allowedTCPPorts = [
-        22
-        80
-        443
-      ];
-
-      ## For kde connect
-      allowedTCPPortRanges = [
-        {
-          from = 1714;
-          to = 1764;
-        }
-      ];
-      allowedUDPPortRanges = allowedTCPPortRanges;
-    };
-  };
-
-  time.timeZone = "Asia/Kolkata";
-  security.rtkit.enable = true;
   security.sudo.wheelNeedsPassword = false;
+
+  networking.hostName = "zenithnix"; # Define your hostname.
 
   users.users.zenith = {
     isNormalUser = true;
@@ -121,133 +58,21 @@
     ];
   };
 
-  programs = {
-    dconf.enable = true;
+  programs.firefox.preferences = let
+    ffVersion = config.programs.firefox.package.version;
+  in {
+    "media.ffmpeg.vaapi.enabled" = lib.versionOlder ffVersion "137.0.0";
+    "media.hardware-video-decoding.force-enabled" = lib.versionAtLeast ffVersion "137.0.0";
+    "media.rdd-ffmpeg.enabled" = lib.versionOlder ffVersion "97.0.0";
 
-    ## Gui for OpenPGP
-    seahorse.enable = true;
-    localsend.enable = true;
-    localsend.openFirewall = true;
+    "gfx.x11-egl.force-enabled" = true;
+    "widget.dmabuf.force-enabled" = true;
 
-    ## Note: You can't use ssh-agent and GnuPG agent with SSH support enabled at the same time!
-    ssh = {
-      startAgent = true;
-      enableAskPassword = true;
-    };
-
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-    };
-
-    hyprland = {
-      enable = true;
-      package = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
-    };
-
-    bash.interactiveShellInit = ''
-      if ! [ "$TERM" = "dumb" ] && [ -z "$BASH_EXECUTION_STRING" ]; then
-        exec nu
-      fi
-    '';
-
-    direnv = {
-      enable = true;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-      nix-direnv.enable = true;
-    };
-
-    firefox.preferences = let
-      ffVersion = config.programs.firefox.package.version;
-    in {
-      "media.ffmpeg.vaapi.enabled" = lib.versionOlder ffVersion "137.0.0";
-      "media.hardware-video-decoding.force-enabled" = lib.versionAtLeast ffVersion "137.0.0";
-      "media.rdd-ffmpeg.enabled" = lib.versionOlder ffVersion "97.0.0";
-
-      "gfx.x11-egl.force-enabled" = true;
-      "widget.dmabuf.force-enabled" = true;
-
-      # Set this to true if your GPU supports AV1.
-      #
-      # This can be determined by reading the output of the
-      # `vainfo` command, after the driver is enabled with
-      # the environment variable.
-      "media.av1.enabled" = false;
-    };
-
-    nix-ld.enable = true;
-    nix-ld.libraries = [
-      # Add any missing dynamic libraries for unpackaged
-      # programs here, NOT in environment.systemPackages
-    ];
-  };
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  environment = {
-    pathsToLink = ["/share/applications" "/share/xdg-desktop-portal"];
-
-    variables = {
-      EDITOR = "hx";
-      SSH_ASKPASS_REQUIRE = "prefer";
-
-      LIBVA_DRIVER_NAME = "nvidia";
-      # If used with Firefox
-      MOZ_DISABLE_RDD_SANDBOX = "1";
-    };
-
-    ## [Fix for dolphin default file association](https://discuss.kde.org/t/dolphin-file-associations/38934/2)
-    etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
-
-    sessionVariables = {
-      # Qt6 environment for quickshell
-      QT_QPA_PLATFORM = "wayland;xcb";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-
-      XDG_DATA_DIRS = [
-        "${config.system.path}/share"
-        "${pkgs.kdePackages.dolphin}/share"
-      ];
-    };
-
-    ## systemPackages = ## in packags.nix;
-  };
-
-  ## Using hyprland cachix cache for building
-  nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-  };
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 1w";
-  };
-
-  system = {
-    autoUpgrade = {
-      enable = true;
-      flake = inputs.self.outPath;
-      flags = [
-        "--update-all"
-        "nixpkgs"
-        "-L" # print build logs
-      ];
-      dates = "07:00";
-      randomizedDelaySec = "59min";
-    };
-
-    stateVersion = "25.11";
+    # Set this to true if your GPU supports AV1.
+    #
+    # This can be determined by reading the output of the
+    # `vainfo` command, after the driver is enabled with
+    # the environment variable.
+    "media.av1.enabled" = false;
   };
 }
