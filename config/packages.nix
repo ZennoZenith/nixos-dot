@@ -192,6 +192,7 @@
     systemctl-tui
     lazydocker
     jq
+    cava
 
     # wine-staging
     wineWowPackages.staging

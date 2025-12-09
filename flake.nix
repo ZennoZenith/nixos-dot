@@ -48,7 +48,6 @@
     alejandra,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
     knacknixVariables = import ./hosts/knack-nix/variables.nix;
     zenithnixVariables = import ./hosts/zenith-nix/variables.nix;
   in {
@@ -58,7 +57,6 @@
         configurationName = "knacknix";
         variables = knacknixVariables;
       };
-      system = "x86_64-linux";
       modules = [
         ./hosts/knack-nix/configuration.nix
 
@@ -83,10 +81,10 @@
         disko.nixosModules.disko
 
         (
-          {...}: {
+          {pkgs, ...}: {
             environment.systemPackages = [
-              hl.packages.${system}.bin
-              alejandra.defaultPackage.${system}
+              hl.packages.${pkgs.stdenv.hostPlatform.system}.bin
+              alejandra.defaultPackage.${pkgs.stdenv.hostPlatform.system}
             ];
           }
         )
@@ -99,7 +97,6 @@
         configurationName = "zenithnix";
         variables = zenithnixVariables;
       };
-      system = "x86_64-linux";
       modules = [
         ./hosts/zenith-nix/configuration.nix
 
@@ -124,10 +121,10 @@
         disko.nixosModules.disko
 
         (
-          {...}: {
+          {pkgs, ...}: {
             environment.systemPackages = [
-              hl.packages.${system}.bin
-              alejandra.defaultPackage.${system}
+              hl.packages.${pkgs.stdenv.hostPlatform.system}.bin
+              alejandra.defaultPackage.${pkgs.stdenv.hostPlatform.system}
             ];
           }
         )
