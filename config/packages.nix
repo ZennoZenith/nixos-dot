@@ -12,12 +12,6 @@
     # clock-tui
     # rust-stakeholder
 
-    ## Hyprland specific
-    hyprlock
-    hyprpaper
-    hyprpicker
-    hyprpolkitagent
-    hyprsunset
     libnotify # send alerts
     xdg-desktop-portal-gtk
 

@@ -8,11 +8,35 @@
   imports = [
     ../../config/packages.nix
     ../../config/fonts.nix
+    ../../config/misc.nix
     ../../config/display-manager.nix
     ../../config/flatpak.nix
     ../../config/kanata.nix
+    ../../config/hyprland.nix
+    ../../config/ssh.nix
+    ../../config/steam.nix
+    ../../config/tailscale.nix
+    ../../config/mpd.nix
+    ../../config/pueue.nix
+    ../../config/sound.nix
   ];
   nixpkgs.config.allowUnfree = true;
+
+  system = {
+    autoUpgrade = {
+      enable = true;
+      flake = inputs.self.outPath;
+      flags = [
+        "--update-all"
+        "nixpkgs"
+        "-L" # print build logs
+      ];
+      dates = "07:00";
+      randomizedDelaySec = "59min";
+    };
+
+    stateVersion = variables.home.stateVersion;
+  };
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -37,6 +61,17 @@
         };
       };
     };
+  };
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
   };
 
   networking = {
@@ -72,6 +107,9 @@
 
   security.rtkit.enable = true;
 
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
   programs = {
     dconf.enable = true;
 
@@ -79,24 +117,6 @@
     seahorse.enable = true;
     localsend.enable = true;
     localsend.openFirewall = true;
-
-    ## Note: You can't use ssh-agent and GnuPG agent with SSH support enabled at the same time!
-    ssh = {
-      startAgent = true;
-      enableAskPassword = true;
-    };
-
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-    };
-
-    hyprland = {
-      enable = true;
-      package = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
-    };
 
     direnv = {
       enable = true;
@@ -112,36 +132,17 @@
     ];
   };
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
   environment = {
     pathsToLink = ["/share/applications" "/share/xdg-desktop-portal"];
 
     variables = {
-      EDITOR = "hx";
-      SSH_ASKPASS_REQUIRE = "prefer";
-
-      # If cursor is not visible, try to set this to "on".
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-      XDG_SESSION_DESKTOP = "Hyprland";
+      EDITOR = "${pkgs.helix}/bin/hx";
     };
 
     ## [Fix for dolphin default file association](https://discuss.kde.org/t/dolphin-file-associations/38934/2)
     etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
     sessionVariables = {
-      # Qt6 environment for quickshell
-      QT_QPA_PLATFORM = "wayland;xcb";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-
-      MOZ_ENABLE_WAYLAND = "1";
-      NIXOS_OZONE_WL = "1";
-      T_QPA_PLATFORM = "wayland";
-      GDK_BACKEND = "wayland";
-      WLR_NO_HARDWARE_CURSORS = "1";
-
       XDG_DATA_DIRS = [
         "${config.system.path}/share"
         "${pkgs.kdePackages.dolphin}/share"
@@ -149,37 +150,10 @@
     };
   };
 
-  ## Using hyprland cachix cache for building
-  nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-  };
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 1w";
-  };
-
-  system = {
-    autoUpgrade = {
+  custom = {
+    syncthing = {
       enable = true;
-      flake = inputs.self.outPath;
-      flags = [
-        "--update-all"
-        "nixpkgs"
-        "-L" # print build logs
-      ];
-      dates = "07:00";
-      randomizedDelaySec = "59min";
+      user = "knack";
     };
-
-    stateVersion = variables.home.stateVersion;
   };
 }

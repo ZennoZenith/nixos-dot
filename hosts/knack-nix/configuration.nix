@@ -1,14 +1,18 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  variables,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
-    ./services.nix
 
     ../../modules/drivers/nvidia-drivers.nix
     ../common/configuration.nix
+    ../../config/syncthing.nix
   ];
 
-  drivers.nvidia.enable = false; # NVIDIA GPUs
+  drivers.nvidia.enable = true; # NVIDIA GPUs
 
   boot.loader.timeout = 5;
 
@@ -30,5 +34,19 @@
     packages = with pkgs; [
       nix-search-tv
     ];
+  };
+
+  custom = {
+    ssh = {
+      enable = true;
+      AllowUsers = [
+        "knack"
+        "zenith"
+      ];
+    };
+    syncthing = {
+      enable = true;
+      user = variables.home.username;
+    };
   };
 }

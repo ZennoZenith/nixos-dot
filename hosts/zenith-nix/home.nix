@@ -23,7 +23,7 @@
 in {
   imports = [
     inputs.zen-browser.homeModules.beta
-    ../../modules/home-manager/hyprland/hyprland.nix
+    ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/ghostty.nix
     ../../modules/home-manager/keychain.nix
     ../../modules/home-manager/bash.nix

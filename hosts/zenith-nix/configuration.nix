@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  variables,
   ...
 }: {
   imports = [
@@ -11,8 +12,12 @@
 
     ../../modules/drivers/nvidia-drivers.nix
     ../common/configuration.nix
+    ../../config/syncthing.nix
+    ../../config/docker.nix
+    ../../config/jellyfin.nix
+    ../../config/nginx.nix
   ];
-  drivers.nvidia.enable = false; # NVIDIA GPUs
+  drivers.nvidia.enable = true; # NVIDIA GPUs
 
   fileSystems."/mnt/whole" = {
     device = "/dev/disk/by-uuid/bc034754-5770-44e4-b606-2566262c567a";
@@ -73,5 +78,28 @@
     # `vainfo` command, after the driver is enabled with
     # the environment variable.
     "media.av1.enabled" = false;
+  };
+
+  custom = {
+    ssh = {
+      enable = true;
+      AllowUsers = [
+        "knack"
+        "zenith"
+        "hadish"
+      ];
+    };
+    syncthing = {
+      enable = true;
+      user = variables.home.username;
+    };
+    docker = {
+      enable = true;
+      members = [variables.home.username];
+    };
+    jellyfin = {
+      enable = true;
+      user = variables.home.username;
+    };
   };
 }
