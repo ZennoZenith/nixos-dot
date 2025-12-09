@@ -5,21 +5,25 @@
   inputs,
   config,
   ...
-}: let
-  programs = import ../../modules/nixos/pkgs.nix {inherit pkgs;};
-in {
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./services.nix
     ./disko.nix
-    ../../modules/nixos/regreet.nix
-    ../../modules/nixos/kanata.nix
-    ../../modules/nixos/nvidia.nix
-    ../../modules/nixos/fonts.nix
+    ./services.nix
+
+    ../../config/packages.nix
+    ../../config/fonts.nix
+
+    # ../../config/regreet.nix
+    ../../config/kanata.nix
+    ../../config/nvidia.nix
   ];
+  nixpkgs.config.allowUnfree = true;
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+
     loader = {
       timeout = 20;
       efi.canTouchEfiVariables = true;
@@ -75,6 +79,7 @@ in {
 
   time.timeZone = "Asia/Kolkata";
   security.rtkit.enable = true;
+  security.sudo.wheelNeedsPassword = false;
 
   users.users.knack = {
     shell = pkgs.nushell;
@@ -115,14 +120,44 @@ in {
 
     hyprland = {
       enable = true;
+      # xwayland = true;
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     };
 
+    bash.interactiveShellInit = ''
+      if ! [ "$TERM" = "dumb" ] && [ -z "$BASH_EXECUTION_STRING" ]; then
+        exec nu
+      fi
+    '';
+
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      nix-direnv.enable = true;
+    };
+
     nix-ld.enable = true;
-    nix-ld.libraries = with pkgs; [
+    nix-ld.libraries = [
       # Add any missing dynamic libraries for unpackaged
       # programs here, NOT in environment.systemPackages
     ];
+  };
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  systemd.services.flatpak-add-flathub = {
+    description = "Add Flathub Flatpak remote";
+    wantedBy = ["multi-user.target"];
+    wants = ["network-online.target"];
+    after = ["network-online.target" "flatpak-system-helper.service"];
+    serviceConfig = {
+      Type = "oneshot";
+    };
+    script = ''
+      ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    '';
   };
 
   environment = {
@@ -131,21 +166,32 @@ in {
     variables = {
       EDITOR = "hx";
       SSH_ASKPASS_REQUIRE = "prefer";
+
+      # If cursor is not visible, try to set this to "on".
+      XDG_CURRENT_DESKTOP = "Hyprland";
+      XDG_SESSION_TYPE = "wayland";
+      XDG_SESSION_DESKTOP = "Hyprland";
     };
 
     ## [Fix for dolphin default file association](https://discuss.kde.org/t/dolphin-file-associations/38934/2)
     etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
-    sessionVariables.XDG_DATA_DIRS = [
-      "${config.system.path}/share"
-      "${pkgs.kdePackages.dolphin}/share"
-    ];
-    systemPackages = with pkgs;
-      [
-        vim
-        wget
-      ]
-      ++ programs;
+    sessionVariables = {
+      # Qt6 environment for quickshell
+      QT_QPA_PLATFORM = "wayland;xcb";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+
+      MOZ_ENABLE_WAYLAND = "1";
+      NIXOS_OZONE_WL = "1";
+      T_QPA_PLATFORM = "wayland";
+      GDK_BACKEND = "wayland";
+      WLR_NO_HARDWARE_CURSORS = "1";
+
+      XDG_DATA_DIRS = [
+        "${config.system.path}/share"
+        "${pkgs.kdePackages.dolphin}/share"
+      ];
+    };
   };
 
   ## Using hyprland cachix cache for building

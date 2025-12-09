@@ -29,7 +29,18 @@
     libinput.enable = true;
 
     # getty.autologinUser = "zenith";
-    # displayManager.ly.enable = true; ## teminal display manager
+    displayManager.ly = {
+      enable = true;
+      settings = {
+        animation = "matrix";
+        bigclock = "true";
+      };
+    };
+
+    tumbler.enable = true;
+    envfs.enable = true;
+    seatd.enable = true;
+    flatpak.enable = true;
 
     pipewire = {
       enable = true;

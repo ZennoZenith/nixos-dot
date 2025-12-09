@@ -18,7 +18,7 @@
         "CaskaydiaMono Nerd Font"
       ];
       font-size = 12;
-      background-opacity = "0.0";
+      background-opacity = "0.3";
       gtk-titlebar = false;
       fullscreen = false;
       window-padding-x = 1;

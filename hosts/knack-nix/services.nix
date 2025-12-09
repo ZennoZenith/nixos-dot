@@ -19,6 +19,17 @@
     libinput.enable = true;
 
     getty.autologinUser = "knack";
+    tumbler.enable = true;
+    envfs.enable = true;
+    seatd.enable = true;
+    flatpak.enable = true;
+    displayManager.ly = {
+      enable = true;
+      settings = {
+        animation = "matrix";
+        bigclock = "true";
+      };
+    };
 
     pipewire = {
       enable = true;

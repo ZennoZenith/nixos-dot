@@ -60,8 +60,9 @@
       };
       system = "x86_64-linux";
       modules = [
-        # {_module.args = {inherit inputs;};}
         ./hosts/knack-nix/configuration.nix
+
+        {nixpkgs.config.allowUnfree = true;}
 
         minegrub-theme.nixosModules.default
         home-manager.nixosModules.home-manager
@@ -80,7 +81,6 @@
           };
         }
         disko.nixosModules.disko
-        {nixpkgs.config.allowUnfree = true;}
 
         (
           {...}: {
@@ -92,6 +92,7 @@
         )
       ];
     };
+
     nixosConfigurations.zenithnix = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
@@ -100,8 +101,9 @@
       };
       system = "x86_64-linux";
       modules = [
-        # {_module.args = {inherit inputs;};}
         ./hosts/zenith-nix/configuration.nix
+
+        {nixpkgs.config.allowUnfree = true;}
 
         minegrub-theme.nixosModules.default
         home-manager.nixosModules.home-manager
@@ -120,7 +122,6 @@
           };
         }
         disko.nixosModules.disko
-        {nixpkgs.config.allowUnfree = true;}
 
         (
           {...}: {
@@ -132,5 +133,8 @@
         )
       ];
     };
+
+    # Code formatter
+    formatter.x86_64-linux = alejandra.defaultPackage.x86_64-linux;
   };
 }

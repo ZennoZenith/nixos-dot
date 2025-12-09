@@ -26,7 +26,10 @@
 
         # pinentry is a collection of simple PIN or passphrase dialogs used for
         # password entry
-        pinentry.package = pkgs.pinentry-qt;
+        ## to reload gpg-agent: `gpg-connect-agent reloadagent /bye`
+        pinentry.package = pkgs.pinentry-all;
+        # pinentry.package = pkgs.pinentry-tty;
+        # pinentry.package = pkgs.pinentry-qt;
       };
 
       gpg-agent.sshKeys = [

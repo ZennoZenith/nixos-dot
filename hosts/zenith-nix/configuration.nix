@@ -6,21 +6,21 @@
   inputs,
   config,
   ...
-}: let
-  programs = import ../../modules/nixos/pkgs.nix {inherit pkgs;};
-in {
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./services.nix
     ./disko.nix
-    ../../modules/nixos/regreet.nix
-    ../../modules/nixos/kanata.nix
-    ../../modules/nixos/nvidia.nix
-    ../../modules/nixos/fonts.nix
+    ./services.nix
 
-    # inputs.hyprland.nixosModules.default
+    ../../config/packages.nix
+    ../../config/fonts.nix
+
+    # ../../config/regreet.nix
+    ../../config/kanata.nix
+    ../../config/nvidia.nix
   ];
+  nixpkgs.config.allowUnfree = true;
 
   fileSystems."/mnt/whole" = {
     device = "/dev/disk/by-uuid/bc034754-5770-44e4-b606-2566262c567a";
@@ -35,6 +35,8 @@ in {
   };
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+
     loader = {
       timeout = 5;
       efi.canTouchEfiVariables = true;
@@ -90,6 +92,7 @@ in {
 
   time.timeZone = "Asia/Kolkata";
   security.rtkit.enable = true;
+  security.sudo.wheelNeedsPassword = false;
 
   users.users.zenith = {
     isNormalUser = true;
@@ -144,11 +147,18 @@ in {
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     };
 
-    nix-ld.enable = true;
-    nix-ld.libraries = with pkgs; [
-      # Add any missing dynamic libraries for unpackaged
-      # programs here, NOT in environment.systemPackages
-    ];
+    bash.interactiveShellInit = ''
+      if ! [ "$TERM" = "dumb" ] && [ -z "$BASH_EXECUTION_STRING" ]; then
+        exec nu
+      fi
+    '';
+
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      nix-direnv.enable = true;
+    };
 
     firefox.preferences = let
       ffVersion = config.programs.firefox.package.version;
@@ -167,7 +177,16 @@ in {
       # the environment variable.
       "media.av1.enabled" = false;
     };
+
+    nix-ld.enable = true;
+    nix-ld.libraries = [
+      # Add any missing dynamic libraries for unpackaged
+      # programs here, NOT in environment.systemPackages
+    ];
   };
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
 
   environment = {
     pathsToLink = ["/share/applications" "/share/xdg-desktop-portal"];
@@ -184,16 +203,18 @@ in {
     ## [Fix for dolphin default file association](https://discuss.kde.org/t/dolphin-file-associations/38934/2)
     etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
-    sessionVariables.XDG_DATA_DIRS = [
-      "${config.system.path}/share"
-      "${pkgs.kdePackages.dolphin}/share"
-    ];
-    systemPackages = with pkgs;
-      [
-        vim
-        wget
-      ]
-      ++ programs;
+    sessionVariables = {
+      # Qt6 environment for quickshell
+      QT_QPA_PLATFORM = "wayland;xcb";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+
+      XDG_DATA_DIRS = [
+        "${config.system.path}/share"
+        "${pkgs.kdePackages.dolphin}/share"
+      ];
+    };
+
+    ## systemPackages = ## in packags.nix;
   };
 
   ## Using hyprland cachix cache for building
