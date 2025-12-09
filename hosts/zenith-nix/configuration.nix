@@ -1,5 +1,3 @@
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-#
 {
   pkgs,
   lib,
@@ -7,13 +5,14 @@
   ...
 }: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./disko.nix
     ./services.nix
 
+    ../../modules/drivers/nvidia-drivers.nix
     ../common/configuration.nix
   ];
+  drivers.nvidia.enable = false; # NVIDIA GPUs
 
   fileSystems."/mnt/whole" = {
     device = "/dev/disk/by-uuid/bc034754-5770-44e4-b606-2566262c567a";

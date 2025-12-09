@@ -18,18 +18,10 @@
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
 
-    getty.autologinUser = "knack";
-    tumbler.enable = true;
-    envfs.enable = true;
-    seatd.enable = true;
-    flatpak.enable = true;
-    displayManager.ly = {
-      enable = true;
-      settings = {
-        animation = "matrix";
-        bigclock = "true";
-      };
-    };
+    # getty.autologinUser = "knack";
+    # tumbler.enable = true;
+    # envfs.enable = true;
+    # seatd.enable = true;
 
     pipewire = {
       enable = true;

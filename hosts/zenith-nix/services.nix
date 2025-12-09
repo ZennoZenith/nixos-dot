@@ -40,7 +40,6 @@
     tumbler.enable = true;
     envfs.enable = true;
     seatd.enable = true;
-    flatpak.enable = true;
 
     pipewire = {
       enable = true;

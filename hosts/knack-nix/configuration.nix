@@ -1,12 +1,14 @@
-#
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
     ./services.nix
 
+    ../../modules/drivers/nvidia-drivers.nix
     ../common/configuration.nix
   ];
+
+  drivers.nvidia.enable = false; # NVIDIA GPUs
 
   boot.loader.timeout = 5;
 

@@ -1,4 +1,3 @@
-#
 {
   pkgs,
   inputs,
@@ -9,10 +8,9 @@
   imports = [
     ../../config/packages.nix
     ../../config/fonts.nix
-
-    # ../../config/regreet.nix
+    ../../config/display-manager.nix
+    ../../config/flatpak.nix
     ../../config/kanata.nix
-    ../../config/nvidia.nix
   ];
   nixpkgs.config.allowUnfree = true;
 
@@ -22,11 +20,9 @@
     loader = {
       timeout = 5;
       efi.canTouchEfiVariables = true;
-      # Use the GRUB 2 boot loader.
       grub = {
         enable = true;
         efiSupport = true;
-        # efiInstallAsRemovable = true;
 
         # Define on which hard drive you want to install Grub.
         # no need to set devices, disko will add all device...
@@ -102,12 +98,6 @@
       package = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
     };
 
-    bash.loginShellInit = ''
-      if ! [ "$TERM" = "dumb" ] && [ -z "$BASH_EXECUTION_STRING" ]; then
-        exec nu
-      fi
-    '';
-
     direnv = {
       enable = true;
       enableBashIntegration = true;
@@ -124,19 +114,6 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
-  systemd.services.flatpak-add-flathub = {
-    description = "Add Flathub Flatpak remote";
-    wantedBy = ["multi-user.target"];
-    wants = ["network-online.target"];
-    after = ["network-online.target" "flatpak-system-helper.service"];
-    serviceConfig = {
-      Type = "oneshot";
-    };
-    script = ''
-      ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    '';
-  };
 
   environment = {
     pathsToLink = ["/share/applications" "/share/xdg-desktop-portal"];
