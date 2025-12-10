@@ -21,6 +21,7 @@
     ../../config/sound.nix
     ../../config/input.nix
     ../../config/xdg.nix
+    ../../config/bluetooth.nix
     ../../config/obs-studio.nix
   ];
   nixpkgs.config.allowUnfree = true;

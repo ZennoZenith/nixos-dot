@@ -1,0 +1,57 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+// Zed settings
+{
+  "icon_theme": "Material Icon Theme",
+  "helix_mode": false,
+  "disable_ai": false,
+
+  "buffer_font_family": "Victor Mono",
+  "buffer_font_weight": 500,
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+
+  // Minimap related settings
+  "minimap": {
+    "show": "never", // When to show (auto, always, never)
+    "display_in": "active_editor", // Where to show (active_editor, all_editor)
+    "thumb": "hover", // When to show thumb (always, hover)
+    "thumb_border": "left_open", // Thumb border (left_open, right_open, full, none)
+    "max_width_columns": 70, // Maximum width of minimap
+    "current_line_highlight": "line" // Highlight current line (null, line, gutter)
+  },
+  // Scrollbar related settings
+  "scrollbar": {
+    "show": "auto", // When to show the scrollbar in the editor (auto, system, always, never)
+    "cursors": true, // Show cursor positions in the scrollbar.
+    "git_diff": true, // Show git diff indicators in the scrollbar.
+    "search_results": true, // Show buffer search results in the scrollbar.
+    "selected_text": true, // Show selected text occurrences in the scrollbar.
+    "selected_symbol": true, // Show selected symbol occurrences in the scrollbar.
+    "diagnostics": "all", // Show diagnostics (none, error, warning, information, all)
+    "axes": {
+      "horizontal": true, // Show/hide the horizontal scrollbar
+      "vertical": true // Show/hide the vertical scrollbar
+    }
+  },
+  // gutter
+  "gutter": {
+    "line_numbers": true,
+    "runnables": true,
+    "breakpoints": true,
+    "folds": true,
+    "min_line_number_digits": 1
+  },
+
+  "toolbar": { "breadcrumbs": false, "quick_actions": false },
+  "project_panel": { "entry_spacing": "standard" },
+  "tabs": { "file_icons": true },
+  "current_line_highlight": "gutter",
+  "theme": "cool-theme-1"
+}

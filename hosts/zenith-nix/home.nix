@@ -5,7 +5,7 @@
   variables,
   ...
 }: let
-  dotfiles = "${variables.home.homeDirectory}/nixos-dot/configs";
+  dotfiles = "${variables.home.homeDirectory}/nixos-dot/symlinks";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
     qtile = "qtile";
@@ -76,7 +76,7 @@ in {
     ];
 
     file = {
-      ".cargo/config.toml".source = ../../configs/.cargo/config.toml;
+      ".cargo/config.toml".source = ../../symlinks/.cargo/config.toml;
     };
   };
 
