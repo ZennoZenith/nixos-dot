@@ -14,10 +14,10 @@
     plugins = [
       inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
       pkgs.hyprcursor
-      # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprscrolling
-      # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
-      pkgs.hyprlandPlugins.hyprexpo
-      pkgs.hyprlandPlugins.hyprscrolling
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprscrolling
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+      # pkgs.hyprlandPlugins.hyprexpo
+      # pkgs.hyprlandPlugins.hyprscrolling
     ];
 
     settings = {
@@ -143,7 +143,8 @@
         # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
         allow_tearing = false;
 
-        layout = "dwindle";
+        # layout = "dwindle";
+        layout = "scrolling";
       };
 
       # https://wiki.hyprland.org/Configuring/Variables/#decoration
@@ -374,10 +375,9 @@
           "$mainMod SHIFT, Print, exec, grimblast --notify copysave area" ## Select area to take screenshot
 
           ## to switch between windows in a floating workspace
-          # "$mainMod, Tab, cyclenext," # change focus to another window
-          # "$mainMod, Tab, bringactivetotop," # bring it to the top
-          # "$mainMod, Tab, hyprexpo:expo, toggle"
-          # "$mainMod, g, hyprexpo:expo, toggle"
+          "$mainMod, Tab, cyclenext," # change focus to another window
+          "$mainMod, Tab, bringactivetotop," # bring it to the top
+          "$mainMod, g, hyprexpo:expo, toggle"
 
           "ALT, Tab, cyclenext," # change focus to another window
           "ALT, Tab, bringactivetotop," # bring it to the top
@@ -546,6 +546,7 @@
         hyprexpo = {
           columns = 3;
           gap_size = 5;
+          skip_empty = true;
           bg_col = "rgb(111111)";
           workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
 
@@ -554,7 +555,8 @@
 
         hyprscrolling = {
           column_width = 0.7;
-          fullscreen_on_one_column = false;
+          fullscreen_on_one_column = true;
+          focus_fit_method = 1;
         };
       };
     };
