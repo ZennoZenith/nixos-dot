@@ -31,6 +31,21 @@ in {
       ouch
     ];
 
+    plugins = {
+      lazygit = pkgs.yaziPlugins.lazygit;
+      full-border = pkgs.yaziPlugins.full-border;
+      git = pkgs.yaziPlugins.git;
+      smart-enter = pkgs.yaziPlugins.smart-enter;
+    };
+
+    initLua = ''
+      require("full-border"):setup()
+         require("git"):setup()
+         require("smart-enter"):setup {
+           open_multi = true,
+         }
+    '';
+
     keymap = {
       input.prepend_keymap = [
         {
@@ -41,7 +56,7 @@ in {
       ];
     };
 
-    shellWrapperName = "yy";
+    shellWrapperName = "y";
 
     settings = {
       log = {

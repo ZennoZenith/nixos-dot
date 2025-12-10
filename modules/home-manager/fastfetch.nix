@@ -1,151 +1,123 @@
-{
-  pkgs,
-  configurationName,
-  variables,
-  ...
-}: {
+{...}: {
+  home.file.".config/fastfetch/nixos.png".source = ../../config/nixos.png;
+
   programs.fastfetch = {
     enable = true;
     settings = {
+      "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
+        source = "~/.config/fastfetch/nixos.png";
+        type = "kitty-direct";
+        height = 7;
+        width = 14;
         padding = {
-          top = 5;
-          right = 6;
+          top = 4;
+          left = 2;
         };
+      };
+      display = {
+        separator = " ➜  ";
       };
       modules = [
         "break"
-
-        {
-          "type" = "custom";
-          "format" = "\u001b[90m┌──────────────────────Hardware──────────────────────┐";
-        }
-        {
-          "type" = "host";
-          "key" = " PC";
-          "keyColor" = "green";
-        }
-        {
-          "type" = "cpu";
-          "key" = "│ ├";
-          "showPeCoreCount" = true;
-          "keyColor" = "green";
-        }
-        {
-          "type" = "gpu";
-          "key" = "│ ├";
-          "detectionMethod" = "pci";
-          "keyColor" = "green";
-        }
-        {
-          "type" = "display";
-          "key" = "│ ├󱄄";
-          "keyColor" = "green";
-        }
-        {
-          "type" = "disk";
-          "key" = "│ ├󰋊";
-          "keyColor" = "green";
-        }
-        {
-          "type" = "memory";
-          "key" = "│ ├";
-          "keyColor" = "green";
-        }
-        {
-          "type" = "swap";
-          "key" = "└ └󰓡 ";
-          "keyColor" = "green";
-        }
-        {
-          "type" = "custom";
-          "format" = "\u001b[90m└────────────────────────────────────────────────────┘";
-        }
+        "break"
         "break"
         {
-          "type" = "custom";
-          "format" = "\u001b[90m┌──────────────────────Software──────────────────────┐";
-        }
-        {
           "type" = "os";
-          "key" = " OS";
-          "keyColor" = "yellow";
+          "key" = "OS - ";
+          "keyColor" = "31"; ## = color1
         }
         {
           "type" = "kernel";
-          "key" = "│ ├";
-          "keyColor" = "yellow";
+          "key" = " ├  ";
+          "keyColor" = "31";
         }
         {
           "type" = "packages";
-          "key" = "│ ├󰏖";
-          "keyColor" = "yellow";
+          "key" = " ├ 󰏖 ";
+          "keyColor" = "31";
         }
         {
           "type" = "shell";
-          "key" = "└ └";
-          "keyColor" = "yellow";
+          "key" = " └  ";
+          "keyColor" = "31";
         }
         "break"
         {
-          "type" = "de";
-          "key" = " DE";
-          "keyColor" = "blue";
-        }
-        {
           "type" = "wm";
-          "key" = "│ ├";
-          "keyColor" = "blue";
+          "key" = "WM   ";
+          "keyColor" = "32";
         }
         {
           "type" = "wmtheme";
-          "key" = "│ ├󰉼";
-          "keyColor" = "blue";
+          "key" = " ├ 󰉼 ";
+          "keyColor" = "32";
         }
         {
           "type" = "icons";
-          "key" = "│ ├󰀻";
-          "keyColor" = "blue";
+          "key" = " ├ 󰀻 ";
+          "keyColor" = "32";
         }
         {
           "type" = "cursor";
-          "key" = "│ ├";
-          "keyColor" = "blue";
-        }
-        {
-          "type" = "terminalfont";
-          "key" = "│ ├";
-          "keyColor" = "blue";
+          "key" = " ├  ";
+          "keyColor" = "32";
         }
         {
           "type" = "terminal";
-          "key" = "└ └";
-          "keyColor" = "blue";
+          "key" = " ├  ";
+          "keyColor" = "32";
         }
         {
-          "type" = "custom";
-          "format" = "\u001b[90m└────────────────────────────────────────────────────┘";
+          "type" = "terminalfont";
+          "key" = " └  ";
+          "keyColor" = "32";
         }
         "break"
         {
-          "type" = "custom";
-          "format" = "\u001b[90m┌────────────────────Uptime / Age────────────────────┐";
+          "type" = "host";
+          "format" = "{5} {1} Type {2}";
+          "key" = "PC   ";
+          "keyColor" = "33";
         }
         {
-          "type" = "command";
-          "key" = "  OS Age ";
-          "keyColor" = "magenta";
-          "text" = "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days";
+          "type" = "cpu";
+          "format" = "{1} ({3}) @ {7} GHz";
+          "key" = " ├  ";
+          "keyColor" = "33";
         }
         {
-          "type" = "uptime";
-          "key" = "  Uptime ";
-          "keyColor" = "magenta";
+          "type" = "gpu";
+          "format" = "{1} {2} @ {12} GHz";
+          "key" = " ├ 󰢮 ";
+          "keyColor" = "33";
         }
         {
-          "type" = "custom";
-          "format" = "\u001b[90m└────────────────────────────────────────────────────┘";
+          "type" = "memory";
+          "key" = " ├  ";
+          "keyColor" = "33";
         }
+        {
+          "type" = "disk";
+          "key" = " ├ 󰋊 ";
+          "keyColor" = "33";
+        }
+        {
+          "type" = "monitor";
+          "key" = " ├  ";
+          "keyColor" = "33";
+        }
+        {
+          "type" = "player";
+          "key" = " ├ 󰥠 ";
+          "keyColor" = "33";
+        }
+        {
+          "type" = "media";
+          "key" = " └ 󰝚 ";
+          "keyColor" = "33";
+        }
+        "break"
         "break"
       ];
     };

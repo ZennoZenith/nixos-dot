@@ -31,6 +31,34 @@ in {
   };
 
   config = lib.mkIf config.custom.${name}.enable {
+    programs.delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        navigate = true;
+        side-by-side = true;
+        true-color = "always"; # "never"
+        dark = true;
+        hyperlinks = true;
+        whitespace-error-style = "22 reverse";
+
+        features = "unobtrusive-line-numbers decorations";
+        unobtrusive-line-numbers = {
+          line-numbers = true;
+          line-numbers-left-format = "{nm:>4}│";
+          line-numbers-right-format = "{np:>4}│";
+          line-numbers-left-style = "grey";
+          line-numbers-right-style = "grey";
+        };
+        decorations = {
+          commit-decoration-style = "bold grey box ul";
+          file-style = "bold blue";
+          file-decoration-style = "ul";
+          hunk-header-decoration-style = "box";
+        };
+      };
+    };
+
     programs.git = {
       enable = true;
 
@@ -57,7 +85,6 @@ in {
 
         # --- Core ---
         core = {
-          pager = "delta";
           autolf = true;
           autocrlf = "input";
           compression = 9;
@@ -69,21 +96,8 @@ in {
         # --- Init ---
         init.defaultBranch = "main";
 
-        # --- Delta ---
-        delta = {
-          navigate = true;
-          side-by-side = true;
-          line-numbers = true;
-          true-color = "always";
-          dark = true;
-          hyperlinks = true;
-          features = "decorations";
-          whitespace-error-style = "22 reverse";
-        };
-
         # --- Interactive ---
         interactive = {
-          diffFilter = "delta --color-only";
           singlekey = true;
         };
 

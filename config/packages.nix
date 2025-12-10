@@ -40,7 +40,6 @@
     bat-extras.batwatch
     bat-extras.prettybat
     bibata-cursors
-    # btop
     btop-cuda
     carapace
     cargo
@@ -49,10 +48,8 @@
     coreutils
     csvlens
     curl
-    delta
     dua
     dysk
-    eza
     fastfetch
     fclones
     fd
@@ -65,7 +62,6 @@
     git
     git-cliff
     gitui
-    glow
     go
     gping
     gtrash
@@ -117,12 +113,9 @@
     watchexec
     wireplumber
     wget
-    yazi
     zed-editor
     zellij
-    zoxide
 
-    ouch
     p7zip
 
     ## Utilities
@@ -187,7 +180,6 @@
     systemctl-tui
     lazydocker
     jq
-    cava
 
     # wine-staging
     wineWowPackages.staging

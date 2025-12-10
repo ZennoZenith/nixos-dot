@@ -40,6 +40,11 @@ in {
     ../../modules/home-manager/helix.nix
     ../../modules/home-manager/fastfetch.nix
     ../../modules/home-manager/swayosd.nix
+    ../../modules/home-manager/htop.nix
+    ../../modules/home-manager/cava.nix
+    ../../modules/home-manager/kitty.nix
+    ../../modules/home-manager/wizterm.nix
+    ## TODO: # ../../modules/home-manager/fzf.nix
   ];
 
   custom.pgp.enable = true;
@@ -78,23 +83,60 @@ in {
 
   programs.zen-browser.enable = true;
 
+  #  Enables seemless zoxide integration
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    options = [
+      "--cmd cd"
+    ];
+  };
+
+  programs.eza = {
+    enable = true;
+    icons = "always";
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    enableFishIntegration = true;
+    git = true;
+    extraOptions = [
+      "--group-directories-first"
+      "--no-quotes"
+      "--header" # Show header row
+      "--git-ignore"
+      "--classify" # append indicator (/, *, =, @, |)
+      "--hyperlink" # make paths clickable in some terminals
+    ];
+  };
+
   targets.genericLinux.gpu.nvidia.enable = true;
 
   services.kdeconnect.enable = true;
   services.swayosd.enable = true;
 
+  # Dracula theme configuration
   gtk = {
     enable = true;
-    iconTheme = {
-      name = "oomox-gruvbox-dark";
-      package = pkgs.gruvbox-dark-icons-gtk;
-    };
-    cursorTheme = {
-      name = "capitaine-cursors-white";
-      package = pkgs.capitaine-cursors;
-    };
     theme = {
-      name = "Awesthetic-dark";
+      name = "Dracula";
+      package = pkgs.dracula-theme;
+      #package = pkgs.tokyonight-gtk-theme;
+      #Dark (Blue Accent): "Tokyonight-Dark-B"
+      #Dark (Moon Accent): "Tokyonight-Dark-Moon"
+      #Storm (Gray/Muted Accent): "Tokyonight-Storm-B"
+    };
+    # Optional: uncomment for Dracula icons
+    iconTheme = {
+      name = "candy-icons";
+      package = pkgs.candy-icons;
+    };
+    gtk3.extraConfig = {
+      "gtk-application-prefer-dark-theme" = 1;
+    };
+    gtk4.extraConfig = {
+      "gtk-application-prefer-dark-theme" = 1;
     };
   };
 
