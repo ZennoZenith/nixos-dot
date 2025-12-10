@@ -11,7 +11,14 @@
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
-    plugins = [inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors];
+    plugins = [
+      inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
+      pkgs.hyprcursor
+      # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprscrolling
+      # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+      pkgs.hyprlandPlugins.hyprexpo
+      pkgs.hyprlandPlugins.hyprscrolling
+    ];
 
     settings = {
       "$terminal" = "ghostty";
@@ -46,8 +53,17 @@
         "XDG_SESSION_DESKTOP,Hyprland"
         "XDG_MENU_PREFIX,arch-"
 
+        "GTK_THEME,Dracula"
+        "GTK_ICON_THEME,Adwaita"
+
         "XCURSOR_SIZE,24"
+        "XCURSOR_THEME,rose-pine-hyprcursor"
         # "XCURSOR_THEME,Banana"
+        # "XCURSOR_THEME,Bibata-Modern-Ice"
+
+        "HYPRCURSOR_SIZE,24"
+        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+        # "HYPRCURSOR_THEME,Bibata-Modern-Ice"
 
         "LIBVA_DRIVER_NAME,nvidia"
 
@@ -64,9 +80,6 @@
         "YOUR_DARK_GTK3_THEME,Adwaita:dark"
         "QT_STYLE_OVERRIDE,Adwaita-Dark"
         "QT_QPA_PLATFORMTHEME,qt6ct   # for Qt apps"
-
-        "HYPRCURSOR_SIZE,24"
-        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
       ];
 
       #################
@@ -361,8 +374,10 @@
           "$mainMod SHIFT, Print, exec, grimblast --notify copysave area" ## Select area to take screenshot
 
           ## to switch between windows in a floating workspace
-          "$mainMod, Tab, cyclenext," # change focus to another window
-          "$mainMod, Tab, bringactivetotop," # bring it to the top
+          # "$mainMod, Tab, cyclenext," # change focus to another window
+          # "$mainMod, Tab, bringactivetotop," # bring it to the top
+          # "$mainMod, Tab, hyprexpo:expo, toggle"
+          # "$mainMod, g, hyprexpo:expo, toggle"
 
           "ALT, Tab, cyclenext," # change focus to another window
           "ALT, Tab, bringactivetotop," # bring it to the top
@@ -502,6 +517,44 @@
             # higher values will make slow motions smoother but more delayed
             window = 100;
           };
+        };
+
+        # use hyprcursor to get a higher resolution texture when the cursor is magnified
+        # see the `hyprcursor` section below
+        hyprcursor = {
+          # use nearest-neighbour (pixelated) scaling when magnifing beyond texture size
+          # this will also have effect without hyprcursor support being enabled
+          # 0 / false - never use pixelated scaling
+          # 1 / true  - use pixelated when no highres image
+          # 2         - always use pixleated scaling
+          nearest = true;
+
+          # enable dedicated hyprcursor support
+          enabled = true;
+
+          # resolution in pixels to load the magnified shapes at
+          # be warned that loading a very high-resolution image will take a long time and might impact memory consumption
+          # -1 means we use [normal cursor size] * [shake:base option]
+          resolution = -1;
+
+          # shape to use when clientside cursors are being magnified
+          # see the shape-name property of shape rules for possible names
+          # specifying clientside will use the actual shape, but will be pixelated
+          fallback = "clientside";
+        };
+
+        hyprexpo = {
+          columns = 3;
+          gap_size = 5;
+          bg_col = "rgb(111111)";
+          workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
+
+          gesture_distance = 300; # how far is the "max" for the gesture
+        };
+
+        hyprscrolling = {
+          column_width = 0.7;
+          fullscreen_on_one_column = false;
         };
       };
     };

@@ -14,6 +14,8 @@
     hyprpicker
     hyprpolkitagent
     hyprsunset
+    rose-pine-hyprcursor
+
     libnotify ## send alerts
     xdg-desktop-portal-gtk
   ];

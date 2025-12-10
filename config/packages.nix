@@ -40,7 +40,8 @@
     bat-extras.batwatch
     bat-extras.prettybat
     bibata-cursors
-    btop
+    # btop
+    btop-cuda
     carapace
     cargo
     clang
