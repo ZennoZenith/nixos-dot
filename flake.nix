@@ -16,6 +16,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ## TODO: Learn stylix
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -50,6 +56,7 @@
     disko,
     minegrub-theme,
     hl,
+    stylix,
     alejandra,
     ...
   } @ inputs: {
@@ -65,6 +72,7 @@
 
         minegrub-theme.nixosModules.default
         home-manager.nixosModules.home-manager
+        stylix.nixosModules.stylix
 
         {
           home-manager = {
@@ -103,6 +111,7 @@
 
         minegrub-theme.nixosModules.default
         home-manager.nixosModules.home-manager
+        stylix.nixosModules.stylix
 
         {
           home-manager = {
