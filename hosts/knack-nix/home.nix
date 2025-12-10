@@ -8,7 +8,6 @@
   dotfiles = "${variables.home.homeDirectory}/nixos-dot/configs";
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
-    qtile = "qtile";
     glow = "glow";
     mpd = "mpd";
     rmpc = "rmpc";
@@ -42,9 +41,6 @@ in {
     ../../modules/home-manager/fastfetch.nix
     ../../modules/home-manager/swayosd.nix
   ];
-
-  ## for nixd package
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   custom.pgp.enable = true;
   custom.jujutsu = {

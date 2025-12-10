@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 with lib; let
@@ -18,6 +19,7 @@ in {
     hardware.nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.latest;
       modesetting.enable = true;
+      open = false;
 
       # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
       # Enable this if you have graphical corruption issues or application crashes after waking
@@ -31,14 +33,17 @@ in {
 
       nvidiaSettings = true;
 
-      prime = {
-        sync.enable = true;
+      # prime = {
+      #   sync.enable = true;
 
-        intelBusId = "PCI:0:2:0";
-        nvidiaBusId = "PCI:1:0:0";
-        #amdgpuBusId = "PCI:54:0:0"; # If you have an AMD iGPU
-      };
+      #   intelBusId = "PCI:0:2:0";
+      #   nvidiaBusId = "PCI:1:0:0";
+      #   #amdgpuBusId = "PCI:54:0:0"; # If you have an AMD iGPU
+      # };
     };
+
+    ## WARNING: The option `hardware.opengl.enable` has been renamed to `hardware.graphics.enable`.
+    # hardware.opengl.enable = true;
 
     hardware.graphics = {
       enable = true;

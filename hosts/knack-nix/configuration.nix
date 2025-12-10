@@ -7,7 +7,6 @@
     ./hardware-configuration.nix
     ./disko.nix
 
-    ../../modules/drivers/nvidia-drivers.nix
     ../common/configuration.nix
     ../../config/syncthing.nix
   ];

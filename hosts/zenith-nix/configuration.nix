@@ -10,13 +10,13 @@
     ./disko.nix
     ./services.nix
 
-    ../../modules/drivers/nvidia-drivers.nix
     ../common/configuration.nix
     ../../config/syncthing.nix
     ../../config/docker.nix
     ../../config/jellyfin.nix
     ../../config/nginx.nix
   ];
+
   drivers.nvidia.enable = true; # NVIDIA GPUs
 
   fileSystems."/mnt/whole" = {

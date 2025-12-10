@@ -6,9 +6,6 @@
     package = pkgs.mariadb;
   };
 
-  ## Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
-
   # services.getty.autologinUser = "knack";
   # services.tumbler.enable = true;
   # services.envfs.enable = true;
