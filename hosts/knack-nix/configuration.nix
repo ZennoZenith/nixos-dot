@@ -19,6 +19,8 @@
 
   networking.hostName = "knacknix"; # Define your hostname.
 
+  environment.sessionVariables.NH_FLAKE = "${variables.home.homeDirectory}/nixos-dot";
+
   users.users.knack = {
     shell = pkgs.nushell;
     isNormalUser = true;

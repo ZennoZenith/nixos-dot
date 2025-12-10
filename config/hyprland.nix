@@ -20,6 +20,10 @@
     xdg-desktop-portal-gtk
   ];
 
+  ## required for screen sharing
+  services.pipewire.enable = true;
+  services.pipewire.wireplumber.enable = true;
+
   ## If cursor is not visible, try to set this to "on".
   environment.variables = {
     XDG_CURRENT_DESKTOP = "Hyprland";

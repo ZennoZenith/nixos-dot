@@ -35,6 +35,8 @@
 
   networking.hostName = "zenithnix"; # Define your hostname.
 
+  environment.sessionVariables.NH_FLAKE = "${variables.home.homeDirectory}/nixos-dot";
+
   users.users.zenith = {
     isNormalUser = true;
     extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.

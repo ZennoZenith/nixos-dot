@@ -14,4 +14,6 @@
     homeDirectory = "/home/zenith";
     stateVersion = "25.11";
   };
+
+  dotfiles = "/home/zenith/nixos-dot/symlinks";
 }

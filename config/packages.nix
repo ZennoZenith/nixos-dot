@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # https://github.com/JaKooLit/NixOS-Hyprland
-    # lld
     # aim
     # jome
     # crates-tui-git
@@ -32,13 +31,6 @@
     alacritty
     atuin
     bandwhich
-    bat
-    bat-extras.batdiff
-    bat-extras.batgrep
-    bat-extras.batman
-    bat-extras.batpipe
-    bat-extras.batwatch
-    bat-extras.prettybat
     bibata-cursors
     btop-cuda
     carapace
@@ -99,6 +91,7 @@
     ripgrep-all
     rmpc
     rustup
+    llvmPackages.bintools
     sccache
     sd
     skim
@@ -180,6 +173,11 @@
     systemctl-tui
     lazydocker
     jq
+    ouch
+
+    nh
+    nix-output-monitor
+    nvd
 
     # wine-staging
     wineWowPackages.staging

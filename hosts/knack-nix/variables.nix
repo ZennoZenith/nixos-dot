@@ -14,4 +14,6 @@
     homeDirectory = "/home/knack";
     stateVersion = "25.11";
   };
+
+  dotfiles = "/home/knack/nixos-dot/symlinks";
 }
