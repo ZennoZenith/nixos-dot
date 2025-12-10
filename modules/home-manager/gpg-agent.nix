@@ -24,6 +24,12 @@
         enableZshIntegration = true;
         enableNushellIntegration = true;
 
+        defaultCacheTtl = 86400; ## 86400 sec => 24 hour
+        defaultCacheTtlSsh = 86400;
+
+        maxCacheTtl = 86400;
+        maxCacheTtlSsh = 86400;
+
         # pinentry is a collection of simple PIN or passphrase dialogs used for
         # password entry
         ## to reload gpg-agent: `gpg-connect-agent reloadagent /bye`
