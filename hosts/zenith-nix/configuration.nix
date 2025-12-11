@@ -8,7 +8,6 @@
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
-    ./services.nix
 
     ../common/configuration.nix
     ../../config/syncthing.nix
@@ -97,7 +96,7 @@
     };
     docker = {
       enable = true;
-      members = [variables.home.username];
+      user = variables.home.username;
     };
     jellyfin = {
       enable = true;

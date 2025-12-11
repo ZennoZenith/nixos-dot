@@ -11,13 +11,11 @@ in {
       default = false;
     };
 
-    members = lib.mkOption {
-      # type = lib.types.listOf lib.types.str;
-      type = with lib.types; listOf (passwdEntry str);
-      default = [];
+    user = lib.mkOption {
+      type = with lib.types; nullOr (types.str);
+      default = null;
       description = ''
-        The user names of the group members, added to the
-        `/etc/group` file.
+        add <user> to docker group
       '';
     };
   };
@@ -25,11 +23,7 @@ in {
   config = lib.mkIf config.custom.${service_name}.enable {
     virtualisation.docker.enable = true;
 
-    # users.users.<username>.extraGroups = ["docker"];
-    users.users = lib.genAttrs config.custom.${service_name}.members (member: {
-      member.extraGroups = ["docker"];
-    });
-    users.extraGroups.docker.members = config.custom.${service_name}.members;
+    users.users.${config.custom.${service_name}.user}.extraGroups = ["docker"];
     virtualisation.docker.storageDriver = "btrfs";
   };
 }
