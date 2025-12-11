@@ -100,7 +100,7 @@
             "color": "#FF0000FF" // ?
           },
           "function": {
-            "color": "#FF6F00EE" // orange
+            "color": "#FF6F00FF" // orange
           },
           "keyword": {
             "color": "#DDDD00CC" // yellow
@@ -109,7 +109,7 @@
             "color": "#FF0055CC" // pink
           },
           "operator": {
-            "color": "#aeafbFF" // white
+            "color": "#ffFF7FFF" // light yellow
           },
           "preproc": {
             "color": "#FF0000FF" // ?
@@ -124,7 +124,7 @@
             "color": "#4400FFAA" // violet
           },
           "punctuation.delimiter": {
-            "color": "#00000000" // white
+            "color": "#66FFAAFF" // light green
           },
           "punctuation.markup": {
             "color": "#FF0000FF" // ?
@@ -154,7 +154,7 @@
             "color": "#00FF00FF"
           },
           "type": {
-            "color": "#66FF66CC" // light green
+            "color": "#FF9999FF" // peach
           },
           "variable": {
             "color": "#00DDFFFF" // light blue

@@ -23,6 +23,7 @@
     ../../config/xdg.nix
     ../../config/bluetooth.nix
     ../../config/obs-studio.nix
+    ../../config/rust.nix
   ];
   nixpkgs.config.allowUnfree = true;
 

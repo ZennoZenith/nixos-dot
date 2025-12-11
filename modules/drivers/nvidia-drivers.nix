@@ -33,13 +33,13 @@ in {
 
       nvidiaSettings = true;
 
-      # prime = {
-      #   sync.enable = true;
+      prime = {
+        sync.enable = true;
 
-      #   intelBusId = "PCI:0:2:0";
-      #   nvidiaBusId = "PCI:1:0:0";
-      #   #amdgpuBusId = "PCI:54:0:0"; # If you have an AMD iGPU
-      # };
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+        #amdgpuBusId = "PCI:54:0:0"; # If you have an AMD iGPU
+      };
     };
 
     ## WARNING: The option `hardware.opengl.enable` has been renamed to `hardware.graphics.enable`.

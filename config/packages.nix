@@ -34,7 +34,6 @@
     bibata-cursors
     btop-cuda
     carapace
-    cargo
     clang
     cliphist
     coreutils
@@ -75,12 +74,10 @@
     lazysql
     mdcat
     meld
-    mold
     mpd
     mpv
     nil
     nixd # nix lsp
-    nh # Nix Helper
     nushell
     pamixer
     pavucontrol
@@ -90,9 +87,6 @@
     ripgrep
     ripgrep-all
     rmpc
-    rustup
-    llvmPackages.bintools
-    sccache
     sd
     skim
     starship
@@ -178,11 +172,15 @@
     nh
     nix-output-monitor
     nvd
+    sshfs
+    qalculate-qt
+    libqalculate
 
     # wine-staging
     wineWowPackages.staging
     # winetricks
     # wineWowPackages.waylandFull
     bottles
+    nur.repos."0komo".sklauncher
   ];
 }

@@ -6,6 +6,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
+    xwayland.enable = true;
 
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
@@ -25,6 +26,29 @@
       "$notes" = "obsidian";
       "$menu" = "tofi-drun -c ~/.config/tofi/configA --drun-launch=true";
       "$clipboard_copy" = "cliphist list | tofi -c ~/.config/tofi/configV | cliphist decode | wl-copy --trim-newline && hyprctl dispatch sendshortcut \"CTRL SHIFT, V,\"";
+
+      #################
+      ### ROSE PINE ###
+      #################
+      # name: Rosé Pine
+      # author: jishnurajendran
+      # upstream: https://github.com/jishnurajendran/hyprland-rosepine/blob/main/rose-pine.conf
+      # All natural pine, faux fur and a bit of soho vibes for the classy minimalist
+      "$base" = "0xff191724";
+      "$surface" = "0xff1f1d2e";
+      "$overlay" = "0xff26233a";
+      "$muted" = "0xff6e6a86";
+      "$subtle" = "0xff908caa";
+      "$text" = "0xffe0def4";
+      "$love" = "0xffeb6f92";
+      "$gold" = "0xfff6c177";
+      "$rose" = "0xffebbcba";
+      "$pine" = "0xff31748f";
+      "$foam" = "0xff9ccfd8";
+      "$iris" = "0xffc4a7e7";
+      "$highlightLow" = "0xff21202e";
+      "$highlightMed" = "0xff403d52";
+      "$highlightHigh" = "0xff524f67";
 
       ################
       ### MONITORS ###
@@ -49,6 +73,7 @@
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
         "XDG_MENU_PREFIX,arch-"
+        "WLR_NO_HARDWARE_CURSORS,1"
 
         "GTK_THEME,Dracula"
         "GTK_ICON_THEME,Adwaita"
@@ -62,6 +87,7 @@
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
         # "HYPRCURSOR_THEME,Bibata-Modern-Ice"
 
+        "WLR_RENDERER_ALLOW_SOFTWARE,1"
         "LIBVA_DRIVER_NAME,nvidia"
 
         "GBM_BACKEND,nvidia-drm"
@@ -130,8 +156,10 @@
         border_size = 2;
 
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-        "col.active_border" = "rgb(8aadf4) rgb(24273A) rgb(24273A) rgb(8aadf4) 45deg";
-        "col.inactive_border" = "rgb(24273A) rgb(24273A) rgb(24273A) rgb(27273A) 45deg";
+        # "col.active_border" = "rgb(8aadf4) rgb(24273A) rgb(24273A) rgb(8aadf4) 45deg";
+        # "col.inactive_border" = "rgb(24273A) rgb(24273A) rgb(24273A) rgb(27273A) 45deg";
+        "col.inactive_border" = "$muted";
+        "col.active_border" = "$rose $pine $love $iris 90deg";
 
         # Set to true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = true;

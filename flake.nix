@@ -6,6 +6,11 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,6 +63,7 @@
     hl,
     stylix,
     alejandra,
+    nur,
     ...
   } @ inputs: {
     nixosConfigurations.knacknix = nixpkgs.lib.nixosSystem {
@@ -66,6 +72,8 @@
         variables = import ./hosts/knack-nix/variables.nix;
       };
       modules = [
+        {nixpkgs.overlays = [nur.overlays.default];}
+
         ./hosts/knack-nix/configuration.nix
 
         {nixpkgs.config.allowUnfree = true;}
@@ -105,6 +113,7 @@
         variables = import ./hosts/zenith-nix/variables.nix;
       };
       modules = [
+        {nixpkgs.overlays = [nur.overlays.default];}
         ./hosts/zenith-nix/configuration.nix
 
         {nixpkgs.config.allowUnfree = true;}

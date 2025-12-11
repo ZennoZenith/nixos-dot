@@ -43,6 +43,10 @@ in {
         inherits = "tokyonight";
         "ui.background" = {};
       };
+      rose_theme_transparent = {
+        inherits = "rose_pine";
+        "ui.background" = {};
+      };
     };
 
     settings = setting;

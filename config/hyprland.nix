@@ -6,6 +6,7 @@
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
+    xwayland.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -23,13 +24,6 @@
   ## required for screen sharing
   services.pipewire.enable = true;
   services.pipewire.wireplumber.enable = true;
-
-  ## If cursor is not visible, try to set this to "on".
-  environment.variables = {
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-  };
 
   environment.sessionVariables = {
     # Qt6 environment for quickshell

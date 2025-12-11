@@ -48,6 +48,7 @@ in {
     ../../config/home-manager/zellij.nix
     ../../config/home-manager/zoxide.nix
     ../../config/home-manager/eza.nix
+    ../../config/home-manager/rust.nix
     ../../config/home-manager/kde-connect.nix
 
     ## TODO: # ../../modules/home-manager/fzf.nix
@@ -64,7 +65,7 @@ in {
     shell.enableFishIntegration = true;
     shell.enableBashIntegration = true;
 
-    file.".cargo/config.toml".source = ../../symlinks/.cargo/config.toml;
+    # file.".cargo/config.toml".source = ../../symlinks/.cargo/config.toml;
 
     packages = with pkgs; [
       ghostty
@@ -116,6 +117,7 @@ in {
     zellij.enable = true;
     zoxide.enable = true;
     eza.enable = true;
+    rust.enable = true;
     kde-connect.enable = true;
   };
 
