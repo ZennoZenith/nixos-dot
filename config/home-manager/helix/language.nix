@@ -103,9 +103,11 @@
       name = "toml";
       auto-format = true;
       formatter = {
-        command = "dprint";
-        args = ["fmt" "--stdin" "toml"];
+        command = "taplo";
+        args = ["format" "-"];
       };
+      roots = ["."];
+      language-servers = ["taplo"];
     }
     {
       name = "python";

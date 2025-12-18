@@ -175,6 +175,7 @@
     sshfs
     qalculate-qt
     libqalculate
+    moonlight-qt
 
     # wine-staging
     wineWowPackages.staging
