@@ -6,7 +6,7 @@
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages."${pkgs.stdenv.hostPlatform.system}".hyprland;
-    xwayland.enable = true;
+    # xwayland.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -16,6 +16,7 @@
     hyprpolkitagent
     hyprsunset
     rose-pine-hyprcursor
+    banana-cursor
 
     libnotify ## send alerts
     xdg-desktop-portal-gtk
@@ -26,9 +27,9 @@
   services.pipewire.wireplumber.enable = true;
 
   environment.sessionVariables = {
-    # Qt6 environment for quickshell
-    QT_QPA_PLATFORM = "wayland;xcb";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    # # Qt6 environment for quickshell
+    # QT_QPA_PLATFORM = "wayland;xcb";
+    # QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 
     MOZ_ENABLE_WAYLAND = "1";
     NIXOS_OZONE_WL = "1";

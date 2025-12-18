@@ -6,16 +6,17 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
-    xwayland.enable = true;
+    # xwayland.enable = true;
 
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
     plugins = [
-      inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
+      ## DISABLED due to some incompability
+      # inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
       pkgs.hyprcursor
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprscrolling
       inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprscrolling
     ];
 
     settings = {
@@ -72,19 +73,21 @@
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
-        "XDG_MENU_PREFIX,arch-"
+        "XDG_MENU_PREFIX,nixos-"
         "WLR_NO_HARDWARE_CURSORS,1"
 
         "GTK_THEME,Dracula"
-        "GTK_ICON_THEME,Adwaita"
+        # "GTK_ICON_THEME,Adwaita"
+        "GTK_ICON_THEME,Dracula"
 
         "XCURSOR_SIZE,24"
-        "XCURSOR_THEME,rose-pine-hyprcursor"
-        # "XCURSOR_THEME,Banana"
+        # "XCURSOR_THEME,rose-pine-hyprcursor"
+        "XCURSOR_THEME,Banana"
         # "XCURSOR_THEME,Bibata-Modern-Ice"
 
         "HYPRCURSOR_SIZE,24"
-        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+        # "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+        "HYPRCURSOR_THEME,Banana"
         # "HYPRCURSOR_THEME,Bibata-Modern-Ice"
 
         "WLR_RENDERER_ALLOW_SOFTWARE,1"
@@ -100,9 +103,9 @@
         # Flickering in Electron / CEF apps
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
 
-        "YOUR_DARK_GTK3_THEME,Adwaita:dark"
-        "QT_STYLE_OVERRIDE,Adwaita-Dark"
-        "QT_QPA_PLATFORMTHEME,qt6ct" # for Qt apps
+        # "YOUR_DARK_GTK3_THEME,Adwaita:dark"
+        # "QT_STYLE_OVERRIDE,Adwaita-Dark"
+        # "QT_QPA_PLATFORMTHEME,qt6ct" # for Qt apps
       ];
 
       #################

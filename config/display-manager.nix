@@ -32,7 +32,7 @@ in {
       enable = true;
       settings = {
         initial_session = {
-          command = "Hyprland";
+          command = "start-hyprland";
           user = "${variables.home.username}";
         };
         default_session = {
