@@ -75,6 +75,8 @@
     mdcat
     meld
     mpd
+    gnumake
+    cmake
     mpv
     nil
     nixd # nix lsp
@@ -176,6 +178,10 @@
     qalculate-qt
     libqalculate
     moonlight-qt
+
+    delta
+    yazi
+    diffnav
 
     # wine-staging
     wineWowPackages.staging

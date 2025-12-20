@@ -399,6 +399,8 @@
           ", Print, exec, grimblast --notify copysave active" ## current Active window only + clipboard copy
           "$mainMod, Print, exec, grimblast --notify copysave screen" ## Entire screen + clipboard copy
           "$mainMod SHIFT, Print, exec, grimblast --notify copysave area" ## Select area to take screenshot
+          "$mainMod, S, exec, grimblast --notify copysave screen" ## Entire screen + clipboard copy
+          "$mainMod SHIFT, S, exec, grimblast --notify copysave area" ## Select area to take screenshot
 
           ## to switch between windows in a floating workspace
           "$mainMod, Tab, cyclenext," # change focus to another window

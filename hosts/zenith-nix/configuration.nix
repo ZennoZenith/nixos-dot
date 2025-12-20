@@ -53,7 +53,7 @@
 
   users.users.hadish = {
     isNormalUser = true;
-    extraGroups = []; # Enable ‘sudo’ for the user.
+    extraGroups = ["docker"]; ## TEMP:
     openssh.authorizedKeys.keys = [];
 
     hashedPassword = "$y$j9T$ew/v8gDWhQgGKUrT.HZ/81$D9VjEg3r8kLPqeKgUwxpZt1ParFl28Z2Wup4G2rQSW2";
@@ -102,5 +102,11 @@
       enable = true;
       user = variables.home.username;
     };
+    sunshine.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    nur.repos."Ev357".helium
+    brave
+  ];
 }

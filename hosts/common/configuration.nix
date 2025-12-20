@@ -24,6 +24,8 @@
     ../../config/bluetooth.nix
     ../../config/obs-studio.nix
     ../../config/rust.nix
+    ../../config/sunshine.nix
+    ../../config/git.nix
   ];
   nixpkgs.config.allowUnfree = true;
 
@@ -135,6 +137,10 @@
       # Add any missing dynamic libraries for unpackaged
       # programs here, NOT in environment.systemPackages
     ];
+  };
+
+  custom = {
+    git.enable = true;
   };
 
   environment = {

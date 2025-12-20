@@ -4,6 +4,7 @@
     cargo
     sccache
     mold
+    bacon
     llvmPackages.bintools ## lld
   ];
 }
