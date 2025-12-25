@@ -37,6 +37,8 @@
 
     hl.url = "github:pamburus/hl";
 
+    cinecli.url = "github:eyeblech/cinecli";
+
     alejandra = {
       url = "github:kamadorueda/alejandra/4.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,6 +63,7 @@
     disko,
     minegrub-theme,
     hl,
+    cinecli,
     stylix,
     alejandra,
     nur,
@@ -101,6 +104,7 @@
             environment.systemPackages = [
               hl.packages.${pkgs.stdenv.hostPlatform.system}.bin
               alejandra.defaultPackage.${pkgs.stdenv.hostPlatform.system}
+              cinecli.packages.${pkgs.stdenv.hostPlatform.system}.cinecli
             ];
           }
         )
@@ -141,6 +145,7 @@
             environment.systemPackages = [
               hl.packages.${pkgs.stdenv.hostPlatform.system}.bin
               alejandra.defaultPackage.${pkgs.stdenv.hostPlatform.system}
+              cinecli.packages.${pkgs.stdenv.hostPlatform.system}.cinecli
             ];
           }
         )

@@ -183,5 +183,6 @@
     # wineWowPackages.waylandFull
     bottles
     nur.repos."0komo".sklauncher
+    simple-http-server
   ];
 }
