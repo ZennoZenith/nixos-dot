@@ -37,7 +37,7 @@ in {
         };
         default_session = {
           # note: use the script as the command started by tuigreet
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --greeting 'Welcome To NixOS' --asterisks --remember --remember-user-session --time -cmd ${greetdStartup}/bin/greetd-startup";
+          command = "${pkgs.tuigreet}/bin/tuigreet --greeting 'Welcome To NixOS' --asterisks --remember --remember-user-session --time -cmd ${greetdStartup}/bin/greetd-startup";
           #   # DO NOT CHANGE THIS USER
           user = "greeter";
         };

@@ -57,7 +57,7 @@
     gping
     gtrash
     helix
-    igrep
+    # igrep ## throwing error
     imv
     jujutsu
     kdePackages.dolphin
@@ -193,5 +193,7 @@
     qbittorrent
     qbittorrent-enhanced-nox
     jless
+    openssl
+    cargo-nextest
   ];
 }
