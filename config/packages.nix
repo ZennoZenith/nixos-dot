@@ -190,5 +190,8 @@
     bottles
     nur.repos."0komo".sklauncher
     simple-http-server
+    qbittorrent
+    qbittorrent-enhanced-nox
+    jless
   ];
 }
