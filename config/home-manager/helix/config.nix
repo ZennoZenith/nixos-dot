@@ -71,6 +71,10 @@
       wrap-at-text-width = true;
     };
 
+    inline-diagnostics = {
+      cursor-line = "warning"; # show warnings and errors on the cursorline inline
+    };
+
     whitespace = {
       render = {
         space = "none";
@@ -91,10 +95,6 @@
         render = true;
         character = "╎"; # Some characters that work well: "▏", "┆", "┊", "╎"
         skip-levels = 1;
-      };
-
-      inline-diagnostics = {
-        cursor-line = "warning"; # show warnings and errors on the cursorline inline
       };
     };
   };
