@@ -37,6 +37,7 @@
   environment.sessionVariables.NH_FLAKE = "${variables.home.homeDirectory}/nixos-dot";
 
   users.users.zenith = {
+    shell = pkgs.nushell;
     isNormalUser = true;
     extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
     openssh.authorizedKeys.keys = [
