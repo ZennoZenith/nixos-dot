@@ -195,5 +195,6 @@
     jless
     openssl
     cargo-nextest
+    android-tools
   ];
 }
