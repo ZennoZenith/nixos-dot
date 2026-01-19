@@ -12,9 +12,9 @@
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
     plugins = [
-      # inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
       pkgs.hyprcursor
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+      # inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
+      # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
       # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprscrolling
     ];
 
@@ -405,7 +405,7 @@
           ## to switch between windows in a floating workspace
           "$mainMod, Tab, cyclenext," # change focus to another window
           "$mainMod, Tab, bringactivetotop," # bring it to the top
-          "$mainMod, g, hyprexpo:expo, toggle"
+          # "$mainMod, g, hyprexpo:expo, toggle"
 
           "ALT, Tab, cyclenext," # change focus to another window
           "ALT, Tab, bringactivetotop," # bring it to the top
@@ -612,15 +612,13 @@
           fallback = "clientside";
         };
 
-        hyprexpo = {
-          columns = 3;
-          gap_size = 5;
-          skip_empty = true;
-          bg_col = "rgb(111111)";
-          workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
-
-          gesture_distance = 300; # how far is the "max" for the gesture
-        };
+        # hyprexpo = {
+        #   columns = 3;
+        #   gap_size = 5;
+        #   skip_empty = true;
+        #   bg_col = "rgb(111111)";
+        #   workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
+        # };
 
         hyprscrolling = {
           column_width = 0.7;
