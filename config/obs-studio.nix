@@ -5,7 +5,7 @@
   ...
 }: {
   environment.variables.LD_LIBRARY_PATH =
-    lib.mkDefault "/run/opengl-driver/lib:${"\${LD_LIBRARY_PATH:-"}";
+    lib.mkDefault "/run/opengl-driver/lib:${"\$LD_LIBRARY_PATH"}";
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
@@ -26,7 +26,7 @@
   # ];
 
   programs.obs-studio = {
-    enable = true;
+    enable = false;
     package = (
       pkgs.obs-studio.override {
         cudaSupport = true;
