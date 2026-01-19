@@ -15,7 +15,7 @@
       # inputs.hypr-dynamic-cursors.packages.${pkgs.stdenv.hostPlatform.system}.hypr-dynamic-cursors
       pkgs.hyprcursor
       inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprscrolling
+      # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprscrolling
     ];
 
     settings = {
@@ -169,8 +169,8 @@
         # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
         allow_tearing = false;
 
-        # layout = "dwindle";
-        layout = "scrolling";
+        layout = "dwindle";
+        # layout = "scrolling";
       };
 
       # https://wiki.hyprland.org/Configuring/Variables/#decoration
