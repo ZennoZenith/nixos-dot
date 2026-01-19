@@ -6,12 +6,14 @@
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
+    ./knack-nvidia-driver.nix
+    ./distributed-builds.nix
 
     ../common/configuration.nix
     ../../config/syncthing.nix
   ];
 
-  drivers.nvidia.enable = true; # NVIDIA GPUs
+  # drivers.nvidia.enable = true; # NVIDIA GPUs
 
   boot.loader.timeout = 5;
 
@@ -50,4 +52,7 @@
       user = variables.home.username;
     };
   };
+
+  # environment.systemPackages = with pkgs; [
+  # ];
 }
