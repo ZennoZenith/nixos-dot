@@ -1,6 +1,6 @@
 #!/usr/bin/nu
-const swww_last_background_file = $'($nu.home-path)/.local/share/swww/swww-last-background'
-const background_images_dir = $'($nu.home-path)/assets/backgrounds'
+const swww_last_background_file = $'($nu.home-dir)/.local/share/swww/swww-last-background'
+const background_images_dir = $'($nu.home-dir)/assets/backgrounds'
 const transistion_effects = [ simple | fade | left | right | top | bottom | wipe | wave | grow | center ]
 # possible_transistion_effects =  none | simple | fade | left | right | top | bottom | wipe | wave | grow | center | any | outer | random
  
@@ -115,7 +115,7 @@ def change_by_select [] {
     $swww_last_image = $images | get 0 | get item
   }
 
-  let selected = $images | get item | path basename | to text | tofi -c $'($nu.home-path)/.config/tofi/configV'
+  let selected = $images | get item | path basename | to text | tofi -c $'($nu.home-dir)/.config/tofi/configV'
 
   let image = $images | where $it.item == $'($background_images_dir)/($selected)'
 

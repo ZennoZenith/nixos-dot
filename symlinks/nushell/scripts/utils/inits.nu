@@ -1,6 +1,6 @@
 
 def app-init [] {
-    const autoload_path = ($nu.home-path | path join '.local/share/nushell/vendor/autoload')
+    const autoload_path = ($nu.home-dir | path join '.local/share/nushell/vendor/autoload')
     mkdir $autoload_path
     zoxide init nushell | save -f ($autoload_path | path join "zoxide.nu")
     atuin init nu | save -f ($autoload_path | path join "atuin.nu")

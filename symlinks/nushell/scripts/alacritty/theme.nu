@@ -25,7 +25,7 @@ def theme-names [] {
   #   print $in
   # }
 
-  ls -s ([ $nu.home-path .config alacritty themes ] | path join) | get name 
+  ls -s ([ $nu.home-dir .config alacritty themes ] | path join) | get name 
 }
 
 export def select-theme [theme_name: string@theme-names] {

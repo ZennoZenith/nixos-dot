@@ -40,6 +40,17 @@ export def zls [] {
 export def zla [
   session?: string
 ] {
+  let found_session = if ($session != null and ($session | is-not-empty) ) {
+    zellij list-sessions --no-formatting --short | lines | where { $in | str contains $session } 
+  }
+
+  let len = ($found_session | length)
+
+  if $len == 1 {
+      zellij attach ($found_session | first)
+      return null
+  } 
+
   let session = if ($session != null) { $session } else {
     zellij list-sessions --no-formatting | fzf | cut -d' ' -f1
   }

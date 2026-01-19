@@ -4,7 +4,7 @@ let s = pamixer --list-sinks
 let ids = ($s | awk -F'"' 'NR > 1 {print $1}' | lines)
 let names = ($s | awk -F'"' 'NR > 1 {print $6}' | lines)
 
-let selected = $names | to text | tofi -c $'($nu.home-path)/.config/tofi/configV'
+let selected = $names | to text | tofi -c $'($nu.home-dir)/.config/tofi/configV'
 let selected_index = $names | enumerate | where ($it.item == $selected) | get index
 
 if ($selected_index | length) == 1 {

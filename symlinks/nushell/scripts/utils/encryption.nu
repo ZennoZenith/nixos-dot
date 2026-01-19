@@ -10,9 +10,9 @@ export def "encrypt init" [
     return null
   }
 
-  let secret_private_path = ($nu.home-path | path join $'secrets/($user)/key.txt.age') 
+  let secret_private_path = ($nu.home-dir | path join $'secrets/($user)/key.txt.age') 
   
-  let secret_public_path = ($nu.home-path | path join $'secrets/($user)/key_pub.txt') 
+  let secret_public_path = ($nu.home-dir | path join $'secrets/($user)/key_pub.txt') 
   
   if not ( $secret_private_path | path exists | into bool ) {
     log error $'($secret_private_path) not found'
@@ -26,13 +26,13 @@ export def "encrypt init" [
     
   }
 
-  ^mkdir -p $"($nu.home-path)/.config/age"
+  ^mkdir -p $"($nu.home-dir)/.config/age"
   
-  age -d -o $"($nu.home-path)/.config/age/key.txt" $secret_private_path
-  chmod 600 $"($nu.home-path)/.config/age/key.txt"
+  age -d -o $"($nu.home-dir)/.config/age/key.txt" $secret_private_path
+  chmod 600 $"($nu.home-dir)/.config/age/key.txt"
 
-  cp $secret_public_path $"($nu.home-path)/.config/age/key_pub.txt"
-  chmod 644 $"($nu.home-path)/.config/age/key_pub.txt"
+  cp $secret_public_path $"($nu.home-dir)/.config/age/key_pub.txt"
+  chmod 644 $"($nu.home-dir)/.config/age/key_pub.txt"
 }
 
 # age -a -R ~/key_pub.txt -o .ssh/id_ed25519.age ~/.ssh/id_ed25519
@@ -53,7 +53,7 @@ def encrypt [
     return null
   }
 
-  let public_key_path = ($nu.home-path | path join $'.config/age/key_pub.txt')
+  let public_key_path = ($nu.home-dir | path join $'.config/age/key_pub.txt')
  
 
   age -a -R $public_key_path -o $'($file_name).age' $file_name  
@@ -80,7 +80,7 @@ export def decrypt [
 
   let output = ($output | default ($file_name | str replace ".age" ""))
 
-  let private_key_path = ($nu.home-path | path join $'.config/age/key.txt')
+  let private_key_path = ($nu.home-dir | path join $'.config/age/key.txt')
 
   age -d -i $private_key_path -o $output $file_name 
 

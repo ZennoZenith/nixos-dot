@@ -1,7 +1,7 @@
 #!/usr/bin/nu
 
-const VOL_DIR = $"($nu.home-path)/.cache/volume"
-const BRIT_DIR = $"($nu.home-path)/.cache/brightness"
+const VOL_DIR = $"($nu.home-dir)/.cache/volume"
+const BRIT_DIR = $"($nu.home-dir)/.cache/brightness"
 const VOL_FILE = $"($VOL_DIR)/volume"
 const BRIT_FILE = $"($VOL_DIR)/brightness"
 ## Fibonacci series: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34

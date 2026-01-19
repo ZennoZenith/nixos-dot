@@ -26,14 +26,14 @@ $env.config.rm.always_trash = true
 $env.config.filesize.unit = 'binary'
 
 # =============================== ENV =========================================
-$env.LOCAL_BIN = $'($nu.home-path)/.local/bin'
-$env.CARGO_PATH = $'($nu.home-path)/.cargo/bin'
-$env.DENO_INSTALL = $'($nu.home-path)/.deno'
-$env.BUN_INSTALL = $'($nu.home-path)/.bun'
-$env.NVM_DIR = $'($nu.home-path)/.nvm'
+$env.LOCAL_BIN = $'($nu.home-dir)/.local/bin'
+$env.CARGO_PATH = $'($nu.home-dir)/.cargo/bin'
+$env.DENO_INSTALL = $'($nu.home-dir)/.deno'
+$env.BUN_INSTALL = $'($nu.home-dir)/.bun'
+$env.NVM_DIR = $'($nu.home-dir)/.nvm'
 $env.BUN_PATH = $'($env.BUN_INSTALL)/bin'
 $env.GO_PATH = '/usr/local/go/bin'
-$env.GO_BINS = $'($nu.home-path)/go/bin'
+$env.GO_BINS = $'($nu.home-dir)/go/bin'
 $env.CUDA_PATH = "/opt/cuda"
 $env.CUDA_BIN = $'($env.CUDA_PATH)/bin'
 

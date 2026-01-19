@@ -8,4 +8,4 @@ $env.ENV_CONVERSIONS.__zoxide_hooked = {
 # $env._ZO_EXCLUDE_DIRS
 # $env._ZO_FZF_OPTS
 # $env._ZO_MAXAGE
-$env._ZO_DATA_DIR = $'($nu.home-path)/.local/share/zoxide'
+$env._ZO_DATA_DIR = $'($nu.home-dir)/.local/share/zoxide'

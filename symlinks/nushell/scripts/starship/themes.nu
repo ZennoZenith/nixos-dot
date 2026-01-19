@@ -10,7 +10,7 @@ export def "starship-theme create" [] {
     }
 
     mkdir ~/.config/starship/themes
-    starship preset $theme -o $'($nu.home-path)/.config/starship/themes/_default-($theme).toml'
+    starship preset $theme -o $'($nu.home-dir)/.config/starship/themes/_default-($theme).toml'
     print $'Create ($theme)'
   }  
 }

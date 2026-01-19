@@ -1,6 +1,6 @@
 export def --env load_keychian [] {
   let hostname = (cat /etc/hostname)
-  let keychain_env_file = $'($nu.home-path)/.keychain/($hostname)-sh'
+  let keychain_env_file = $'($nu.home-dir)/.keychain/($hostname)-sh'
 
   if not ( $keychain_env_file | path exists ) {
     return
@@ -30,7 +30,7 @@ export def --env sshr [ssh_keys?: list<string>] {
   keychain --quiet
   load_keychian 
   
-  let ssh_keys = ls -s $'($nu.home-path)/.ssh' | get name | where { |s| ($s | str ends-with '.pub') } | each { $in | str replace ".pub" "" | $"ssh_key: ($in)" }
+  let ssh_keys = ls -s $'($nu.home-dir)/.ssh' | get name | where { |s| ($s | str ends-with '.pub') } | each { $in | str replace ".pub" "" | $"ssh_key: ($in)" }
 
   let gpg_keys = gpg --with-colons --list-secret-keys --keyid-format LONG | lines | each { split column ":" } | reduce {|it| append $it} | where $it.column1 == "uid" | get column10 | each { $"gpg_uid: ($in)"} 
 

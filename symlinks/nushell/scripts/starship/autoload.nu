@@ -1,2 +1,2 @@
 $env.STARSHIP_SHELL = "nu"
-$env.STARSHIP_CONFIG = $'($nu.home-path)/.config/starship/starship.toml'
+$env.STARSHIP_CONFIG = $'($nu.home-dir)/.config/starship/starship.toml'
