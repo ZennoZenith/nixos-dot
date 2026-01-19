@@ -16,6 +16,10 @@
     ../../config/nginx.nix
   ];
 
+  services.postgresql = {
+    enable = true;
+  };
+
   drivers.nvidia.enable = true; # NVIDIA GPUs
 
   fileSystems."/mnt/whole" = {
@@ -107,7 +111,12 @@
   };
 
   environment.systemPackages = with pkgs; [
-    nur.repos."Ev357".helium
-    brave
+    # nur.repos."Ev357".helium
+    # brave
+    vscode
+    bun
+    joplin-desktop
+    dbeaver-bin
+    redisinsight
   ];
 }

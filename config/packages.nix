@@ -196,5 +196,7 @@
     openssl
     cargo-nextest
     android-tools
+    cargo-binstall
+    crates-tui
   ];
 }
