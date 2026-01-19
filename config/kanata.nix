@@ -25,7 +25,12 @@
     enable = true;
     keyboards = {
       internalKeyboard = {
-        extraDefCfg = "process-unmapped-keys yes";
+        extraDefCfg = ''
+          process-unmapped-keys yes
+          concurrent-tap-hold yes
+          chords-v2-min-idle 200
+        '';
+        # tap-hold-require-prior-idle 150
         config = builtins.readFile ./kanata.kbd;
       };
     };
