@@ -184,7 +184,7 @@
     diffnav
 
     # wine-staging
-    wineWowPackages.staging
+    # wineWowPackages.staging
     # winetricks
     # wineWowPackages.waylandFull
     bottles
@@ -198,5 +198,8 @@
     android-tools
     cargo-binstall
     crates-tui
+    sqlitebrowser
+    foot
+    temurin-bin-21
   ];
 }
