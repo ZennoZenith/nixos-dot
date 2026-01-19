@@ -17,6 +17,10 @@
 in {
   home.packages = pk;
 
+  home.file.".config/helix/runtime/queries/kbd/highlights.scm".text = "; inherits: scheme \n";
+  home.file.".config/helix/runtime/queries/kbd/indents.scm".text = "; inherits: scheme \n";
+  home.file.".config/helix/runtime/queries/kbd/injections.scm".text = "; inherits: scheme \n";
+
   programs.helix = {
     enable = true;
     extraPackages = pk;

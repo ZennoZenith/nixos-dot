@@ -92,6 +92,26 @@
 
   language = [
     {
+      name = "kbd";
+      scope = "source.lisp";
+      injection-regex = "kbd";
+      file-types = ["kbd"];
+      grammar = "scheme";
+      language-id = "scheme";
+      auto-format = false;
+      comment-token = ";;";
+      indent = {
+        tab-width = 2;
+        unit = "  ";
+      };
+      auto-pairs = {
+        "(" = ")";
+        "{" = "}";
+        "[" = "]";
+        "\"" = "\"";
+      };
+    }
+    {
       name = "cpp";
       auto-format = true;
     }
