@@ -46,6 +46,15 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
+    fjordlauncher = {
+      url = "github:unmojang/FjordLauncher";
+
+      # Optional: Override the nixpkgs input of fjordlauncher to use the same revision as the rest of your flake
+      # Note that this may break the reproducibility mentioned above, and you might not be able to access the binary cache
+      #
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hypr-dynamic-cursors = {
       url = "github:VirtCode/hypr-dynamic-cursors";
       inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
@@ -66,6 +75,7 @@
     cinecli,
     stylix,
     alejandra,
+    fjordlauncher,
     nur,
     ...
   } @ inputs: {
@@ -105,6 +115,7 @@
               hl.packages.${pkgs.stdenv.hostPlatform.system}.bin
               alejandra.defaultPackage.${pkgs.stdenv.hostPlatform.system}
               cinecli.packages.${pkgs.stdenv.hostPlatform.system}.cinecli
+              # fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher
             ];
           }
         )
@@ -146,6 +157,7 @@
               hl.packages.${pkgs.stdenv.hostPlatform.system}.bin
               alejandra.defaultPackage.${pkgs.stdenv.hostPlatform.system}
               cinecli.packages.${pkgs.stdenv.hostPlatform.system}.cinecli
+              # fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher
             ];
           }
         )
