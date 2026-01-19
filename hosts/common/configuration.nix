@@ -90,6 +90,7 @@
     extraHosts = ''
       100.116.135.61  linode
       100.71.238.4    zenith
+      100.71.238.4    remotebuilder
       100.75.63.27    knack
     '';
 

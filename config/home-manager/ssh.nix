@@ -29,6 +29,18 @@
         serverAliveInterval = 60;
         serverAliveCountMax = 10000;
       };
+      remotebuilder = {
+        host = "remotebuilder";
+        hostname = "remotebuilder";
+        port = 22;
+        user = "remotebuild";
+        addKeysToAgent = "yes";
+        forwardAgent = true;
+        identitiesOnly = true;
+        identityFile = "~/.ssh/remotebuild";
+        serverAliveInterval = 60;
+        serverAliveCountMax = 10000;
+      };
       knack = {
         host = "knack";
         hostname = "knack";
