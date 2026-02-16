@@ -37,25 +37,11 @@
       };
     };
 
-    hl.url = "github:pamburus/hl";
-
     cinecli.url = "github:eyeblech/cinecli";
 
     alejandra = {
       url = "github:kamadorueda/alejandra/4.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    hypr-dynamic-cursors = {
-      url = "github:VirtCode/hypr-dynamic-cursors";
-      inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
     };
   };
 
@@ -64,7 +50,6 @@
     home-manager,
     disko,
     minegrub-theme,
-    hl,
     cinecli,
     stylix,
     alejandra,
@@ -105,7 +90,6 @@
         (
           {pkgs, ...}: {
             environment.systemPackages = [
-              hl.packages.${pkgs.stdenv.hostPlatform.system}.bin
               alejandra.defaultPackage.${pkgs.stdenv.hostPlatform.system}
               cinecli.packages.${pkgs.stdenv.hostPlatform.system}.cinecli
               # omnix.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -147,7 +131,6 @@
         (
           {pkgs, ...}: {
             environment.systemPackages = [
-              hl.packages.${pkgs.stdenv.hostPlatform.system}.bin
               alejandra.defaultPackage.${pkgs.stdenv.hostPlatform.system}
               cinecli.packages.${pkgs.stdenv.hostPlatform.system}.cinecli
               # omnix.packages.${pkgs.stdenv.hostPlatform.system}.default

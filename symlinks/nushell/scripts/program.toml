@@ -1,4 +1,4 @@
-###########################################
+## #########################################
 [[packages]]
 name = "helix"
 description = ""
@@ -8,7 +8,7 @@ package_name = "helix"
 bin_name = "helix"
 symlink_as = "hx"
 
-###########################################
+## #########################################
 [[packages]]
 name = "alacritty"
 description = ""
@@ -17,7 +17,7 @@ description = ""
 package_name = "alacritty"
 bin_name = "alacritty"
 
-###########################################
+## #########################################
 [[packages]]
 name = "kitty"
 description = ""
@@ -26,7 +26,7 @@ description = ""
 package_name = "kitty"
 bin_name = "kitty"
 
-###########################################
+## #########################################
 [[packages]]
 name = "ttf-font-awesome"
 description = ""
@@ -34,7 +34,7 @@ description = ""
 [packages.aur]
 package_name = "ttf-font-awesome"
 
-###########################################
+## #########################################
 [[packages]]
 name = "wireguard-tools"
 description = ""
@@ -43,7 +43,7 @@ description = ""
 package_name = "wireguard-tools"
 bin_name = "wireguard-tools"
 
-###########################################
+## #########################################
 [[packages]]
 name = "syncthing"
 description = ""
@@ -52,7 +52,7 @@ description = ""
 package_name = "syncthing"
 bin_name = "syncthing"
 
-###########################################
+## #########################################
 [[packages]]
 name = "clang"
 description = ""
@@ -61,7 +61,7 @@ description = ""
 package_name = "clang"
 bin_name = "clang"
 
-###########################################
+## #########################################
 [[packages]]
 name = "mold"
 description = ""
@@ -70,7 +70,7 @@ description = ""
 package_name = "mold"
 bin_name = "mold"
 
-###########################################
+## #########################################
 [[packages]]
 name = "lld"
 description = ""
@@ -79,7 +79,7 @@ description = ""
 package_name = "lld"
 bin_name = "lld"
 
-###########################################
+## #########################################
 [[packages]]
 name = "fastfetch"
 description = ""
@@ -88,7 +88,7 @@ description = ""
 package_name = "fastfetch"
 bin_name = "fastfetch"
 
-###########################################
+## #########################################
 [[packages]]
 name = "p7zip"
 description = ""
@@ -97,7 +97,7 @@ description = ""
 package_name = "p7zip"
 bin_name = "p7zip"
 
-###########################################
+## #########################################
 [[packages]]
 name = "pueue"
 description = ""
@@ -106,7 +106,7 @@ description = ""
 package_name = "pueue"
 bin_name = "pueue"
 
-###########################################
+## #########################################
 [[packages]]
 name = "yazi"
 description = ""
@@ -115,7 +115,7 @@ description = ""
 package_name = "yazi"
 bin_name = "yazi"
 
-###########################################
+## #########################################
 [[packages]]
 name = "tree"
 description = ""
@@ -124,7 +124,7 @@ description = ""
 package_name = "tree"
 bin_name = "tree"
 
-###########################################
+## #########################################
 [[packages]]
 name = "age"
 description = ""
@@ -133,7 +133,7 @@ description = ""
 package_name = "age"
 bin_name = "age"
 
-###########################################
+## #########################################
 [[packages]]
 name = "ouch"
 description = ""
@@ -142,7 +142,7 @@ description = ""
 package_name = "ouch"
 bin_name = "ouch"
 
-###########################################
+## #########################################
 [[packages]]
 name = "tealdeer"
 description = ""
@@ -151,7 +151,7 @@ description = ""
 package_name = "tealdeer"
 bin_name = "tealdeer"
 
-###########################################
+## #########################################
 [[packages]]
 name = "watchexec"
 description = ""
@@ -161,7 +161,7 @@ url = ["https://github.com/watchexec/watchexec"]
 package_name = "watchexec"
 bin_name = "watchexec"
 
-###########################################
+## #########################################
 [[packages]]
 name = "bacon"
 description = ""
@@ -170,7 +170,7 @@ description = ""
 package_name = "bacon"
 bin_name = "bacon"
 
-###########################################
+## #########################################
 [[packages]]
 name = "starship"
 description = ""
@@ -180,7 +180,7 @@ languages = ["rust"]
 package_name = "starship"
 bin_name = "starship"
 
-###########################################
+## #########################################
 [[packages]]
 name = "nushell"
 description = ""
@@ -189,7 +189,7 @@ description = ""
 package_name = "nushell"
 bin_name = "nu"
 
-###########################################
+## #########################################
 [[packages]]
 name = "fzf"
 description = ""
@@ -198,7 +198,7 @@ description = ""
 package_name = "fzf"
 bin_name = "fzf"
 
-###########################################
+## #########################################
 [[packages]]
 name = "zoxide"
 description = ""
@@ -207,7 +207,7 @@ description = ""
 package_name = "zoxide"
 bin_name = "zoxide"
 
-###########################################
+## #########################################
 [[packages]]
 name = "ripgrep"
 description = ""
@@ -216,7 +216,7 @@ description = ""
 package_name = "ripgrep"
 bin_name = "rg"
 
-###########################################
+## #########################################
 [[packages]]
 name = "bat"
 description = ""
@@ -225,7 +225,7 @@ description = ""
 package_name = "bat"
 bin_name = "bat"
 
-###########################################
+## #########################################
 [[packages]]
 name = "zellij"
 description = ""
@@ -234,7 +234,7 @@ description = ""
 package_name = "zellij"
 bin_name = "zellij"
 
-###########################################
+## #########################################
 [[packages]]
 name = "lsd"
 description = ""
@@ -243,7 +243,7 @@ description = ""
 package_name = "lsd"
 bin_name = "lsd"
 
-###########################################
+## #########################################
 [[packages]]
 name = "csvq"
 description = ""
@@ -252,7 +252,7 @@ description = ""
 package_name = "csvq-bin"
 bin_name = "csvq"
 
-###########################################
+## #########################################
 [[packages]]
 name = "mprocs"
 description = ""
@@ -261,7 +261,7 @@ description = ""
 package_name = "mprocs-bin"
 bin_name = "mprocs"
 
-###########################################
+## #########################################
 [[packages]]
 name = "dprint"
 description = ""
@@ -270,7 +270,7 @@ description = ""
 package_name = "dprint-bin"
 bin_name = "dprint"
 
-###########################################
+## #########################################
 [[packages]]
 name = "github-cli"
 description = ""
@@ -279,7 +279,7 @@ description = ""
 package_name = "github-cli"
 bin_name = "gh"
 
-###########################################
+## #########################################
 [[packages]]
 name = "carapace"
 description = ""
@@ -289,7 +289,7 @@ url = ["https://github.com/carapace-sh/carapace-bin"]
 package_name = "carapace-bin"
 bin_name = "carapace"
 
-###########################################
+## #########################################
 [[packages]]
 name = "fd"
 description = ""
@@ -298,7 +298,7 @@ description = ""
 package_name = "fd"
 bin_name = "fd"
 
-###########################################
+## #########################################
 [[packages]]
 name = "sd"
 description = ""
@@ -307,7 +307,7 @@ description = ""
 package_name = "sd"
 bin_name = "sd"
 
-###########################################
+## #########################################
 [[packages]]
 name = "lazygit"
 description = ""
@@ -316,7 +316,7 @@ description = ""
 package_name = "lazygit"
 bin_name = "lazygit"
 
-###########################################
+## #########################################
 [[packages]]
 name = "atuin"
 description = ""
@@ -325,7 +325,7 @@ description = ""
 package_name = "atuin"
 bin_name = "atuin"
 
-###########################################
+## #########################################
 [[packages]]
 name = "sccache"
 description = ""
@@ -334,7 +334,7 @@ description = ""
 package_name = "sccache"
 bin_name = "sccache"
 
-###########################################
+## #########################################
 [[packages]]
 name = "thefuck"
 description = ""
@@ -343,7 +343,7 @@ description = ""
 package_name = "thefuck"
 bin_name = "thefuck"
 
-###########################################
+## #########################################
 [[packages]]
 name = "csvlens"
 description = ""
@@ -352,7 +352,7 @@ description = ""
 package_name = "csvlens"
 bin_name = "csvlens"
 
-###########################################
+## #########################################
 [[packages]]
 name = "git-delta"
 description = ""
@@ -361,7 +361,7 @@ description = ""
 package_name = "git-delta"
 bin_name = "delta"
 
-###########################################
+## #########################################
 [[packages]]
 name = "just"
 description = ""
@@ -370,7 +370,7 @@ description = ""
 package_name = "just"
 bin_name = "just"
 
-###########################################
+## #########################################
 [[packages]]
 name = "fish"
 description = ""
@@ -379,7 +379,7 @@ description = ""
 package_name = "fish"
 bin_name = "fish"
 
-###########################################
+## #########################################
 [[packages]]
 name = "xdg-desktop-portal-hyprland"
 description = ""
@@ -389,7 +389,7 @@ tags = ["hyprland"]
 package_name = "xdg-desktop-portal-hyprland"
 bin_name = "xdg-desktop-portal-hyprland"
 
-###########################################
+## #########################################
 [[packages]]
 name = "rofi"
 description = ""
@@ -399,7 +399,7 @@ tags = ["hyprland"]
 package_name = "rofi"
 bin_name = "rofi"
 
-###########################################
+## #########################################
 [[packages]]
 name = "dunst"
 description = ""
@@ -409,7 +409,7 @@ tags = ["hyprland"]
 package_name = "dunst"
 bin_name = "dunst"
 
-###########################################
+## #########################################
 [[packages]]
 name = "pavucontrol"
 description = ""
@@ -419,7 +419,7 @@ tags = ["hyprland"]
 package_name = "pavucontrol"
 bin_name = "pavucontrol"
 
-###########################################
+## #########################################
 [[packages]]
 name = "pamixer"
 description = ""
@@ -429,7 +429,7 @@ tags = ["hyprland"]
 package_name = "pamixer"
 bin_name = "pamixer"
 
-###########################################
+## #########################################
 [[packages]]
 name = "wofi"
 description = ""
@@ -439,7 +439,7 @@ tags = ["hyprland"]
 package_name = "wofi"
 bin_name = "wofi"
 
-###########################################
+## #########################################
 [[packages]]
 name = "waybar"
 description = ""
@@ -449,7 +449,7 @@ tags = ["hyprland"]
 package_name = "waybar"
 bin_name = "waybar"
 
-###########################################
+## #########################################
 [[packages]]
 name = "hyprpolkitagent"
 description = ""
@@ -459,7 +459,7 @@ tags = ["hyprland"]
 package_name = "hyprpolkitagent"
 bin_name = "hyprpolkitagent"
 
-###########################################
+## #########################################
 [[packages]]
 name = "hypridle"
 description = ""
@@ -469,7 +469,7 @@ tags = ["hyprland"]
 package_name = "hypridle"
 bin_name = "hypridle"
 
-###########################################
+## #########################################
 [[packages]]
 name = "hyprlock"
 description = ""
@@ -479,7 +479,7 @@ tags = ["hyprland"]
 package_name = "hyprlock"
 bin_name = "hyprlock"
 
-###########################################
+## #########################################
 [[packages]]
 name = "hyprpaper"
 description = ""
@@ -489,7 +489,7 @@ tags = ["hyprland"]
 package_name = "hyprpaper"
 bin_name = "hyprpaper"
 
-###########################################
+## #########################################
 [[packages]]
 name = "walker"
 description = ""
@@ -499,7 +499,7 @@ tags = ["hyprland"]
 package_name = "walker-bin"
 bin_name = "walker"
 
-###########################################
+## #########################################
 [[packages]]
 name = "hyprshot"
 description = ""
@@ -509,7 +509,7 @@ tags = ["hyprland"]
 package_name = "hyprshot"
 bin_name = "hyprshot"
 
-###########################################
+## #########################################
 [[packages]]
 name = "grimblast"
 description = ""
@@ -519,7 +519,7 @@ tags = ["hyprland"]
 package_name = "grimblast"
 bin_name = "grimblast"
 
-###########################################
+## #########################################
 [[packages]]
 name = "wlogout"
 description = ""
@@ -529,7 +529,7 @@ tags = ["hyprland"]
 package_name = "wlogout"
 bin_name = "wlogout"
 
-###########################################
+## #########################################
 [[packages]]
 name = "wl-clipboard"
 description = ""
@@ -539,7 +539,7 @@ tags = ["hyprland"]
 package_name = "wl-clipboard"
 bin_name = "wl-clipboard"
 
-###########################################
+## #########################################
 [[packages]]
 name = "discord"
 description = ""
@@ -549,7 +549,7 @@ tags = ["hyprland"]
 package_name = "discord"
 bin_name = "discord"
 
-###########################################
+## #########################################
 [[packages]]
 name = "hyprpicker"
 description = ""
@@ -559,7 +559,7 @@ tags = ["hyprland"]
 package_name = "hyprpicker"
 bin_name = "hyprpicker"
 
-###########################################
+## #########################################
 [[packages]]
 name = "hyprsunset"
 description = ""
@@ -569,7 +569,7 @@ tags = ["hyprland"]
 package_name = "hyprsunset"
 bin_name = "hyprsunset"
 
-###########################################
+## #########################################
 [[packages]]
 name = "pipewire"
 description = ""
@@ -579,7 +579,7 @@ tags = ["hyprland", "audio"]
 package_name = "pipewire"
 bin_name = "pipewire"
 
-###########################################
+## #########################################
 [[packages]]
 name = "wireplumber"
 description = ""
@@ -589,7 +589,7 @@ tags = ["hyprland", "audio"]
 package_name = "wireplumber"
 bin_name = "wireplumber"
 
-###########################################
+## #########################################
 [[packages]]
 name = "pamixer"
 description = ""
@@ -599,7 +599,7 @@ tags = ["hyprland", "audio"]
 package_name = "pamixer"
 bin_name = "pamixer"
 
-###########################################
+## #########################################
 [[packages]]
 name = "pavucontrol"
 description = ""
@@ -609,7 +609,7 @@ tags = ["hyprland", "audio"]
 package_name = "pavucontrol"
 bin_name = "pavucontrol"
 
-###########################################
+## #########################################
 [[packages]]
 name = "brightnessctl"
 description = ""
@@ -619,7 +619,7 @@ tags = ["hyprland", "brightness"]
 package_name = "brightnessctl"
 bin_name = "brightnessctl"
 
-###########################################
+## #########################################
 [[packages]]
 name = "nwg-look"
 description = "Theaming gtk apps"
@@ -629,7 +629,7 @@ tags = ["gtk"]
 package_name = "nwg-look"
 bin_name = "nwg-look"
 
-###########################################
+## #########################################
 # [[packages]]
 # name = "catppuccin-gtk-theme-mocha"
 # description = ""
@@ -639,7 +639,7 @@ bin_name = "nwg-look"
 # package_name = "catppuccin-gtk-theme-mocha"
 # bin_name = "catppuccin-gtk-theme-mocha"
 
-###########################################
+## #########################################
 [[packages]]
 name = "spacedrive"
 description = ""
@@ -648,7 +648,7 @@ description = ""
 package_name = "spacedrive-bin"
 bin_name = "spacedrive"
 
-###########################################
+## #########################################
 [[packages]]
 name = "skim"
 description = "Fuzzy finder similar fzf"
@@ -659,7 +659,7 @@ url = ["https://github.com/skim-rs/skim"]
 package_name = "skim"
 bin_name = "sk"
 
-###########################################
+## #########################################
 [[packages]]
 name = "topgrade"
 description = "Keeping your system up to date usually involves invoking multiple package managers. This results in big, non-portable shell one-liners saved in your shell. To remedy this, Topgrade detects which tools you use and runs the appropriate commands to update them."
@@ -670,7 +670,7 @@ url = ["https://github.com/topgrade-rs/topgrade"]
 package_name = "topgrade-bin"
 bin_name = "topgrade"
 
-###########################################
+## #########################################
 # [[packages]]
 # name = "nvrs"
 # description = ""
@@ -684,7 +684,7 @@ bin_name = "topgrade"
 # package_name = "nvrs-bin"
 # bin_name = "nvrs"
 
-###########################################
+## #########################################
 [[packages]]
 name = "monolith"
 description = "A CLI tool for saving complete web pages as a single HTML file."
@@ -695,7 +695,7 @@ url = ["https://github.com/Y2Z/monolith", "https://terminaltrove.com/monolith/"]
 package_name = "monolith"
 bin_name = "monolith"
 
-###########################################
+## #########################################
 [[packages]]
 name = "aim"
 description = "A command line download/upload tool with resume."
@@ -706,7 +706,7 @@ url = ["https://github.com/mihaigalos/aim"]
 package_name = "aim"
 bin_name = "aim"
 
-###########################################
+## #########################################
 [[packages]]
 name = "jaq"
 description = "A jq clone focused on correctness, speed, and simplicity"
@@ -717,7 +717,7 @@ url = ["https://github.com/01mf02/jaq", "https://terminaltrove.com/jaq"]
 package_name = "jaq"
 bin_name = "jaq"
 
-###########################################
+## #########################################
 [[packages]]
 name = "oha"
 description = "A tiny TUI program that sends some load to a web application."
@@ -728,18 +728,21 @@ url = ["https://github.com/hatoo/oha", "https://terminaltrove.com/oha"]
 package_name = "oha"
 bin_name = "oha"
 
-###########################################
+## #########################################
 [[packages]]
 name = "difftastic"
 description = "A structural diff that understands syntax"
 languages = ["rust"]
-url = ["https://github.com/Wilfred/difftastic", "https://terminaltrove.com/difftastic"]
+url = [
+  "https://github.com/Wilfred/difftastic",
+  "https://terminaltrove.com/difftastic"
+]
 
 [packages.aur]
 package_name = "difftastic"
 bin_name = "difft"
 
-###########################################
+## #########################################
 [[packages]]
 name = "koji"
 description = "An interactive CLI for creating conventional commits."
@@ -751,7 +754,7 @@ package_name = "koji"
 bin_name = "koji"
 locked = true
 
-###########################################
+## #########################################
 [[packages]]
 name = "goji"
 description = "Commitizen-like tool for formatting commit messages using emojis."
@@ -770,7 +773,7 @@ sudo mv ./goji /usr/local/bin/
 package_name = "goji"
 bin_name = "goji"
 
-###########################################
+## #########################################
 [[packages]]
 name = "qrtool"
 description = "An utility for encoding or decoding QR code"
@@ -781,7 +784,7 @@ url = ["https://github.com/sorairolake/qrtool"]
 package_name = "qrtool"
 bin_name = "qrtool"
 
-###########################################
+## #########################################
 [[packages]]
 name = "pik"
 description = "Process Interactive Kill"
@@ -792,7 +795,7 @@ url = ["https://github.com/jacek-kurlit/pik"]
 package_name = "pik"
 bin_name = "pik"
 
-###########################################
+## #########################################
 [[packages]]
 name = "pastel"
 description = "Generate, analyze, convert and manipulate colors."
@@ -803,7 +806,7 @@ url = ["https://github.com/sharkdp/pastel"]
 package_name = "pastel"
 bin_name = "pastel"
 
-###########################################
+## #########################################
 [[packages]]
 name = "termscp"
 description = "A feature rich terminal file transfer tool."
@@ -814,7 +817,7 @@ url = ["https://github.com/veeso/termscp"]
 package_name = "termscp"
 bin_name = "termscp"
 
-###########################################
+## #########################################
 [[packages]]
 name = "gping"
 description = "Ping, but with a graph."
@@ -825,7 +828,7 @@ url = ["https://github.com/orf/gping"]
 package_name = "gping"
 bin_name = "gping"
 
-###########################################
+## #########################################
 # [[packages]]
 # name = "superfile"
 # description = "Pretty fancy and modern terminal file manager"
@@ -836,18 +839,18 @@ bin_name = "gping"
 # package_name = "superfile-bin"
 # bin_name = ["spf", "superfile"]
 
-###########################################
+## #########################################
 [[packages]]
-name = "swww"
+name = "awww"
 description = ""
 languages = []
 url = []
 
 [packages.aur]
-package_name = "swww"
-bin_name = "swww"
+package_name = "awww"
+bin_name = "awww"
 
-###########################################
+## #########################################
 [[packages]]
 name = "jome"
 description = "An emoji picker desktop application"
@@ -858,7 +861,7 @@ url = ["https://github.com/eepp/jome?tab=readme-ov-file#install-on-arch-linux"]
 package_name = "jome-git"
 bin_name = "jome"
 
-###########################################
+## #########################################
 [[packages]]
 name = "bibata-cursor-theme"
 description = "Open source, compact, and material designed cursor set."
@@ -870,7 +873,7 @@ url = ["https://github.com/ful1e5/Bibata_Cursor"]
 package_name = "bibata-cursor-theme-bin"
 bin_name = ["bibata-cursor-theme"]
 
-###########################################
+## #########################################
 [[packages]]
 name = "taplo"
 description = "TOML toolkit written in Rust"
@@ -881,7 +884,7 @@ url = ["https://github.com/tamasfe/taplo"]
 package_name = "taplo-cli"
 bin_name = "taplo"
 
-###########################################
+## #########################################
 [[packages]]
 name = "biome"
 description = ""
@@ -892,7 +895,7 @@ url = ["https://biomejs.dev"]
 package_name = "biome-bin"
 bin_name = "biome"
 
-###########################################
+## #########################################
 [[packages]]
 name = "superhtml"
 description = "HTML Language Server & Templating Language Library"
@@ -903,7 +906,7 @@ url = ["https://github.com/kristoff-it/superhtml"]
 package_name = "superhtml"
 bin_name = "superhtml"
 
-###########################################
+## #########################################
 [[packages]]
 name = "deno"
 description = ""
@@ -914,7 +917,7 @@ url = []
 package_name = "deno"
 bin_name = "deno"
 
-###########################################
+## #########################################
 [[packages]]
 name = "crates-tui-git"
 description = "A TUI for exploring crates.io using Ratatui"
@@ -925,19 +928,21 @@ url = ["https://github.com/ratatui/crates-tui"]
 package_name = "crates-tui-git"
 bin_name = "crates-tui"
 
-###########################################
+## #########################################
 [[packages]]
 name = "archlinux-xdg-menu"
 description = "Fix for dolphin opening in default apps"
 languages = []
-url = ["https://www.lorenzobettini.it/2024/05/fixing-the-empty-open-with-in-dolphin-in-hyprland"]
+url = [
+  "https://www.lorenzobettini.it/2024/05/fixing-the-empty-open-with-in-dolphin-in-hyprland"
+]
 tags = ["fix"]
 
 [packages.aur]
 package_name = "archlinux-xdg-menu"
 bin_name = "archlinux-xdg-menu"
 
-###########################################
+## #########################################
 [[packages]]
 name = "uwsm"
 description = "Universal Wayland Session Manageraquamarine"
@@ -947,7 +952,7 @@ tags = ["hyprland"]
 package_name = "uwsm"
 bin_name = "uwsm"
 
-###########################################
+## #########################################
 [[packages]]
 name = "keychain"
 description = ""
@@ -958,7 +963,7 @@ url = ["https://www.funtoo.org/Funtoo:Keychain"]
 package_name = "keychain"
 bin_name = "keychain"
 
-###########################################
+## #########################################
 [[packages]]
 name = "repgrep"
 description = " An interactive replacer for ripgrep that makes it easy to find and replace across files on the command line."
@@ -969,7 +974,7 @@ url = ["https://github.com/acheronfail/repgrep"]
 package_name = "repgrep"
 bin_name = "rgr"
 
-###########################################
+## #########################################
 [[packages]]
 name = "serie"
 description = "A rich git commit graph in your terminal, like magic 📚 "
@@ -982,7 +987,7 @@ Sixel graphics is not supported"""
 package_name = "serie"
 bin_name = "serie"
 
-###########################################
+## #########################################
 [[packages]]
 name = "tui-journal"
 description = " Your journal app if you live in a terminal "
@@ -993,7 +998,7 @@ url = [""]
 package_name = "tui-journal"
 bin_name = "tjournal"
 
-###########################################
+## #########################################
 [[packages]]
 name = "glow"
 description = " Render markdown on the CLI, with pizzazz! 💅🏻"
@@ -1004,7 +1009,7 @@ url = ["https://github.com/charmbracelet/glow"]
 package_name = "glow"
 bin_name = "glow"
 
-###########################################
+## #########################################
 [[packages]]
 name = "rucola"
 description = " Terminal-based markdown note manager."
@@ -1015,7 +1020,7 @@ url = ["https://github.com/Linus-Mussmaecher/rucola"]
 package_name = "rucola"
 bin_name = "rucola"
 
-###########################################
+## #########################################
 [[packages]]
 name = "bmm"
 description = "get to your bookmarks in a flash"
@@ -1026,7 +1031,7 @@ url = ["https://github.com/dhth/bmm"]
 package_name = "bmm"
 bin_name = "bmm"
 
-###########################################
+## #########################################
 [[packages]]
 name = "systemctl-tui"
 extra = true
@@ -1038,7 +1043,7 @@ url = ["https://github.com/rgwood/systemctl-tui"]
 package_name = "systemctl-tui"
 bin_name = "systemctl-tui"
 
-###########################################
+## #########################################
 [[packages]]
 name = "serpl"
 description = "A simple terminal UI for search and replace, ala VS Code."
@@ -1053,7 +1058,7 @@ bin_name = "serpl"
 package_name = "serpl"
 bin_name = "serpl"
 
-###########################################
+## #########################################
 [[packages]]
 name = "andcli"
 description = "A 2FA TUI for your shell"
@@ -1064,7 +1069,7 @@ url = ["https://github.com/tjblackheart/andcli"]
 package_name = "andcli"
 bin_name = "andcli"
 
-###########################################
+## #########################################
 [[packages]]
 name = "scooter"
 description = "Interactive find and replace in the terminal Resources"
@@ -1080,7 +1085,7 @@ bin_name = "scooter"
 package_name = "scooter-bin"
 bin_name = "scooter"
 
-###########################################
+## #########################################
 [[packages]]
 name = "basalt"
 description = "TUI Application to manage Obsidian notes directly from the terminal"
@@ -1092,7 +1097,7 @@ package_name = "basalt-tui"
 
 bin_name = "basalt"
 
-###########################################
+## #########################################
 [[packages]]
 name = "bitwarden-cli"
 description = "Bitwarden CLI"
@@ -1103,7 +1108,7 @@ url = [""]
 package_name = "bitwarden-cli"
 bin_name = "bw"
 
-###########################################
+## #########################################
 [[packages]]
 name = "lazysql"
 description = "A cross-platform TUI database management tool written in Go."
@@ -1114,7 +1119,7 @@ url = ["https://github.com/jorgerojas26/lazysql"]
 package_name = "lazysql-bin"
 bin_name = "lazysql"
 
-###########################################
+## #########################################
 [[packages]]
 name = "diffnav"
 description = "A git diff pager based on delta but with a file tree, à la GitHub."
@@ -1125,7 +1130,7 @@ url = ["https://github.com/dlvhdr/diffnav"]
 package_name = "diffnav-bin"
 bin_name = "diffnav"
 
-###########################################
+## #########################################
 [[packages]]
 name = "kanata"
 description = "Improve keyboard comfort and usability with advanced customization"
@@ -1136,7 +1141,7 @@ url = ["https://github.com/jtroo/kanata"]
 package_name = "kanata-bin"
 bin_name = "kanata"
 
-###########################################
+## #########################################
 [[packages]]
 name = "tailspin"
 description = "A log file highlighter"
@@ -1147,7 +1152,7 @@ url = ["https://github.com/bensadeh/tailspin"]
 package_name = "tailspin"
 bin_name = "tspin"
 
-###########################################
+## #########################################
 [[packages]]
 name = "hl"
 description = "A fast and powerful log viewer and processor."
@@ -1158,7 +1163,7 @@ url = ["https://github.com/pamburus/hl"]
 package_name = "hl"
 bin_name = "hl"
 
-###########################################
+## #########################################
 [[packages]]
 name = "vivid"
 description = "A themeable LS_COLORS generator with a rich filetype datebase"
@@ -1169,7 +1174,7 @@ url = ["https://github.com/sharkdp/vivid"]
 package_name = "vivid"
 bin_name = "vivid"
 
-###########################################
+## #########################################
 [[packages]]
 name = "wikiman"
 description = "Wikiman is a universal offline documentation search engine for manual pages, tldr-pages, ArchWiki, Gentoo Wiki, DevDocs, and FreeBSD documentation"
@@ -1183,7 +1188,7 @@ bin_name = "wikiman"
 [packages.extra]
 packages = ["arch-wiki-docs"]
 
-###########################################
+## #########################################
 [[packages]]
 name = "gtrash"
 description = "A Featureful Trash CLI manager: alternative to rm and trash-cli"
@@ -1194,18 +1199,18 @@ url = ["https://github.com/umlx5h/gtrash"]
 package_name = "gtrash"
 bin_name = "gtrash"
 
-###########################################
+## #########################################
 [[packages]]
 name = "tig"
 description = "Text-mode interface for git"
 languages = ["c"]
-url = [ "https://github.com/jonas/tig", "https://jonas.github.io/tig/" ]
+url = ["https://github.com/jonas/tig", "https://jonas.github.io/tig/"]
 
 [packages.aur]
 package_name = "tig"
 bin_name = "tig"
 
-###########################################
+## #########################################
 [[packages]]
 name = "ftdv"
 description = "FILE TREE DIFF VIEWER"
@@ -1219,7 +1224,7 @@ doesnot work with jujutsu backend"""
 package_name = "ftdv"
 bin_name = "ftdv"
 
-###########################################
+## #########################################
 [[packages]]
 name = "omm"
 description = "on-my-mind: a keyboard-driven task manager for the command line"
@@ -1230,18 +1235,21 @@ url = ["https://github.com/dhth/omm", "https://tools.dhruvs.space/omm"]
 package_name = "omm-bin"
 bin_name = "omm"
 
-###########################################
+## #########################################
 [[packages]]
 name = "television"
 description = "A cross-platform, fast and extensible general purpose fuzzy finder 📺"
 languages = ["rust"]
-url = ["https://github.com/alexpasmantier/television", "https://alexpasmantier.github.io/television/"]
+url = [
+  "https://github.com/alexpasmantier/television",
+  "https://alexpasmantier.github.io/television/"
+]
 
 [packages.aur]
 package_name = "television"
 bin_name = "tv"
 
-###########################################
+## #########################################
 [[packages]]
 name = "mpd"
 description = "music player daemon"
@@ -1253,9 +1261,9 @@ package_name = "mpd"
 bin_name = "mpd"
 
 [packages.extra]
-packages = ["alsa-utils","mpc"]
+packages = ["alsa-utils", "mpc"]
 
-###########################################
+## #########################################
 [[packages]]
 name = "rmpc"
 description = "A configurable, terminal based Media Player Client with album art support via various terminal image protocols"
@@ -1266,7 +1274,7 @@ url = ["https://github.com/mierak/rmpc", "https://mierak.github.io/rmpc/"]
 package_name = "rmpc"
 bin_name = "rmpc"
 
-###########################################
+## #########################################
 [[packages]]
 name = "xh"
 description = "Friendly and fast tool for sending HTTP requests"
@@ -1276,8 +1284,8 @@ url = ["https://github.com/ducaale/xh"]
 [packages.aur]
 package_name = "xh"
 bin_name = ["xh", "xhs"]
-###########################################
- 
+## #########################################
+
 [[packages]]
 name = "yaak"
 description = "The most intuitive desktop API client. Organize and execute REST, GraphQL, WebSockets, Server Sent Events, and gRPC 🦬"
@@ -1288,7 +1296,7 @@ url = ["https://github.com/mountain-loop/yaak", "https://yaak.app/"]
 package_name = "yaak-bin"
 bin_name = "yaak"
 
-###########################################
+## #########################################
 [[packages]]
 name = "Disk usage analyzer"
 description = "View disk space usage and delete unwanted data, fast."
@@ -1299,7 +1307,7 @@ url = ["https://github.com/Byron/dua-cli", "https://lib.rs/crates/dua-cli"]
 package_name = "dua-cli"
 bin_name = "dua"
 
-###########################################
+## #########################################
 [[packages]]
 name = "ripgrep-all"
 description = "rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc. "
@@ -1310,7 +1318,7 @@ url = ["https://github.com/phiresky/ripgrep-all"]
 package_name = "ripgrep-all"
 bin_name = ["rga", "rga-fzf"]
 
-###########################################
+## #########################################
 [[packages]]
 name = "repgrep"
 description = "An interactive replacer for ripgrep that makes it easy to find and replace across files on the command line."
@@ -1320,8 +1328,8 @@ url = ["https://github.com/acheronfail/repgrep"]
 [packages.aur]
 package_name = "repgrep"
 bin_name = "rgr"
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "igrep"
 description = "Interactive Grep"
@@ -1331,21 +1339,22 @@ url = ["https://github.com/konradsz/igrep"]
 [packages.aur]
 package_name = "igrep"
 bin_name = "ig"
- 
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "slumber"
 description = "Terminal-based HTTP/REST client"
 languages = ["rust"]
-url = ["https://github.com/LucasPickering/slumber", "https://slumber.lucaspickering.me"]
+url = [
+  "https://github.com/LucasPickering/slumber",
+  "https://slumber.lucaspickering.me"
+]
 
 [packages.aur]
 package_name = "slumber"
 bin_name = "slumber"
- 
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "atac"
 description = "A simple API client (postman like) in your terminal"
@@ -1355,21 +1364,22 @@ url = ["https://github.com/Julien-cpsn/ATAC", "https://atac.julien-cpsn.com/"]
 [packages.aur]
 package_name = "atac"
 bin_name = "atac"
- 
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "gpg-tui"
 description = "Manage your GnuPG keys with ease! 🔐"
 languages = ["rust"]
-url = ["https://github.com/orhun/gpg-tui", "https://blog.orhun.dev/introducing-gpg-tui/"]
+url = [
+  "https://github.com/orhun/gpg-tui",
+  "https://blog.orhun.dev/introducing-gpg-tui/"
+]
 
 [packages.aur]
 package_name = "gpg-tui"
 bin_name = "gpg-tui"
- 
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "gitui"
 description = "Blazing 💥 fast terminal-ui for git written in rust 🦀"
@@ -1379,9 +1389,8 @@ url = ["https://github.com/gitui-org/gitui"]
 [packages.aur]
 package_name = "gitui"
 bin_name = "gitui"
- 
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "bandwhich"
 description = "Terminal bandwidth utilization tool"
@@ -1391,9 +1400,8 @@ url = ["https://github.com/imsnif/bandwhich"]
 [packages.aur]
 package_name = "bandwhich"
 bin_name = "bandwhich"
- 
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "vivid"
 description = "A themeable LS_COLORS generator with a rich filetype datebase"
@@ -1403,9 +1411,8 @@ url = ["https://github.com/sharkdp/vivid"]
 [packages.aur]
 package_name = "vivid"
 bin_name = "vivid"
- 
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "eza"
 description = "A modern alternative to ls"
@@ -1415,8 +1422,8 @@ url = ["https://github.com/eza-community/eza", "https://eza.rocks/"]
 [packages.aur]
 package_name = "eza"
 bin_name = "eza"
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "meld"
 description = "GUI git diff and merge tool"
@@ -1426,19 +1433,22 @@ url = ["https://meldmerge.org/"]
 [packages.aur]
 package_name = "meld"
 bin_name = "meld"
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "qrtool"
 description = "An utility for encoding or decoding QR code"
 languages = ["rust"]
-url = ["https://github.com/sorairolake/qrtool", "https://sorairolake.github.io/qrtool/book/"]
+url = [
+  "https://github.com/sorairolake/qrtool",
+  "https://sorairolake.github.io/qrtool/book/"
+]
 
 [packages.aur]
 package_name = "qrtool"
 bin_name = "qrtool"
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "git-cliff"
 description = "A highly customizable Changelog Generator that follows Conventional Commit specifications ⛰️"
@@ -1448,8 +1458,8 @@ url = ["https://github.com/orhun/git-cliff", "https://git-cliff.org/"]
 [packages.aur]
 package_name = "git-cliff"
 bin_name = "git-cliff"
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "fx"
 description = "Terminal JSON viewer & processor"
@@ -1459,8 +1469,8 @@ url = ["https://github.com/antonmedv/fx", "https://fx.wtf/"]
 [packages.aur]
 package_name = "fx"
 bin_name = "fx"
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "timr-tui"
 description = "TUI to organize your time: Pomodoro, Countdown, Timer."
@@ -1470,8 +1480,8 @@ url = ["https://github.com/sectore/timr-tui"]
 [packages.aur]
 package_name = "timr-bin"
 bin_name = "timr"
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "clock-tui"
 description = " A clock app in terminal written in Rust, supports local clock, timer and stopwatch."
@@ -1481,8 +1491,8 @@ url = ["https://github.com/race604/clock-tui"]
 [packages.cargo]
 package_name = "clock-tui"
 bin_name = "tclock"
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "markdown-oxide"
 description = "PKM Markdown Language Server"
@@ -1493,8 +1503,8 @@ url = ["https://github.com/Feel-ix-343/markdown-oxide", "https://oxide.md/"]
 package_name = "markdown-oxide"
 bin_name = ""
 url = "cargo binstall --git 'https://github.com/feel-ix-343/markdown-oxide' markdown-oxide"
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "rust-stakeholder"
 description = "PKM Markdown Language Server"
@@ -1505,8 +1515,8 @@ url = ["https://github.com/giacomo-b/rust-stakeholder"]
 package_name = "rust-stakeholder"
 bin_name = "rust-stakeholder"
 url = "cargo install --git https://github.com/giacomo-b/rust-stakeholder.git"
- 
-###########################################
+
+## #########################################
 [[packages]]
 name = "fclones"
 description = "Efficient Duplicate File Finder"
@@ -1517,7 +1527,7 @@ url = ["https://github.com/pkolaczk/fclones?tab=readme-ov-file#usage"]
 package_name = "fclones"
 bin_name = "fclones"
 
-###########################################
+## #########################################
 [[packages]]
 name = "hurl"
 description = "Hurl, run and test HTTP requests with plain text."
@@ -1528,7 +1538,7 @@ url = ["https://github.com/Orange-OpenSource/hurl"]
 package_name = "hurl"
 bin_name = "hurl"
 
-###########################################
+## #########################################
 [[packages]]
 name = "mergiraf"
 description = "A syntax-aware git merge driver for a growing collection of programming languages and file formats."
@@ -1539,7 +1549,7 @@ url = ["https://mergiraf.org"]
 package_name = "mergiraf-bin"
 bin_name = "mergiraf"
 
-###########################################
+## #########################################
 [[packages]]
 name = ""
 description = ""

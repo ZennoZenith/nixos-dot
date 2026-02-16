@@ -1,27 +1,41 @@
-{
-  pkgs,
-  variables,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
     ./knack-nvidia-driver.nix
     ./distributed-builds.nix
 
-    ../common/configuration.nix
-    ../../config/syncthing.nix
+    ../../config/nixos/nix.nix
+    ../../config/nixos/packages.nix
+    ../../config/nixos/fonts.nix
+    ../../config/nixos/programs.nix
+    ../../config/nixos/networking.nix
+    ../../config/nixos/system.nix
+    ../../config/nixos/environment.nix
+    ../../config/nixos/services.nix
+    ../../config/nixos/systemd.nix
+
+    ../../config/nixos/flatpak.nix
+    ../../config/nixos/kanata.nix
+    ../../config/nixos/display-manager.nix
+    ../../config/nixos/bluetooth.nix
+    ../../config/nixos/rust.nix
+    ../../config/nixos/syncthing.nix
+    # ../../config/nixos/docker.nix
+    # ../../config/nixos/jellyfin.nix
+    # ../../config/nixos/virtual.nix
+    # ../../config/nixos/nginx.nix
+
+    ../../config/nixos/hyprland.nix
   ];
 
-  # drivers.nvidia.enable = true; # NVIDIA GPUs
+  nixpkgs.config.allowUnfree = true;
+  time.timeZone = "Asia/Kolkata";
 
-  boot.loader.timeout = 5;
-
-  security.sudo.wheelNeedsPassword = false;
-
-  networking.hostName = "knacknix"; # Define your hostname.
-
-  environment.sessionVariables.NH_FLAKE = "${variables.home.homeDirectory}/nixos-dot";
+  security = {
+    rtkit.enable = true;
+    sudo.wheelNeedsPassword = false;
+  };
 
   users.users.knack = {
     shell = pkgs.nushell;
@@ -38,21 +52,4 @@
       nix-search-tv
     ];
   };
-
-  custom = {
-    ssh = {
-      enable = true;
-      AllowUsers = [
-        "knack"
-        "zenith"
-      ];
-    };
-    syncthing = {
-      enable = true;
-      user = variables.home.username;
-    };
-  };
-
-  # environment.systemPackages = with pkgs; [
-  # ];
 }

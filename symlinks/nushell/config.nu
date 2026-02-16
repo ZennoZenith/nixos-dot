@@ -1,9 +1,4 @@
-$env.EDITOR = 'hx'
-$env.PAGER = 'delta'
-$env.BAT_THEME = 'Monokai Extended'
-$env.MANPAGER = "sh -c 'sed -u -e \"s/\\x1B\\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
-$env.GPG_TTY = ^tty
-
+source ~/.config/nushell/source/env.nu
 
 $env.config.show_banner = false # true or false to enable or disable the welcome banner at startup
 $env.config.buffer_editor = "hx"
@@ -25,44 +20,50 @@ $env.config.history = {
 $env.config.rm.always_trash = true
 $env.config.filesize.unit = 'binary'
 
-# =============================== ENV =========================================
-$env.LOCAL_BIN = $'($nu.home-dir)/.local/bin'
-$env.CARGO_PATH = $'($nu.home-dir)/.cargo/bin'
-$env.DENO_INSTALL = $'($nu.home-dir)/.deno'
-$env.BUN_INSTALL = $'($nu.home-dir)/.bun'
-$env.NVM_DIR = $'($nu.home-dir)/.nvm'
-$env.BUN_PATH = $'($env.BUN_INSTALL)/bin'
-$env.GO_PATH = '/usr/local/go/bin'
-$env.GO_BINS = $'($nu.home-dir)/go/bin'
-$env.CUDA_PATH = "/opt/cuda"
-$env.CUDA_BIN = $'($env.CUDA_PATH)/bin'
 
+source ~/.config/nushell/source/alias.nu
 
-# =============================== PATH ========================================
-let list_of_paths = [
-  $env.LOCAL_BIN
-  /home/linuxbrew/.linuxbrew/bin 
-  /home/linuxbrew/.linuxbrew/sbin 
-  $env.CARGO_PATH
-  $"($env.DENO_INSTALL)/bin"
-  $env.BUN_PATH
-  $env.GO_PATH
-  $env.GO_BINS
-  $env.CUDA_BIN
-   # etc.
-]
-use std/util "path add"
-path add ...$list_of_paths
-# $env.path ++= ["~/.local/bin"]
+## ── Atuin ───────────────────────────────────────────────────────────────────
+source ~/.config/nushell/source/atuin_hex_init.nu
+source ~/.config/nushell/source/atuin_init.nu
+#bind to ctrl-r in emacs, vi_normal and vi_insert modes, add any other bindings you want here too
+export-env {
+    if ('atuin' not-in ($env.config.keybindings | get name) ) {
+        $env.config.keybindings ++= [{
+            name: atuin
+            modifier: control
+            keycode: char_r
+            mode: [emacs, vi_normal, vi_insert]
+            event: { send: executehostcommand cmd: (_atuin_search_cmd) }
+        }]
+    }
+}
 
-## theme is handeled by ghostty terminal
-# source ($nu.config-path | path dirname | path join 'nu-themes/catppuccin-mocha.nu')
+## ── Completer ───────────────────────────────────────────────────────────────
+source ~/.config/nushell/source/completer.nu
 
-# =============================== ALIAS =======================================
-alias pp = do {pacman -Qqe | fzf --multi --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'}
+## ── Fzf ─────────────────────────────────────────────────────────────────────
+source ~/.config/nushell/source/fzf.nu
 
-use ~/dotfiles/.config/nushell/scripts/keychain/keychain.nu *
-load_keychian
+## ── Starship ────────────────────────────────────────────────────────────────
+source ~/.config/nushell/source/starship.nu
+$env.STARSHIP_SHELL = "nu"
+$env.STARSHIP_CONFIG = $'($nu.home-dir)/.config/starship/starship.toml'
+
+## ── Yazi ────────────────────────────────────────────────────────────────────
+source ~/.config/nushell/source/yazi.nu
+
+## ── Zoxide ──────────────────────────────────────────────────────────────────
+$env._ZO_DATA_DIR = $'($nu.home-dir)/.local/share/zoxide'
+# $env._ZO_ECHO = 1
+# $env._ZO_EXCLUDE_DIRS
+# $env._ZO_FZF_OPTS
+# $env._ZO_MAXAGE
+source ~/.config/nushell/source/zoxide.nu
+ 
+## ── Zellij ──────────────────────────────────────────────────────────────────
+source ~/.config/nushell/source/zellij.nu
+
 
 def show_banner [] {
     let ellie = [
@@ -81,6 +82,5 @@ def show_banner [] {
 
 show_banner
 
-$env.GPG_TTY = $"(tty)"
 $env.SSH_AUTH_SOCK = $"(gpgconf --list-dirs agent-ssh-socket)"
 gpgconf --launch gpg-agent

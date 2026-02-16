@@ -1,0 +1,171 @@
+[include]
+    path = ~/user.gitconfig
+
+[advice]
+	addEmptyPathspec = false
+	pushNonFastForward = false
+	statusHints = false
+
+[alias]
+	undo = "reset --sort HEAD^"
+
+[blame]
+	coloring = "highlightRecent"
+	date = "relative"
+
+[branch]
+	sort = "-committerdate"
+
+[color "blame"]
+	highlightRecent = "black bold,1 year ago,white,1 month ago,default,7 days ago,blue"
+
+[color "branch"]
+	current = "magenta"
+	local = "default"
+	plain = "blue"
+	remote = "yellow"
+	upstream = "green"
+
+[color "diff"]
+	context = "white"
+	frag = "magenta"
+	meta = "black bold"
+	whitespace = "yellow reverse"
+
+[column]
+	ui = "auto"
+
+[commit]
+	gpgSign = true
+	verbose = true
+
+[core]
+	autocrlf = "input"
+	autolf = true
+	compression = 9
+	excludesfile = "~/.gitignore"
+	fsync = "none"
+	whitespace = "error"
+
+[delta]
+	dark = true
+	features = "unobtrusive-line-numbers decorations"
+	hyperlinks = true
+	navigate = true
+	side-by-side = true
+	true-color = "always"
+	whitespace-error-style = "22 reverse"
+
+[delta "decorations"]
+	commit-decoration-style = "bold grey box ul"
+	file-decoration-style = "ul"
+	file-style = "bold blue"
+	hunk-header-decoration-style = "box"
+
+[delta "unobtrusive-line-numbers"]
+	line-numbers = true
+	line-numbers-left-format = "{nm:>4}│"
+	line-numbers-left-style = "grey"
+	line-numbers-right-format = "{np:>4}│"
+	line-numbers-right-style = "grey"
+
+[diff]
+	algorithm = "histogram"
+	colorMoved = "plain"
+	context = 3
+	interHunkContext = 10
+	mnemonicPrefix = true
+	renames = "copies"
+
+[fetch]
+	all = true
+	prune = true
+	pruneTags = true
+
+[filter "lfs"]
+	clean = "git-lfs clean -- %f"
+	process = "git-lfs filter-process"
+	required = true
+	smudge = "git-lfs smudge -- %f"
+
+[help]
+	autocorrect = "prompt"
+
+[init]
+	defaultBranch = "main"
+
+[interactive]
+	diffFilter = "delta --color-only"
+	singlekey = true
+
+[log]
+	abbrevCommit = true
+	graphColors = "blue,yellow,cyan,magenta,green,red"
+
+[merge]
+	conflictStyle = "diff3"
+
+[merge "mergiraf"]
+	driver = "mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L"
+	name = "mergiraf"
+
+[pager]
+	diff = "delta"
+	log = "delta"
+	show = "delta"
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+	default = "simple"
+	followTags = true
+
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+
+[rerere]
+	autoupdate = true
+	enabled = true
+
+[status]
+	branch = true
+	short = true
+	showStash = true
+	showUntrackedFiles = "all"
+
+[submodule]
+	fetchJobs = 16
+
+[tag]
+	gpgSign = true
+	sort = "version:refname"
+
+[url "git@gitea-zennozenith:"]
+	insteadOf = "gtz:"
+
+[url "git@github-knowknack:"]
+	insteadOf = "ghk:"
+
+[url "git@github-meeran:"]
+	insteadOf = "ghm:"
+
+[url "git@github-zennozenith:"]
+	insteadOf = "ghz:"
+
+[url "git@github.com:"]
+	insteadOf = "gh:"
+
+[url "ssh://git@git.zennozenith.com:2202/zennozenith/"]
+	insteadOf = "zz:"
+
+
+# [includeIf "gitdir:~/work/"]
+#     path = ~/.gitconfig-work
+
+# [includeIf "gitdir:~/personal/"]
+#     path = ~/.gitconfig-personal
+

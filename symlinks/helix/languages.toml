@@ -1,0 +1,273 @@
+[[language]]
+language-servers = ["godot"]
+name = "gdscript"
+
+[language.formatter]
+args = ["--reorder-code"]
+command = "gdscript-formatter"
+
+[[language]]
+auto-format = false
+comment-token = ";;"
+file-types = ["kbd"]
+grammar = "scheme"
+injection-regex = "kbd"
+language-id = "scheme"
+name = "kbd"
+scope = "source.lisp"
+
+[language.auto-pairs]
+"\"" = "\""
+"(" = ")"
+"[" = "]"
+"{" = "}"
+
+[language.indent]
+tab-width = 2
+unit = "  "
+
+[[language]]
+auto-format = true
+name = "cpp"
+
+[[language]]
+auto-format = true
+name = "c"
+
+[[language]]
+auto-format = true
+language-servers = ["tombi"]
+name = "toml"
+
+[[language]]
+auto-format = true
+language-servers = ["pyrefly", "ruff"]
+name = "python"
+
+[[language]]
+auto-format = true
+name = "go"
+
+[language.formatter]
+command = "goimports"
+
+[[language]]
+auto-format = true
+language-servers = [
+  { except-features = ["format"], name = "superhtml" },
+  "vscode-html-language-server",
+  "tailwindcss-ls",
+  "emmet-lsp"
+]
+name = "html"
+
+[language.formatter]
+args = ["fmt", "--stdin", "html"]
+command = "dprint"
+
+[[language]]
+auto-format = true
+language-servers = [
+  "colors",
+  "vscode-css-language-server",
+  "tailwindcss-ls",
+  "emmet-ls"
+]
+name = "css"
+
+[language.formatter]
+args = ["fmt", "--stdin", "css"]
+command = "dprint"
+
+[[language]]
+auto-format = true
+language-servers = ["svelteserver", "tailwindcss-ls"]
+name = "svelte"
+
+[language.formatter]
+args = ["fmt", "--stdin", "svelte"]
+command = "dprint"
+
+[[language]]
+auto-format = true
+name = "json"
+
+[language.formatter]
+args = ["fmt", "--stdin", "json"]
+command = "dprint"
+
+[[language]]
+auto-format = true
+name = "jsonc"
+
+[language.formatter]
+args = ["fmt", "--stdin", "json"]
+command = "dprint"
+
+[[language]]
+auto-format = true
+name = "yaml"
+
+[language.formatter]
+args = ["fmt", "--stdin", "yaml"]
+command = "dprint"
+
+[[language]]
+auto-format = true
+comment-tokens = ["-", "+", "*", "- [ ]", ">"]
+language-servers = [
+  { except-features = ["format"], name = "rumdl" },
+  "marksman",
+  "markdown-oxide"
+]
+name = "markdown"
+
+[language.formatter]
+args = ["fmt", "--stdin", "md"]
+command = "dprint"
+
+[[language]]
+auto-format = true
+language-servers = [
+  { except-features = ["format"], name = "typescript-language-server" },
+  "biome"
+]
+name = "typescript"
+
+[[language]]
+auto-format = true
+language-servers = [
+  { except-features = ["format"], name = "typescript-language-server" },
+  "biome"
+]
+name = "javascript"
+
+[[language]]
+auto-format = true
+language-servers = [
+  { except-features = ["format"], name = "typescript-language-server" },
+  "tailwindcss-ls"
+]
+name = "jsx"
+
+[[language]]
+auto-format = true
+language-servers = [
+  { except-features = ["format"], name = "typescript-language-server" },
+  "tailwindcss-ls"
+]
+name = "tsx"
+
+[[language]]
+auto-format = true
+language-servers = ["postgrestools"]
+name = "sql"
+roots = ["postgrestools.jsonc"]
+
+[[language]]
+auto-format = true
+language-servers = ["nixd", "nil"]
+name = "nix"
+
+[language.formatter]
+command = "alejandra"
+
+[language-server.biome]
+args = ["lsp-proxy"]
+command = "biome"
+
+[language-server.colors]
+args = ["--variable-completions"]
+command = "uwu_colors"
+except-features = ["format"]
+
+[language-server.deno]
+args = ["lsp"]
+command = "deno"
+
+[language-server.deno.config.deno]
+enable = true
+
+[language-server.emmet-ls]
+args = ["--stdio"]
+command = "emmet-ls"
+
+[language-server.emmet-lsp]
+args = ["--stdio"]
+command = "emmet-language-server"
+
+[language-server.emmet-lsp.config.includeLanguages]
+
+[language-server.godot]
+args = ["127.0.0.1", "6005"]
+command = "nc"
+
+[language-server.nixd]
+args = ["--semantic-tokens=true"]
+command = "/nix/store/j0kkxv4nbhyhl159c1s97ialh83mb0dn-nixd-2.9.0/bin/nixd"
+
+[language-server.nixd.config.nixd.formatting]
+command = ["alejandra"]
+
+[language-server.nixd.config.nixd.nixpkgs]
+expr = "import (builtins.getFlake (toString /home/zenith/nixos-dot)).inputs.nixpkgs { }"
+
+[language-server.nixd.config.nixd.options.home-manager]
+expr = "(builtins.getFlake (toString /home/zenith/nixos-dot)).nixosConfigurations.zenithnix.options.home-manager.users.type.getSubOptions []"
+
+[language-server.nixd.config.nixd.options.nixos]
+expr = "(builtins.getFlake (toString /home/zenith/nixos-dot)).nixosConfigurations.zenithnix.options"
+
+[language-server.postgrestools]
+args = ["lsp-proxy"]
+command = "postgrestools"
+
+[language-server.pyrefly]
+args = ["lsp"]
+command = "pyrefly"
+
+[language-server.ruff]
+args = ["server"]
+command = "ruff"
+
+[language-server.rumdl]
+args = ["server"]
+command = "rumdl"
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[language-server.tailwindcss-ls]
+args = ["--stdio"]
+command = "tailwindcss-language-server"
+
+[language-server.typescript-language-server.config.typescirpt.inlayHints]
+includeInlayEnumMemberValueHints = false
+includeInlayFunctionLikeReturnTypeHints = false
+includeInlayFunctionParameterTypeHints = false
+includeInlayParameterNameHints = "literals"
+includeInlayParameterNameHintsWhenArgumentMatchesName = false
+includeInlayPropertyDeclarationTypeHints = false
+includeInlayVariableTypeHints = false
+includeInlayVariableTypeHintsWhenTypeMatchesName = false
+
+[language-server.vscode-css-language-server.config]
+providFormatter = true
+
+[language-server.vscode-css-language-server.config.css.validate]
+enable = true
+
+[language-server.vscode-css-language-server.config.less.validate]
+enable = true
+
+[language-server.vscode-css-language-server.config.scss.validate]
+enable = true
+
+[language-server.vscode-json-language-server.config]
+provideFormatter = true
+
+[language-server.vscode-json-language-server.config.json.format]
+enable = true
+
+[language-server.vscode-json-language-server.config.json.validate]
+enable = true

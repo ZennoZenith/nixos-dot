@@ -1,122 +1,87 @@
-{
-  pkgs,
-  lib,
-  config,
-  variables,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
+    ./nvidia-drivers.nix
 
-    ../common/configuration.nix
-    ../../config/syncthing.nix
-    ../../config/docker.nix
-    ../../config/jellyfin.nix
-    ../../config/nginx.nix
+    ../../config/nixos/nix.nix
+    ../../config/nixos/packages.nix
+    ../../config/nixos/fonts.nix
+    ../../config/nixos/programs.nix
+    ../../config/nixos/networking.nix
+    ../../config/nixos/system.nix
+    ../../config/nixos/environment.nix
+    ../../config/nixos/services.nix
+    ../../config/nixos/systemd.nix
+
+    ../../config/nixos/flatpak.nix
+    ../../config/nixos/kanata.nix
+    ../../config/nixos/display-manager.nix
+    ../../config/nixos/bluetooth.nix
+    ../../config/nixos/rust.nix
+    ../../config/nixos/syncthing.nix
+    ../../config/nixos/docker.nix
+    ../../config/nixos/jellyfin.nix
+    ../../config/nixos/virtual.nix
+    # ../../config/nixos/nginx.nix
+
+    ../../config/nixos/hyprland.nix
   ];
 
-  services.postgresql = {
-    enable = true;
+  nixpkgs.config.allowUnfree = true;
+  time.timeZone = "Asia/Kolkata";
+
+  security = {
+    rtkit.enable = true;
+    sudo.wheelNeedsPassword = false;
   };
 
-  drivers.nvidia.enable = true; # NVIDIA GPUs
-
-  fileSystems."/mnt/whole" = {
-    device = "/dev/disk/by-uuid/bc034754-5770-44e4-b606-2566262c567a";
-    fsType = "btrfs";
-    options = ["compress=zstd" "nofail" "noatime"];
+  users.groups = {
+    remotebuild = {};
   };
 
-  fileSystems."/mnt/old-drive" = {
-    device = "/dev/disk/by-uuid/ec062600-5190-4e73-b431-0edcbdaffea1";
-    fsType = "btrfs";
-    options = ["compress=zstd" "nofail" "noatime"];
-  };
+  users.users = {
+    zenith = {
+      shell = pkgs.nushell;
+      isNormalUser = true;
+      extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINxeHhhBmXYP1Be4m+snZlVHieXAHBaOUv3a83QpSbG4 (none)"
 
-  security.sudo.wheelNeedsPassword = false;
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIvR+icsS7ocB1mlZIXKLMh41RjHSTJKcVwV9bmJxlfI zenith-arch:knack-arch"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIENWlT75aCPretBcIhW2Wg7yggAkzKhmRbqJqcXmpyhf linode-ubuntu-1:knack-arch"
+      ];
 
-  networking.hostName = "zenithnix"; # Define your hostname.
-
-  environment.sessionVariables.NH_FLAKE = "${variables.home.homeDirectory}/nixos-dot";
-
-  users.users.zenith = {
-    shell = pkgs.nushell;
-    isNormalUser = true;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINxeHhhBmXYP1Be4m+snZlVHieXAHBaOUv3a83QpSbG4 (none)"
-
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIvR+icsS7ocB1mlZIXKLMh41RjHSTJKcVwV9bmJxlfI zenith-arch:knack-arch"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIENWlT75aCPretBcIhW2Wg7yggAkzKhmRbqJqcXmpyhf linode-ubuntu-1:knack-arch"
-    ];
-
-    packages = with pkgs; [
-      nix-search-tv
-    ];
-  };
-
-  users.users.hadish = {
-    isNormalUser = true;
-    extraGroups = ["docker"]; ## TEMP:
-    openssh.authorizedKeys.keys = [];
-
-    hashedPassword = "$y$j9T$ew/v8gDWhQgGKUrT.HZ/81$D9VjEg3r8kLPqeKgUwxpZt1ParFl28Z2Wup4G2rQSW2";
-
-    packages = with pkgs; [
-      nix-search-tv
-    ];
-  };
-
-  programs.firefox.preferences = let
-    ffVersion = config.programs.firefox.package.version;
-  in {
-    "media.ffmpeg.vaapi.enabled" = lib.versionOlder ffVersion "137.0.0";
-    "media.hardware-video-decoding.force-enabled" = lib.versionAtLeast ffVersion "137.0.0";
-    "media.rdd-ffmpeg.enabled" = lib.versionOlder ffVersion "97.0.0";
-
-    "gfx.x11-egl.force-enabled" = true;
-    "widget.dmabuf.force-enabled" = true;
-
-    # Set this to true if your GPU supports AV1.
-    #
-    # This can be determined by reading the output of the
-    # `vainfo` command, after the driver is enabled with
-    # the environment variable.
-    "media.av1.enabled" = false;
-  };
-
-  custom = {
-    ssh = {
-      enable = true;
-      AllowUsers = [
-        "knack"
-        "zenith"
-        "hadish"
+      packages = with pkgs; [
+        nix-search-tv
       ];
     };
-    syncthing = {
-      enable = true;
-      user = variables.home.username;
-    };
-    docker = {
-      enable = true;
-      user = variables.home.username;
-    };
-    jellyfin = {
-      enable = true;
-      user = variables.home.username;
-    };
-    sunshine.enable = true;
-  };
 
-  environment.systemPackages = with pkgs; [
-    # nur.repos."Ev357".helium
-    # brave
-    vscode
-    bun
-    joplin-desktop
-    dbeaver-bin
-    redisinsight
-  ];
+    hadish = {
+      isNormalUser = true;
+      # extraGroups = ["docker"]; ## TEMP:
+      extraGroups = [];
+      openssh.authorizedKeys.keys = [];
+
+      hashedPassword = "$y$j9T$ew/v8gDWhQgGKUrT.HZ/81$D9VjEg3r8kLPqeKgUwxpZt1ParFl28Z2Wup4G2rQSW2";
+
+      packages = with pkgs; [
+        nix-search-tv
+      ];
+    };
+
+    ## REMOTE BUILDER
+    remotebuild = {
+      # isSystemUser = true;
+      isNormalUser = true;
+      group = "remotebuild";
+      useDefaultShell = true;
+      # shell = pkgs.nushell;
+
+      # openssh.authorizedKeys.keyFiles = [./remotebuild.pub];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIILmN38TN7jL7jIUHhu2t25+KdkdBaHpllpOGbRlb/8t knack@knacknix"
+      ];
+    };
+  };
 }

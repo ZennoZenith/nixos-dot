@@ -1,0 +1,231 @@
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    # nur.repos."Ev357".helium
+    # https://github.com/JaKooLit/NixOS-Hyprland
+    # https://github.com/muandane/goji
+    # aim
+    # jome
+    # crates-tui-git
+    # omm
+    # timr-tui
+    # rust-stakeholder
+    #
+    _7zz
+    age
+    alacritty
+    andcli
+    android-tools
+    appimage-run
+    aseprite
+    atac
+    atuin
+    awww
+    banana-cursor
+    bandwhich
+    basalt
+    bibata-cursors
+    biome
+    bitwarden-cli
+    blanket
+    bmm
+    bottles
+    brightnessctl
+    btop-cuda
+    bun
+    carapace
+    cargo-binstall
+    cargo-nextest
+    cargo-seek
+    clang
+    cliphist
+    cloc
+    cmake
+    codex
+    coreutils
+    crates-tui
+    csvlens
+    csvq
+    cudaPackages.cudatoolkit
+    curl
+    dbeaver-bin
+    delta
+    diffnav
+    difftastic
+    discord
+    dprint
+    dua
+    dysk
+    egl-wayland
+    emmet-language-server
+    evince # pdf
+    fastfetch
+    fclones
+    fd
+    file
+    filezilla
+    fish
+    foot
+    fresh-editor
+    fx
+    fzf
+    gcc
+    gdscript-formatter
+    gh
+    ghostty
+    git
+    git-cliff
+    gitui
+    gnumake
+    go
+    godot
+    gping
+    grimblast
+    gtrash
+    helix
+    hl-log-viewer
+    hurl
+    hyprlock
+    hyprpaper
+    hyprpicker
+    hyprpolkitagent
+    hyprsunset
+    igrep
+    imv
+    jaq
+    jless
+    joplin-desktop
+    jq
+    jujutsu
+    just
+    kanata
+    kdePackages.dolphin
+    kdePackages.kde-cli-tools
+    kdePackages.kdeconnect-kde
+    kdePackages.kio-extras #extra protocols support (sftp, fish and more)
+    kdePackages.kio-fuse #to mount remote filesystems via FUSE
+    kdePackages.kservice
+    kdePackages.qtkeychain
+    kdePackages.qtsvg
+    keychain
+    kitty
+    koji
+    lazydocker
+    lazygit
+    lazysql
+    libnotify # send alerts
+    libnotify ## send alerts
+    libqalculate
+    libreoffice-fresh
+    localsend
+    mariadb
+    mdcat
+    meld
+    mergiraf
+    monolith
+    moonlight-qt
+    mpd
+    mprocs
+    mpv
+    nginx
+    nh
+    nil
+    nix-output-monitor
+    nixd # nix lsp
+    nmap
+    nur.repos."0komo".sklauncher
+    nushell
+    nvd
+    nwg-look
+    obs-studio
+    obsidian
+    oha
+    opencode
+    openssl
+    ouch
+    p7zip
+    pamixer
+    pastel
+    pavucontrol
+    pik
+    pipewire
+    pixelorama
+    pixieditor
+    playerctl
+    pueue
+    pyrefly
+    pyright
+    qalculate-qt
+    qbittorrent
+    qbittorrent-enhanced-nox
+    qrtool
+    repgrep
+    ripgrep
+    ripgrep-all
+    rmpc
+    rofi
+    rose-pine-hyprcursor
+    rucola
+    ruff
+    scooter
+    sd
+    seahorse ## Gui for OpenPGP
+    serie
+    serpl
+    simple-http-server
+    skim
+    slumber
+    sqlitebrowser
+    sshfs
+    starship
+    superhtml
+    syncthing
+    systemctl-tui
+    tailspin
+    taplo
+    tealdeer
+    teamviewer
+    television
+    temurin-bin-21
+    tig
+    tiled
+    tofi
+    tombi
+    topgrade
+    tree
+    typescript-language-server
+    uv
+    uwsm
+    vivid
+    vlc
+    vscode
+    vscode-css-languageserver
+    walker
+    watchexec
+    waybar
+    wget
+    wikiman
+    wine
+    wireplumber
+    wl-clipboard
+    wlogout
+    wofi
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-gtk
+    xh
+    yaak
+    yazi
+    zathura ## pdf
+    zed-editor
+    zellij
+
+    gnupg
+    htop
+    jujutsu
+    swayosd
+    wezterm
+    zoxide
+    wiremix
+    elephant ## requried by walker
+    pinentry-curses
+  ];
+}

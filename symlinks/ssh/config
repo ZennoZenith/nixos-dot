@@ -1,0 +1,86 @@
+Host digitalServer
+  Port 22
+  IdentitiesOnly yes
+  User meeran
+  HostName digitalServer
+  ServerAliveInterval 60
+  ServerAliveCountMax 10000
+  Compression yes
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_ed25519_meeran
+
+Host gitea-zennozenith
+  IdentitiesOnly yes
+  User git
+  HostName zenith
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/gitea
+
+Host github-knowknack
+  IdentitiesOnly yes
+  User git
+  HostName github.com
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/github
+
+Host github-meeran
+  IdentitiesOnly yes
+  User git
+  HostName github.com
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_ed25519_meeran
+
+Host github-zennozenith
+  IdentitiesOnly yes
+  User git
+  HostName github.com
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/github
+
+Host github.com
+  IdentitiesOnly yes
+  User git
+  HostName github.com
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/github
+
+Host knack
+  Port 22
+  IdentitiesOnly yes
+  User knack
+  HostName knack
+  ServerAliveInterval 60
+  ServerAliveCountMax 10000
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/knack
+
+Host linode
+  Port 36965
+  IdentitiesOnly yes
+  User zenith
+  HostName linode
+  ServerAliveInterval 60
+  ServerAliveCountMax 10000
+  Compression yes
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/linode
+
+Host remotebuilder
+  Port 22
+  IdentitiesOnly yes
+  User remotebuild
+  HostName remotebuilder
+  ServerAliveInterval 60
+  ServerAliveCountMax 10000
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/remotebuild
+
+Host zenith
+  Port 22
+  IdentitiesOnly yes
+  User zenith
+  HostName zenith
+  ServerAliveInterval 60
+  ServerAliveCountMax 10000
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/zenith

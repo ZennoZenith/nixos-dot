@@ -17,6 +17,12 @@
   "ui_font_size": 16,
   "buffer_font_size": 15,
 
+  "toolbar": { "breadcrumbs": false, "quick_actions": false },
+  "project_panel": { "entry_spacing": "standard" },
+  "tabs": { "file_icons": true },
+  "current_line_highlight": "gutter",
+  "theme": "cool-theme-1",
+
   // Minimap related settings
   "minimap": {
     "show": "never", // When to show (auto, always, never)
@@ -49,12 +55,6 @@
     "min_line_number_digits": 1
   },
 
-  "toolbar": { "breadcrumbs": false, "quick_actions": false },
-  "project_panel": { "entry_spacing": "standard" },
-  "tabs": { "file_icons": true },
-  "current_line_highlight": "gutter",
-  "theme": "cool-theme-1",
-
   "languages": {
     "GDScript": {
       "formatter": {
@@ -64,12 +64,25 @@
         }
       }
     }
+  },
+  "lsp": {
+    "godot": {
+      "command": "nc",
+      "args": ["127.0.0.1", "6005"],
+      "languages": ["gdscript"]
+    }
+  },
+  "languages": {
+    "Markdown": {
+      "language_servers": ["rumdl"]
+    }
+  },
+  "lsp": {
+    "rumdl": {
+      "binary": {
+        "path": "rumdl",
+        "arguments": ["server"]
+      }
+    }
   }
-  // "lsp": {
-  //   "godot": {
-  //     "command": "nc",
-  //     "args": ["127.0.0.1", "6005"],
-  //     "languages": ["gdscript"],
-  //   },
-  // },
 }

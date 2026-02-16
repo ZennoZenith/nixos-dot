@@ -9,14 +9,14 @@ padding.y = 1
 dynamic_padding = true
 
 # decorations = "Full" # DEFAULT
-decorations = "None"
-decorations_theme_variant = "Dark" # "Light"
+decorations = "none"
+decorations_theme_variant = "Dark"  # "Light"
 
 blur = true
-startup_mode = "Maximized" # "Fullscreen"
+startup_mode = "Maximized"  # "Fullscreen"
 title = "Alacritty"
-dynamic_title = false      # DEFAULT TRUE
-#macos only # option_as_alt = "Both" 
+dynamic_title = false  # DEFAULT TRUE
+# macos only # option_as_alt = "Both"
 
 [font]
 size = 12.0
@@ -46,7 +46,8 @@ hide_when_typing = true
 
 [colors.cursor]
 # cursor = '#ffffff'
-cursor = '#eb8d00'
+cursor = "#eb8d00"
+
 [colors.vi_mode_cursor]
 cursor = "#f5ef42"
 
@@ -56,7 +57,6 @@ blinking = "On"
 
 [cursor.vi_mode_style]
 shape = "Block"
-
 
 [env]
 TERM = "xterm-256color"
@@ -72,7 +72,6 @@ import = [
 ]
 
 [terminal]
-
 [terminal.shell]
 program = "/usr/bin/env"
 args = ["nu"]

@@ -79,10 +79,10 @@
                   # This subvolume will be created but not mounted
                   "/test" = {};
                   # Subvolume for the swapfile
-                  "/swap" = {
-                    mountpoint = "/swap";
-                    swap.swapfile.size = "8G";
-                  };
+                  # "/swap" = {
+                  #   mountpoint = "/swap";
+                  #   swap.swapfile.size = "8G";
+                  # };
                 };
                 mountpoint = "/partition-root";
               };

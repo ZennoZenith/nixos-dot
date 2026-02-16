@@ -1,0 +1,18 @@
+background-opacity = 0.3
+bold-is-bright = true
+command = /usr/bin/env nu
+cursor-style = block
+focus-follows-mouse = true
+font-family = CaskaydiaCove Nerd Font Mono
+font-family = CaskaydiaMono Nerd Font
+font-size = 10
+fullscreen = false
+gtk-titlebar = false
+keybind = alt+shift+enter=toggle_fullscreen
+keybind = alt+left=unbind
+keybind = alt+right=unbind
+mouse-hide-while-typing = true
+resize-overlay = never
+theme = Mathias
+window-padding-x = 1
+window-padding-y = 1
