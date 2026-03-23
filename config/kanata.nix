@@ -28,7 +28,7 @@
         extraDefCfg = ''
           process-unmapped-keys yes
           concurrent-tap-hold yes
-          chords-v2-min-idle 200
+          chords-v2-min-idle 20
         '';
         # tap-hold-require-prior-idle 150
         config = builtins.readFile ./kanata.kbd;

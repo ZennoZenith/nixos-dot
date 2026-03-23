@@ -53,5 +53,23 @@
   "project_panel": { "entry_spacing": "standard" },
   "tabs": { "file_icons": true },
   "current_line_highlight": "gutter",
-  "theme": "Catppuccin Espresso (Blur) [Heavy]"
+  "theme": "cool-theme-1",
+
+  "languages": {
+    "GDScript": {
+      "formatter": {
+        "external": {
+          "command": "gdscript-formatter",
+          "arguments": []
+        }
+      }
+    }
+  }
+  // "lsp": {
+  //   "godot": {
+  //     "command": "nc",
+  //     "args": ["127.0.0.1", "6005"],
+  //     "languages": ["gdscript"],
+  //   },
+  // },
 }

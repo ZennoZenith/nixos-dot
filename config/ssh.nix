@@ -40,7 +40,7 @@ in {
       };
     };
 
-    services.fail2ban.enable = true;
+    # services.fail2ban.enable = true;
 
     environment.variables = {
       SSH_ASKPASS_REQUIRE = "prefer";

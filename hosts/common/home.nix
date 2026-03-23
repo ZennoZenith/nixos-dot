@@ -113,7 +113,7 @@ in {
     waybar.enable = true;
     wezterm.enable = true;
     yazi.enable = true;
-    zed.enable = true;
+    # zed.enable = true;
     zellij.enable = true;
     zoxide.enable = true;
     eza.enable = true;

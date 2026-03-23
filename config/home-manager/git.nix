@@ -7,7 +7,7 @@
 in {
   options.custom.${name} = {
     enable = lib.mkEnableOption {
-      description = "Enable Syncthing";
+      description = "Enable git";
       default = false;
     };
 

@@ -38,7 +38,7 @@ in {
           "CaskaydiaCove Nerd Font Mono"
           "CaskaydiaMono Nerd Font"
         ];
-        font-size = 12;
+        font-size = 10;
         background-opacity = "0.3";
         gtk-titlebar = false;
         fullscreen = false;

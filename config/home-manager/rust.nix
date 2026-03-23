@@ -16,7 +16,11 @@ in {
   };
 
   config = lib.mkIf config.custom.${name}.enable {
-    programs.cargo.enable = true;
+    home.sessionVariables = {
+      PATH = "$HOME/.cargo/bin:$PATH";
+    };
+
+    # programs.cargo.enable = true;
     programs.cargo.settings = {
       # .cargo/config.toml
       # On Windows

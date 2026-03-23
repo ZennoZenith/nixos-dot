@@ -19,6 +19,11 @@
       };
     };
 
+    godot = {
+      command = "nc";
+      args = ["127.0.0.1" "6005"];
+    };
+
     postgrestools = {
       command = "postgrestools";
       args = ["lsp-proxy"];
@@ -91,6 +96,14 @@
   };
 
   language = [
+    {
+      name = "gdscript";
+      language-servers = ["godot"];
+      formatter = {
+        command = "gdscript-formatter";
+        args = ["--reorder-code"];
+      };
+    }
     {
       name = "kbd";
       scope = "source.lisp";

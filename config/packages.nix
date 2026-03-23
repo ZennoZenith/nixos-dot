@@ -201,5 +201,14 @@
     sqlitebrowser
     foot
     temurin-bin-21
+    godot
+    gdscript-formatter
+    nmap
+    pixieditor
+    tiled
+    pixelorama
+    aseprite
+
+    mergiraf
   ];
 }
