@@ -18,4 +18,5 @@
   users.groups.remotebuild = {};
 
   nix.settings.trusted-users = ["remotebuild"];
+  nix.settings.secret-key-files = ["/etc/nix/secret-key"];
 }

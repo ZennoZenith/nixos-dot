@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 // Zed settings
 {
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": "Catppuccin Latte",
   "helix_mode": false,
   "disable_ai": false,
 
