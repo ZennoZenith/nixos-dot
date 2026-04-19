@@ -19,4 +19,7 @@
 
   nix.settings.trusted-users = ["remotebuild"];
   nix.settings.secret-key-files = ["/etc/nix/secret-key"];
+  trusted-public-keys = [
+    "builder-key:MEwLx5gJEF30JOxVjvsJrhb2415KdUu4VBsdFPgKAYI=" ## Builder public key
+  ];
 }

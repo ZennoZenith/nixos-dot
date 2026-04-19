@@ -30,6 +30,7 @@
       "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
 
       "oss:KO872wNJkCDgmGN3xy9dT89WAhvv13EiKncTtHDItVU="
+      "builder-key:MEwLx5gJEF30JOxVjvsJrhb2415KdUu4VBsdFPgKAYI=" ## Builder public key
     ];
   };
 }
