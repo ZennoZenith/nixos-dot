@@ -30,7 +30,7 @@
     "thumb": "hover", // When to show thumb (always, hover)
     "thumb_border": "left_open", // Thumb border (left_open, right_open, full, none)
     "max_width_columns": 70, // Maximum width of minimap
-    "current_line_highlight": "line" // Highlight current line (null, line, gutter)
+    "current_line_highlight": "line", // Highlight current line (null, line, gutter)
   },
   // Scrollbar related settings
   "scrollbar": {
@@ -43,8 +43,8 @@
     "diagnostics": "all", // Show diagnostics (none, error, warning, information, all)
     "axes": {
       "horizontal": true, // Show/hide the horizontal scrollbar
-      "vertical": true // Show/hide the vertical scrollbar
-    }
+      "vertical": true, // Show/hide the vertical scrollbar
+    },
   },
   // gutter
   "gutter": {
@@ -52,7 +52,7 @@
     "runnables": true,
     "breakpoints": true,
     "folds": true,
-    "min_line_number_digits": 1
+    "min_line_number_digits": 1,
   },
 
   "languages": {
@@ -60,29 +60,25 @@
       "formatter": {
         "external": {
           "command": "gdscript-formatter",
-          "arguments": []
-        }
-      }
-    }
+          "arguments": [],
+        },
+      },
+    },
+    "Markdown": {
+      "language_servers": ["rumdl"],
+    },
   },
   "lsp": {
     "godot": {
       "command": "nc",
       "args": ["127.0.0.1", "6005"],
-      "languages": ["gdscript"]
-    }
-  },
-  "languages": {
-    "Markdown": {
-      "language_servers": ["rumdl"]
-    }
-  },
-  "lsp": {
+      "languages": ["gdscript"],
+    },
     "rumdl": {
       "binary": {
         "path": "rumdl",
-        "arguments": ["server"]
-      }
-    }
-  }
+        "arguments": ["server"],
+      },
+    },
+  },
 }

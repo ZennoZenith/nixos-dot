@@ -119,6 +119,7 @@ in {
       "zed"
       "zellij"
       "bash"
+      "godot"
     ]);
 
   home.packages = with pkgs; [

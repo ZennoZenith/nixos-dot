@@ -12,7 +12,8 @@ Host digitalServer
 Host gitea-zennozenith
   IdentitiesOnly yes
   User git
-  HostName zenith
+  HostName gitea.zennozenith.com
+  Port 2222
   AddKeysToAgent yes
   IdentityFile ~/.ssh/gitea
 
