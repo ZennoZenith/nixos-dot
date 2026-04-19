@@ -1,4 +1,5 @@
-{
+{...}: {
+  ## REMOTE BUILDER
   users.users.remotebuild = {
     isSystemUser = true;
     group = "remotebuild";
@@ -17,9 +18,11 @@
 
   users.groups.remotebuild = {};
 
-  nix.settings.trusted-users = ["remotebuild"];
-  nix.settings.secret-key-files = ["/etc/nix/secret-key"];
-  trusted-public-keys = [
-    "builder-key:MEwLx5gJEF30JOxVjvsJrhb2415KdUu4VBsdFPgKAYI=" ## Builder public key
-  ];
+  nix.settings = {
+    trusted-users = ["remotebuild"];
+    secret-key-files = ["/etc/nix/secret-key"];
+    trusted-public-keys = [
+      "builder-key:MEwLx5gJEF30JOxVjvsJrhb2415KdUu4VBsdFPgKAYI=" ## Builder public key
+    ];
+  };
 }

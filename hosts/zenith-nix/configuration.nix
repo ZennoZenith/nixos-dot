@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
+    ./remote-builder.nix
     ./nvidia-drivers.nix
 
     ../../config/nixos/nix.nix
@@ -36,10 +37,6 @@
     sudo.wheelNeedsPassword = false;
   };
 
-  users.groups = {
-    remotebuild = {};
-  };
-
   users.users = {
     zenith = {
       shell = pkgs.nushell;
@@ -67,20 +64,6 @@
 
       packages = with pkgs; [
         nix-search-tv
-      ];
-    };
-
-    ## REMOTE BUILDER
-    remotebuild = {
-      # isSystemUser = true;
-      isNormalUser = true;
-      group = "remotebuild";
-      useDefaultShell = true;
-      # shell = pkgs.nushell;
-
-      # openssh.authorizedKeys.keyFiles = [./remotebuild.pub];
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIILmN38TN7jL7jIUHhu2t25+KdkdBaHpllpOGbRlb/8t knack@knacknix"
       ];
     };
   };
