@@ -1,5 +1,40 @@
-{pkgs, ...}: {
-  programs.hyprland.enable = true;
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = with pkgs; [
+  #     xdg-desktop-portal-hyprland
+  #     xdg-desktop-portal-gtk
+  #   ];
+
+  #   config = {
+  #     common.default = "hyprland";
+  #   };
+  # };
+
+  ## https://wiki.hypr.land/Nix/Hyprland-on-NixOS/#fixing-problems-with-themes
+  programs.dconf.profiles.user.databases = [
+    {
+      settings."org/gnome/desktop/interface" = {
+        gtk-theme = "Adwaita";
+        icon-theme = "Flat-Remix-Red-Dark";
+        font-name = "Noto Sans Medium 11";
+        document-font-name = "Noto Sans Medium 11";
+        monospace-font-name = "Noto Sans Mono Medium 11";
+      };
+    }
+  ];
 
   environment.systemPackages = with pkgs; [
     hyprlock
@@ -11,7 +46,6 @@
     banana-cursor
 
     libnotify ## send alerts
-    xdg-desktop-portal-gtk
   ];
 
   ## required for screen sharing

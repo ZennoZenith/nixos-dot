@@ -6,6 +6,14 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
 
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    ##https://wiki.hypr.land/Nix/Plugins/#hyprland-plugins
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     # omnix.url = "github:juspay/omnix";
 
     nur = {

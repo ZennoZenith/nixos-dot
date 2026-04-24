@@ -45,7 +45,6 @@
     crates-tui
     csvlens
     csvq
-    cudaPackages.cudatoolkit
     curl
     dbeaver-bin
     delta
@@ -209,8 +208,6 @@
     wl-clipboard
     wlogout
     wofi
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-gtk
     xh
     yaak
     yazi
@@ -227,5 +224,13 @@
     wiremix
     elephant ## requried by walker
     pinentry-curses
+    cachix
+    nix-search-tv
+    eza
+    bat
+    apidog
+    beeref
+    planify
+    vesktop
   ];
 }

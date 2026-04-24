@@ -1,14 +1,15 @@
 {pkgs, ...}: {
   xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal
-        xdg-desktop-portal-gtk
-      ];
-      config.common.default = "*";
-      xdgOpenUsePortal = true;
-    };
+    ## set in nixos/hyprland.nix
+    # portal = {
+    #   enable = true;
+    #   extraPortals = with pkgs; [
+    #     xdg-desktop-portal
+    #     xdg-desktop-portal-gtk
+    #   ];
+    #   config.common.default = "*";
+    #   xdgOpenUsePortal = true;
+    # };
 
     /**
     ## To list all .desktop-files, run
