@@ -94,17 +94,17 @@
     jless
     joplin-desktop
     jq
-    jujutsu
+    stable.jujutsu
     just
     kanata
-    kdePackages.dolphin
-    kdePackages.kde-cli-tools
-    kdePackages.kdeconnect-kde
-    kdePackages.kio-extras #extra protocols support (sftp, fish and more)
-    kdePackages.kio-fuse #to mount remote filesystems via FUSE
-    kdePackages.kservice
-    kdePackages.qtkeychain
-    kdePackages.qtsvg
+    stable.kdePackages.dolphin
+    stable.kdePackages.kde-cli-tools
+    stable.kdePackages.kdeconnect-kde
+    stable.kdePackages.kio-extras #extra protocols support (sftp, fish and more)
+    stable.kdePackages.kio-fuse #to mount remote filesystems via FUSE
+    stable.kdePackages.kservice
+    stable.kdePackages.qtkeychain
+    stable.kdePackages.qtsvg
     keychain
     kitty
     koji
@@ -114,7 +114,7 @@
     libnotify # send alerts
     libnotify ## send alerts
     libqalculate
-    libreoffice-fresh
+    stable.libreoffice-fresh
     localsend
     mariadb
     mdcat
@@ -217,7 +217,6 @@
 
     gnupg
     htop
-    jujutsu
     swayosd
     wezterm
     zoxide
@@ -232,5 +231,11 @@
     beeref
     planify
     vesktop
+    tokei
+    fuzzel
+    nufmt
+    cava
+    alejandra
+    libresprite
   ];
 }

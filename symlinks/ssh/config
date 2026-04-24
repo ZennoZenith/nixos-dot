@@ -85,3 +85,14 @@ Host zenith
   ServerAliveCountMax 10000
   AddKeysToAgent yes
   IdentityFile ~/.ssh/zenith
+
+Host hadishr
+  Port 22
+  SetEnv TERM=xterm-256color
+  IdentitiesOnly yes
+  User hadish
+  HostName 100.84.188.59
+  ServerAliveInterval 60
+  ServerAliveCountMax 10000
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/hadish-rasp

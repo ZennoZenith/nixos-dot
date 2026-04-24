@@ -1,5 +1,7 @@
 # TODO
 
+- mpd
+- noctalia shell
 - pkgs.qbittorrent-enhanced-nox
 - Hyprland
 - Changing audio sink

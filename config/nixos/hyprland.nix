@@ -11,18 +11,6 @@
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
-  # xdg.portal = {
-  #   enable = true;
-  #   extraPortals = with pkgs; [
-  #     xdg-desktop-portal-hyprland
-  #     xdg-desktop-portal-gtk
-  #   ];
-
-  #   config = {
-  #     common.default = "hyprland";
-  #   };
-  # };
-
   ## https://wiki.hypr.land/Nix/Hyprland-on-NixOS/#fixing-problems-with-themes
   programs.dconf.profiles.user.databases = [
     {

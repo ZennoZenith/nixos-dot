@@ -1,0 +1,114 @@
+## https://github.com/junegunn/fzf
+
+$env.ENV_CONVERSIONS.__keybindings_loaded = {
+    from_string: { |s| $s | into bool }
+    to_string: { |v| $v | into string }
+}
+
+# Directories
+const alt_c = {
+    name: fzf_dirs
+    modifier: alt
+    keycode: char_c
+    mode: [emacs, vi_normal, vi_insert]
+    event: [
+      {
+        send: executehostcommand
+        cmd: "
+          let fzf_alt_c_command = \$\"($env.FZF_ALT_C_COMMAND) | fzf ($env.FZF_ALT_C_OPTS)\";
+          let result = nu -c $fzf_alt_c_command;
+          cd $result;
+        "
+      }
+    ]
+}
+
+# History
+const ctrl_h = {
+  name: history_menu
+  modifier: control
+  keycode: char_h
+  mode: [emacs, vi_insert, vi_normal]
+  event: [
+    {
+      send: executehostcommand
+      cmd: "
+        let result = history
+          | reverse
+          | get command
+          | str replace --all (char newline) ' '
+          | to text
+          | fzf --style full --no-sort --preview 'printf \'{}\' | nufmt --stdin | rg -v ERROR' --bind 'ctrl-/:change-preview-window(down|hidden|)';
+        commandline edit --append $result;
+        commandline set-cursor --end
+      "
+    }
+  ]
+}
+
+# Files
+const ctrl_t =  {
+    name: fzf_files
+    modifier: control
+    keycode: char_t
+    mode: [emacs, vi_normal, vi_insert]
+    event: [
+      {
+        send: executehostcommand
+        cmd: "
+          let fzf_ctrl_t_command = \$\"($env.FZF_CTRL_T_COMMAND) | fzf ($env.FZF_CTRL_T_OPTS)\";
+          let result = nu -c $fzf_ctrl_t_command;
+          commandline edit --append $result;
+          commandline set-cursor --end
+        "
+      }
+    ]
+}
+
+# https://github.com/junegunn/fzf/issues/4122
+export-env {
+  let accent = "#89b4fa"
+  let foreground = "#cdd6f4"
+  let muted = "#6c7086"
+
+  # $env.FZF_DEFAULT_OPTS = $"
+  #   --margin=1
+  #   --layout=reverse
+  #   --border=none
+  #   --info=hidden
+  #   -i
+  #   --no-bold
+  #   --color=fg:($foreground),bg:-1,fg+:($accent),bg+:-1,prompt:($muted),pointer:($accent)
+  # "
+
+  # $env.FZF_CTRL_T_OPTS = "
+  #   --preview='bat --style=numbers --color=always --line-range :500 {}'
+  #   --preview-window=right:60%:wrap
+  # "
+
+  # $env.FZF_CTRL_R_OPTS = "
+  #   --prompt='history> '
+  # "
+   
+  $env.FZF_ALT_C_COMMAND = "fd --type directory --hidden"
+  $env.FZF_ALT_C_OPTS = "--preview 'tree -C {} | head -n 200'"
+  $env.FZF_CTRL_T_COMMAND = "fd --type file --hidden"
+  $env.FZF_CTRL_T_OPTS = "--preview 'bat --color=always --style=full --line-range=:500 {}' "
+  $env.FZF_DEFAULT_COMMAND = "fd --type file --hidden"
+
+
+  if ('fzf_dirs' not-in ($env.config.keybindings | get name) ) {
+    $env.config.keybindings = $env.config.keybindings | append $alt_c
+  }
+
+  if ('history_menu' not-in ($env.config.keybindings | get name) ) {
+    $env.config.keybindings = $env.config.keybindings | append $ctrl_h
+  }
+
+  if ('fzf_files' not-in ($env.config.keybindings | get name) ) {
+    $env.config.keybindings = $env.config.keybindings | append $ctrl_t
+  }
+
+  $env.__keybindings_loaded = true
+}
+

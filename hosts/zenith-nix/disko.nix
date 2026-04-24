@@ -1,5 +1,18 @@
 {
   disko.devices = {
+    nodev = {
+      "/var/lib/nix-build" = {
+        fsType = "tmpfs";
+        mountOptions = [
+          "size=16G"
+          "mode=0755"
+          "noatime"
+          "nodev"
+          "nosuid"
+        ];
+      };
+    };
+
     disk = {
       nixos = {
         type = "disk";

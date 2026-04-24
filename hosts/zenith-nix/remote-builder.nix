@@ -19,6 +19,8 @@
   users.groups.remotebuild = {};
 
   nix.settings = {
+    # compression-level = 1; ## TODO: giving error
+    # build-dir = "/var/lib/nix-build"; ## Use tmpfs for builds
     trusted-users = ["remotebuild"];
     secret-key-files = ["/etc/nix/secret-key"];
     trusted-public-keys = [

@@ -7,10 +7,11 @@
   environment = {
     pathsToLink = ["/share/applications" "/share/xdg-desktop-portal"];
     ## [Fix for dolphin default file association](https://discuss.kde.org/t/dolphin-file-associations/38934/2)
-    etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+    etc."xdg/menus/applications.menu".source = "${pkgs.stable.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
     variables = {
       EDITOR = "${pkgs.helix}/bin/hx";
+      RUSTC_WRAPPER = "sccache";
       # SSH_ASKPASS_REQUIRE = "prefer";
     };
 

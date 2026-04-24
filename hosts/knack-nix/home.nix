@@ -3,8 +3,10 @@
   config,
   variables,
   pkgs,
+  lib,
   ...
 }: let
+  dotConfigDir = ../../symlinks/.config;
   create_symlink = path: config.lib.file.mkOutOfStoreSymlink "${variables.dotfiles}/${path}";
 in {
   ## TODO: # ssh -vT git@github-work
@@ -28,7 +30,7 @@ in {
 
   home = {
     username = variables.home.username;
-    homeDirectory = variables.home.homeDirectory;
+    homeDirectory = lib.mkForce variables.home.homeDirectory;
     stateVersion = variables.home.stateVersion;
     shell.enableNushellIntegration = true;
     shell.enableFishIntegration = true;
@@ -86,41 +88,54 @@ in {
   xdg.configFile = builtins.listToAttrs (map (subpath: {
       name = subpath;
       value = {
-        source = create_symlink subpath;
+        source = create_symlink (".config/" + subpath);
         recursive = true;
       };
     })
-    [
-      "scripts" ## Scripts
+    (builtins.attrNames (builtins.readDir dotConfigDir)));
 
-      "git"
-      "bat"
-      "hypr" ## Hyprland
-      "helix"
-      "fastfetch"
-      "foot"
-      "ghostty"
-      "cava"
-      "atuin"
-      "glow"
-      "htop"
-      "kitty"
-      "mpd"
-      "nushell"
-      "omm"
-      "rmpc"
-      "starship"
-      "swayosd"
-      "television"
-      "tofi"
-      "waybar"
-      "wezterm"
-      "yazi"
-      "zed"
-      "zellij"
-      "bash"
-      "godot"
-    ]);
+  # xdg.configFile =
+  #   mkConfigLinks (builtins.attrNames (builtins.readDir dotConfigDir));
+
+  # xdg.configFile = builtins.listToAttrs (map (subpath: {
+  #     name = subpath;
+  #     value = {
+  #       source = create_symlink subpath;
+  #       recursive = true;
+  #     };
+  #   })
+  #   [
+  #     "scripts" ## Scripts
+
+  #     "git"
+  #     "bat"
+  #     "hypr" ## Hyprland
+  #     "helix"
+  #     "fastfetch"
+  #     "foot"
+  #     "ghostty"
+  #     "cava"
+  #     "atuin"
+  #     "glow"
+  #     "htop"
+  #     "kitty"
+  #     "mpd"
+  #     "nushell"
+  #     "omm"
+  #     "rmpc"
+  #     "starship"
+  #     "swayosd"
+  #     "television"
+  #     "tofi"
+  #     "waybar"
+  #     "wezterm"
+  #     "yazi"
+  #     "zed"
+  #     "zellij"
+  #     "bash"
+  #     "godot"
+  #     "fuzzel"
+  #   ]);
 
   home.packages = with pkgs; [
     ghostty

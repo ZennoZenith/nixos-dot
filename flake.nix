@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
+    # flake-utils.url = "github:numtide/flake-utils";
 
     hyprland.url = "github:hyprwm/Hyprland";
 
@@ -14,6 +15,7 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    ie-r.url = "github:miaupaw/ie-r";
     # omnix.url = "github:juspay/omnix";
 
     nur = {
@@ -45,110 +47,110 @@
       };
     };
 
-    cinecli.url = "github:eyeblech/cinecli";
-
-    alejandra = {
-      url = "github:kamadorueda/alejandra/4.0.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # alejandra = {
+    #   url = "github:kamadorueda/alejandra/4.0.0";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = {
     nixpkgs,
+    nixpkgs-stable,
     home-manager,
     disko,
     minegrub-theme,
-    cinecli,
     stylix,
-    alejandra,
+    # alejandra,
+    ie-r,
     # omnix,
     nur,
     ...
-  } @ inputs: {
-    nixosConfigurations.knacknix = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit inputs;
-        variables = import ./hosts/knack-nix/variables.nix;
+  } @ inputs: let
+    system = "x86_64-linux";
+
+    commonOverlays = [
+      nur.overlays.default
+
+      (final: prev: {
+        openldap = prev.openldap.overrideAttrs (_: {
+          doCheck = false;
+        });
+      })
+
+      (final: prev: {
+        stable = import inputs.nixpkgs-stable {
+          inherit (final) system;
+          config.allowUnfree = true;
+        };
+      })
+    ];
+
+    commonModules = [
+      {nixpkgs.overlays = commonOverlays;}
+
+      minegrub-theme.nixosModules.default
+      home-manager.nixosModules.home-manager
+      stylix.nixosModules.stylix
+      disko.nixosModules.disko
+
+      ({pkgs, ...}: {
+        environment.systemPackages = [
+          # alejandra.defaultPackage.${pkgs.stdenv.hostPlatform.system}
+          ie-r.packages.${pkgs.stdenv.hostPlatform.system}.default
+          # omnix.packages.${pkgs.stdenv.hostPlatform.system}.default
+        ];
+      })
+    ];
+
+    mkHost = {
+      user,
+      hostPath,
+    }: let
+      vars = import (hostPath + "/variables.nix");
+    in
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        specialArgs = {
+          inherit inputs;
+          variables = vars;
+        };
+
+        modules =
+          commonModules
+          ++ [
+            (hostPath + "/configuration.nix")
+
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+
+                users.${user} = import (hostPath + "/home.nix");
+
+                backupFileExtension = "HMbackup";
+
+                extraSpecialArgs = {
+                  inherit inputs;
+                  variables = vars;
+                };
+              };
+            }
+          ];
       };
-      modules = [
-        {nixpkgs.overlays = [nur.overlays.default];}
-
-        ./hosts/knack-nix/configuration.nix
-
-        {nixpkgs.config.allowUnfree = true;}
-
-        minegrub-theme.nixosModules.default
-        home-manager.nixosModules.home-manager
-        stylix.nixosModules.stylix
-
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.knack = import ./hosts/knack-nix/home.nix;
-            backupFileExtension = "HMbackup";
-            extraSpecialArgs = {
-              inherit inputs;
-              variables = import ./hosts/knack-nix/variables.nix;
-            };
-          };
-        }
-        disko.nixosModules.disko
-
-        (
-          {pkgs, ...}: {
-            environment.systemPackages = [
-              alejandra.defaultPackage.${pkgs.stdenv.hostPlatform.system}
-              cinecli.packages.${pkgs.stdenv.hostPlatform.system}.cinecli
-              # omnix.packages.${pkgs.stdenv.hostPlatform.system}.default
-            ];
-          }
-        )
-      ];
-    };
-
-    nixosConfigurations.zenithnix = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit inputs;
-        variables = import ./hosts/zenith-nix/variables.nix;
+  in {
+    nixosConfigurations = {
+      knacknix = mkHost {
+        user = "knack";
+        hostPath = ./hosts/knack-nix;
       };
-      modules = [
-        {nixpkgs.overlays = [nur.overlays.default];}
-        ./hosts/zenith-nix/configuration.nix
 
-        {nixpkgs.config.allowUnfree = true;}
-
-        minegrub-theme.nixosModules.default
-        home-manager.nixosModules.home-manager
-        stylix.nixosModules.stylix
-
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.zenith = import ./hosts/zenith-nix/home.nix;
-            backupFileExtension = "HMbackup";
-            extraSpecialArgs = {
-              inherit inputs;
-              variables = import ./hosts/zenith-nix/variables.nix;
-            };
-          };
-        }
-        disko.nixosModules.disko
-
-        (
-          {pkgs, ...}: {
-            environment.systemPackages = [
-              alejandra.defaultPackage.${pkgs.stdenv.hostPlatform.system}
-              cinecli.packages.${pkgs.stdenv.hostPlatform.system}.cinecli
-              # omnix.packages.${pkgs.stdenv.hostPlatform.system}.default
-            ];
-          }
-        )
-      ];
+      zenithnix = mkHost {
+        user = "zenith";
+        hostPath = ./hosts/zenith-nix;
+      };
     };
-
     # Code formatter
-    formatter.x86_64-linux = alejandra.defaultPackage.x86_64-linux;
+    # formatter.x86_64-linux = alejandra.defaultPackage.x86_64-linux;
   };
 }

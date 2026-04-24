@@ -32,6 +32,9 @@
   nixpkgs.config.allowUnfree = true;
   time.timeZone = "Asia/Kolkata";
 
+  documentation.man.generateCaches = false;
+  systemd.services.mandb.enable = false;
+
   security = {
     rtkit.enable = true;
     sudo.wheelNeedsPassword = false;

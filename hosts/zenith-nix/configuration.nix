@@ -4,6 +4,7 @@
     ./disko.nix
     ./remote-builder.nix
     ./nvidia-drivers.nix
+    # ./cloudflared.nix
 
     ../../config/nixos/nix.nix
     ../../config/nixos/packages.nix
@@ -13,7 +14,9 @@
     ../../config/nixos/system.nix
     ../../config/nixos/environment.nix
     ../../config/nixos/services.nix
+    ../../config/nixos/postgres.nix
     ../../config/nixos/systemd.nix
+    ../../config/nixos/gitea.nix
 
     ../../config/nixos/flatpak.nix
     ../../config/nixos/kanata.nix
@@ -28,9 +31,10 @@
 
     ../../config/nixos/hyprland.nix
   ];
-
   nixpkgs.config.allowUnfree = true;
   time.timeZone = "Asia/Kolkata";
+  documentation.man.generateCaches = false;
+  systemd.services.mandb.enable = false;
 
   security = {
     rtkit.enable = true;
@@ -41,7 +45,10 @@
     zenith = {
       shell = pkgs.nushell;
       isNormalUser = true;
-      extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+      extraGroups = [
+        "wheel"
+        "adbusers"
+      ];
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINxeHhhBmXYP1Be4m+snZlVHieXAHBaOUv3a83QpSbG4 (none)"
 
@@ -61,10 +68,13 @@
       openssh.authorizedKeys.keys = [];
 
       hashedPassword = "$y$j9T$ew/v8gDWhQgGKUrT.HZ/81$D9VjEg3r8kLPqeKgUwxpZt1ParFl28Z2Wup4G2rQSW2";
-
-      packages = with pkgs; [
-        nix-search-tv
-      ];
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    cudaPackages.cudatoolkit
+    android-studio
+    gitea
+    cloudflared
+  ];
 }
